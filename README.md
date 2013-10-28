@@ -5,7 +5,7 @@ This page is intended to help LDS Primary music leaders select music for their P
 
 ## Usage
 
-There's a live version of the code running on [my web site](http://www.curtisgibby.com/primary_music/index.php).
+There's a live version of the code running on [my web site](http://www.curtisgibby.com/primary-music/index.php).
 
 ## Contributing
 
