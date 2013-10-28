@@ -1,0 +1,9 @@
+.form-control {
+  width: 50%;
+}
+
+@media print {
+  a[href]:after {
+    display: none;
+  }
+}
