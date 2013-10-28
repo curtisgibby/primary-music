@@ -9,11 +9,13 @@
 	</head>
 
 	<body class="container">
+		<a href="https://github.com/curtisgibby/primary-music"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
 		<div class="page-header">
 			<h1><span class="glyphicon glyphicon-music"></span> Primary Music</h1>
 		</div>
 
-		<p>This page is intended to help LDS Primary music leaders. Choose a date (defaults to "Next Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Sharing Time section as you like.</p>
+		<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "Next Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Sharing Time section as you like.</p>
 
 		<form name="music" class="form-horizontal" role="form" action="post.php" method="post">
 		<div class="form-group">
