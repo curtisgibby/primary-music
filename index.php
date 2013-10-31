@@ -15,36 +15,43 @@
 			<h1><span class="glyphicon glyphicon-music"></span> Primary Music</h1>
 		</div>
 
-		<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "Next Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Sharing Time section as you like.</p>
+		<div class="form-group clearfix">
+			<div class="col-md-9">
+				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "Next Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Sharing Time section as you like.</p>
 
-		<form name="music" class="form-horizontal" role="form" action="post.php" method="post">
-		<div class="form-group">
-		  <div class="col-md-12">
-			<label for="Date">Date</label>
-			<input type="text" class="form-control" id="Date" value="<?php echo date("m/d/Y", strtotime("Next Sunday"))?>" name="Date">
-		  </div>
+				<form name="music" class="form-horizontal" role="form" action="post.php" method="post">
+				<div class="form-group">
+				  <div class="col-md-12">
+					<label for="Date">Date</label>
+					<input type="text" class="form-control" id="Date" value="<?php echo date("m/d/Y", strtotime("Next Sunday"))?>" name="Date">
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <div class="col-md-6">
+					<label for="WelcomeSong">Welcome Song</label>
+					<input type="text" class="form-control auto-complete" id="WelcomeSong" name="WelcomeSong">
+				  </div>
+				  <div class="col-md-6">
+					<label for="OpeningSong">Opening Song</label>
+					<input type="text" class="form-control auto-complete" id="OpeningSong" name="OpeningSong">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="col-md-6">
+					<label for="BirthdaySong">Birthday Song</label>
+					<input type="text" class="form-control auto-complete" id="BirthdaySong" name="BirthdaySong">
+				  </div>
+				  <div class="col-md-6">
+					<label for="ReverenceSong">Reverence Song</label>
+					<input type="text" class="form-control auto-complete" id="ReverenceSong" name="ReverenceSong">
+				  </div>
+				</div>
+
+			</div>
+			<img src="childrens-songbook.jpg" class="col-md-3">
 		</div>
 
-		<div class="form-group">
-		  <div class="col-md-6">
-			<label for="WelcomeSong">Welcome Song</label>
-			<input type="text" class="form-control auto-complete" id="WelcomeSong" name="WelcomeSong">
-		  </div>
-		  <div class="col-md-6">
-			<label for="OpeningSong">Opening Song</label>
-			<input type="text" class="form-control auto-complete" id="OpeningSong" name="OpeningSong">
-		  </div>
-		</div>
-		<div class="form-group">
-		  <div class="col-md-6">
-			<label for="BirthdaySong">Birthday Song</label>
-			<input type="text" class="form-control auto-complete" id="BirthdaySong" name="BirthdaySong">
-		  </div>
-		  <div class="col-md-6">
-			<label for="ReverenceSong">Reverence Song</label>
-			<input type="text" class="form-control auto-complete" id="ReverenceSong" name="ReverenceSong">
-		  </div>
-		</div>
 		<h3>Singing Time</h3>
 		<div class="form-group">
 		  <div class="col-md-4">
@@ -102,13 +109,15 @@
 			<input type="text" class="form-control auto-complete" id="SingingTime12" name="SingingTime[]">
 		  </div>
 		</div>
-		<div class="form-group">
+		<div class="form-group clearfix">
 		  <div class="col-md-6">
 			<label for="ClosingSong">Closing Song</label>
 			<input type="text" class="form-control auto-complete" id="ClosingSong" name="ClosingSong">
 		  </div>
+		  <div class="col-md-6">&nbsp;</div>
 		</div>
-		  <button type="submit" class="btn btn-default">Submit</button>
+
+		<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 
 <script>
