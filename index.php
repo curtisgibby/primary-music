@@ -726,5 +726,7 @@
 		$( "#Date" ).datepicker();
 	});
 </script>
+
+<?php include('../include/google-analytics.inc'); ?>
 	</body>
 </html>

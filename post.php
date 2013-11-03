@@ -77,5 +77,6 @@ $date = date('j M Y', strtotime($form['Date']));
 
 		<hr>
 		<a href="index.php" class="hidden-print"><span class="glyphicon glyphicon-backward"></span> Go Back</a>
+<?php include('../include/google-analytics.inc'); ?>
 	</body>
 </html>
