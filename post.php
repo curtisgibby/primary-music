@@ -31,7 +31,7 @@ $date = date('j M Y', strtotime($form['Date']));
 		<title>Primary Music - <?php echo $date;?></title>
 	</head>
 
-	<body class="container">
+	<body class="container printable">
 		<a href="https://github.com/curtisgibby/primary-music" class="hidden-print"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 		<div class="page-header">
