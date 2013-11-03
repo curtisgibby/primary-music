@@ -2,6 +2,10 @@ html {
 	background-color: #C2D4D8;
 }
 
+body {
+	padding-bottom: 20px;
+}
+
 @media print {
   a[href]:after {
     display: none;
