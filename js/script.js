@@ -1,604 +1,2579 @@
 $(function() {
 	var songs = [
-		'If The Savior Stood Beside Me',
-		'Scripture Power',
-		'My Eternal Family',
-		'The Family Is of God',
-		'[CS 2–3] I Am a Child of God',
-		'[CS 4] I Lived in Heaven',
-		'[CS 5] I Know My Father Lives',
-		'[CS 6] Thanks to Thee',
-		'[CS 7] I Thank Thee, Dear Father',
-		'[CS 8] Father, We Thank Thee for the Night',
-		'[CS 9] Can a Little Child like Me?',
-		'[CS 10] Thank Thee for Everything',
-		'[CS 11] I’m Thankful to Be Me',
-		'[CS 12–13] A Child’s Prayer',
-		'[CS 14] I Pray in Faith',
-		'[CS 15] If with All Your Hearts',
-		'[CS 16–17] Children All Over the World',
-		'[CS 18] I Need My Heavenly Father',
-		'[CS 19] Heavenly Father, Now I Pray',
-		'[CS 20] A Song of Thanks',
-		'[CS 20] Thanks to Our Father',
-		'[CS 21] For Health and Strength',
-		'[CS 21] For Thy Bounteous Blessings',
-		'[CS 22] A Prayer Song',
-		'[CS 22] A Prayer',
-		'[CS 23] Father Up Above',
-		'[CS 23] Heavenly Father, While I Pray',
-		'[CS 24] Thank Thee, Father',
-		'[CS 25] We Bow Our Heads',
-		'[CS 25] I Love to Pray',
-		'[CS 26] Reverently, Quietly',
-		'[CS 27] Reverence',
-		'[CS 27] We Are Reverent',
-		'[CS 28] I Want to Be Reverent',
-		'[CS 28] I Will Try to Be Reverent',
-		'[CS 29] Father, I Will Reverent Be',
-		'[CS 30] This Is God’s House',
-		'[CS 30] Our Chapel Is a Sacred Place',
-		'[CS 31] Reverence Is Love',
-		'[CS 34–35] He Sent His Son',
-		'[CS 36] Samuel Tells of the Baby Jesus',
-		'[CS 37] Stars Were Gleaming',
-		'[CS 38–39] When Joseph Went to Bethlehem',
-		'[CS 39] Little Jesus',
-		'[CS 40] There Was Starlight on the Hillside',
-		'[CS 40] The Shepherd’s Carol',
-		'[CS 41] Once within a Lowly Stable',
-		'[CS 42–43] Away in a Manger',
-		'[CS 44–45] Mary’s Lullaby',
-		'[CS 46] Who Is the Child?',
-		'[CS 47] Sleep, Little Jesus',
-		'[CS 48–49] Oh, Hush Thee, My Baby',
-		'[CS 50–51] Picture a Christmas',
-		'[CS 51] Have a Very Merry Christmas!',
-		'[CS 52–53] The Nativity Song',
-		'[CS 54] Christmas Bells',
-		'[CS 55] Jesus Once Was a Little Child',
-		'[CS 56] I Think When I Read That Sweet Story',
-		'[CS 57] Tell Me the Stories of Jesus',
-		'[CS 58] Little Lambs So White and Fair',
-		'[CS 58] Jesus Is Our Loving Friend',
-		'[CS 59] Jesus Loved the Little Children',
-		'[CS 60–61] Jesus Wants Me for a Sunbeam',
-		'[CS 61] Jesus Said Love Everyone',
-		'[CS 62–63] Beautiful Savior',
-		'[CS 64] Did Jesus Really Live Again?',
-		'[CS 65] He Died That We Might Live Again',
-		'[CS 66–67] Hosanna',
-		'[CS 68–69] Easter Hosanna',
-		'[CS 70] Jesus Has Risen',
-		'[CS 71] To Think about Jesus',
-		'[CS 72] The Sacrament',
-		'[CS 73] Before I Take the Sacrament',
-		'[CS 73] Help Us, O God, to Understand',
-		'[CS 74–75] I Feel My Savior’s Love',
-		'[CS 76] This Is My Beloved Son',
-		'[CS 77] The Church of Jesus Christ',
-		'[CS 78–79] I’m Trying to Be like Jesus',
-		'[CS 80–81] Had I Been a Child',
-		'[CS 82–83] When He Comes Again',
-		'[CS 86] An Angel Came to Joseph Smith',
-		'[CS 86] The Golden Plates',
-		'[CS 87] The Sacred Grove',
-		'[CS 88] On a Golden Springtime',
-		'[CS 89] The Priesthood Is Restored',
-		'[CS 90–91] Truth from Elijah',
-		'[CS 92–93] The Hearts of the Children',
-		'[CS 94] Family History—I Am Doing It',
-		'[CS 95] I Love to See the Temple',
-		'[CS 96–97] Faith',
-		'[CS 97] God’s Love',
-		'[CS 98] Repentance',
-		'[CS 99] Help Me, Dear Father',
-		'[CS 100–101] Baptism',
-		'[CS 102] When Jesus Christ Was Baptized',
-		'[CS 103] When I Am Baptized',
-		'[CS 104] I Like My Birthdays',
-		'[CS 105] The Holy Ghost',
-		'[CS 106–7] The Still Small Voice',
-		'[CS 107] Listen, Listen',
-		'[CS 108] Seek the Lord Early',
-		'[CS 109] Search, Ponder, and Pray',
-		'[CS 110–11] Follow the Prophet',
-		'[CS 112–13] The Commandments',
-		'[CS 114–15] The Books in the Old Testament',
-		'[CS 116–17] The Books in the New Testament',
-		'[CS 118–19] Book of Mormon Stories',
-		'[CS 119] The Books in the Book of Mormon',
-		'[CS 120–21] Nephi’s Courage',
-		'[CS 122] The First Article of Faith',
-		'[CS 122] The Second Article of Faith',
-		'[CS 123] The Third Article of Faith',
-		'[CS 124] The Fourth Article of Faith',
-		'[CS 125] The Fifth Article of Faith',
-		'[CS 126] The Sixth Article of Faith',
-		'[CS 126] The Seventh Article of Faith',
-		'[CS 127] The Eighth Article of Faith',
-		'[CS 128] The Ninth Article of Faith',
-		'[CS 128–29] The Tenth Article of Faith',
-		'[CS 130] The Eleventh Article of Faith',
-		'[CS 131] The Twelfth Article of Faith',
-		'[CS 132–33] The Thirteenth Article of Faith',
-		'[CS 134] Latter-day Prophets',
-		'[CS 135] Our Bishop',
-		'[CS 136] Love One Another',
-		'[CS 138–39] Where Love Is',
-		'[CS 140–41] I’ll Walk with You',
-		'[CS 142–43] Every Star Is Different',
-		'[CS 144] Shine On',
-		'[CS 145] A Special Gift Is Kindness',
-		'[CS 145] Kindness Begins with Me',
-		'[CS 146–47] Keep the Commandments',
-		'[CS 148] I Want to Live the Gospel',
-		'[CS 149] I Believe in Being Honest',
-		'[CS 150] I’m Glad to Pay a Tithing',
-		'[CS 150] I Want to Give the Lord My Tenth',
-		'[CS 151] I Am Glad for Many Things',
-		'[CS 152] Hum Your Favorite Hymn',
-		'[CS 153] The Lord Gave Me a Temple',
-		'[CS 154–55] The Word of Wisdom',
-		'[CS 155] Remember the Sabbath Day',
-		'[CS 156] The Chapel Doors',
-		'[CS 157] When I Go to Church',
-		'[CS 158] Dare to Do Right',
-		'[CS 159] Stand for the Right',
-		'[CS 160–61] Choose the Right Way',
-		'[CS 161] I Pledge Myself to Love the Right',
-		'[CS 162] I Will Be Valiant',
-		'[CS 163] I Am like a Star',
-		'[CS 164–65] I Will Follow God’s Plan',
-		'[CS 166–67] A Young Man Prepared',
-		'[CS 167] Go the Second Mile',
-		'[CS 168] I Want to Be a Missionary Now',
-		'[CS 169] I Hope They Call Me on a Mission',
-		'[CS 170–71] The Things I Do',
-		'[CS 172–73] We’ll Bring the World His Truth: Army of Helaman',
-		'[CS 174–75] Called to Serve',
-		'[CS 176] Tell Me, Dear Lord',
-		'[CS 177] Teach Me to Walk in the Light',
-		'[CS 178–79] Teacher, Do You Love Me?',
-		'[CS 180–81] How Dear to God Are Little Children',
-		'[CS 182–85] How Will They Know?',
-		'[CS 188] Families Can Be Together Forever',
-		'[CS 189] Family Prayer',
-		'[CS 190–91] Love Is Spoken Here',
-		'[CS 192] Home',
-		'[CS 193] Sing Your Way Home',
-		'[CS 194] The Family',
-		'[CS 195] Family Night',
-		'[CS 196] Saturday',
-		'[CS 197] A Happy Helper',
-		'[CS 197] Quickly I’ll Obey',
-		'[CS 198] A Happy Family',
-		'[CS 198] When We’re Helping',
-		'[CS 199] I Have a Family Tree',
-		'[CS 200] Grandmother',
-		'[CS 202] I Often Go Walking',
-		'[CS 203] My Mother Dear',
-		'[CS 204–5] Mother, Tell Me the Story',
-		'[CS 206] Mother Dear',
-		'[CS 206] Dearest Mother, I Love You',
-		'[CS 207] Mother, I Love You',
-		'[CS 208] The Dearest Names',
-		'[CS 209] Fathers',
-		'[CS 210] Daddy’s Homecoming',
-		'[CS 211] My Dad',
-		'[CS 214] Pioneer Children Sang As They Walked',
-		'[CS 215] Pioneer Children Were Quick to Obey',
-		'[CS 216–17] Little Pioneer Children',
-		'[CS 217] Westward Ho!',
-		'[CS 218–19] To Be a Pioneer',
-		'[CS 219] The Oxcart',
-		'[CS 220] The Handcart Song',
-		'[CS 221] Covered Wagons',
-		'[CS 222–23] Whenever I Think about Pioneers',
-		'[CS 224] My Country',
-		'[CS 225] My Flag, My Flag',
-		'[CS 228–29] My Heavenly Father Loves Me',
-		'[CS 230] I Think the World Is Glorious',
-		'[CS 231] All Things Bright and Beautiful',
-		'[CS 232–33] Beauty Everywhere',
-		'[CS 233] The World Is So Lovely',
-		'[CS 234] Because God Loves Me',
-		'[CS 235] The World Is So Big',
-		'[CS 236] “Give,” Said the Little Stream',
-		'[CS 237] The Prophet Said to Plant a Garden',
-		'[CS 239] Because It’s Spring',
-		'[CS 240] In the Leafy Treetops',
-		'[CS 241] Birds in the Tree',
-		'[CS 241] Rain Is Falling All Around',
-		'[CS 242–43] Popcorn Popping',
-		'[CS 243] Little Seeds Lie Fast Asleep',
-		'[CS 244] Little Purple Pansies',
-		'[CS 245] Oh, What Do You Do in the Summertime?',
-		'[CS 246] It’s Autumntime',
-		'[CS 247] Autumn Day',
-		'[CS 248] Falling Snow',
-		'[CS 249] Once There Was a Snowman',
-		'[CS 252] Lift Up Your Voice and Sing',
-		'[CS 253] Sing a Song',
-		'[CS 253] Fun to Do',
-		'[CS 254] Hello, Friends!',
-		'[CS 254] Our Door Is Always Open',
-		'[CS 255] Come with Me to Primary',
-		'[CS 256–57] We Welcome You',
-		'[CS 258] Our Primary Colors',
-		'[CS 259] We’re All Together Again',
-		'[CS 260] Hello Song',
-		'[CS 261] Here We Are Together',
-		'[CS 262] Friends Are Fun',
-		'[CS 263] We Are Different',
-		'[CS 264] Happy Song',
-		'[CS 266] If You’re Happy',
-		'[CS 267] Smiles',
-		'[CS 267] A Smile Is like the Sunshine',
-		'[CS 268] Two Little Eyes',
-		'[CS 269] I Have Two Ears',
-		'[CS 270] Two Happy Feet',
-		'[CS 271] I Wiggle',
-		'[CS 272] I Have Two Little Hands',
-		'[CS 273] My Hands',
-		'[CS 274] Roll Your Hands',
-		'[CS 275] Head, Shoulders, Knees, and Toes',
-		'[CS 275] To Get Quiet',
-		'[CS 276] Do As I’m Doing',
-		'[CS 277] Hinges',
-		'[CS 278] Stand Up',
-		'[CS 279] Oh, How We Love to Stand',
-		'[CS 280] Healthy, Wealthy, and Wise',
-		'[CS 281] The Wise Man and the Foolish Man',
-		'[CS 282] Feliz Cumpleaños',
-		'[CS 283] Your Happy Birthday',
-		'[CS 284] Happy, Happy Birthday',
-		'[CS 284–85] Have a Very Happy Birthday!',
-		'[CS 285] You’ve Had a Birthday',
-		'[Hymns 1] The Morning Breaks',
-		'[Hymns 2] The Spirit of God',
-		'[Hymns 3] Now Let Us Rejoice',
-		'[Hymns 4] Truth Eternal',
-		'[Hymns 5] High on the Mountain Top',
-		'[Hymns 6] Redeemer of Israel',
-		'[Hymns 7] Israel, Israel, God Is Calling',
-		'[Hymns 8] Awake and Arise',
-		'[Hymns 9] Come, Rejoice',
-		'[Hymns 10] Come, Sing to the Lord',
-		'[Hymns 11] What Was Witnessed in the Heavens?',
-		'[Hymns 12] ’Twas Witnessed in the Morning Sky',
-		'[Hymns 13] An Angel from on High',
-		'[Hymns 14] Sweet Is the Peace the Gospel Brings',
-		'[Hymns 15] I Saw a Mighty Angel Fly',
-		'[Hymns 16] What Glorious Scenes Mine Eyes Behold',
-		'[Hymns 17] Awake, Ye Saints of God, Awake!',
-		'[Hymns 18] The Voice of God Again Is Heard',
-		'[Hymns 19] We Thank Thee, O God, for a Prophet',
-		'[Hymns 20] God of Power, God of Right',
-		'[Hymns 21] Come, Listen to a Prophet’s Voice',
-		'[Hymns 22] We Listen to a Prophet’s Voice',
-		'[Hymns 23] We Ever Pray for Thee',
-		'[Hymns 24] God Bless Our Prophet Dear',
-		'[Hymns 25] Now We’ll Sing with One Accord',
-		'[Hymns 26] Joseph Smith’s First Prayer',
-		'[Hymns 27] Praise to the Man',
-		'[Hymns 28] Saints, Behold How Great Jehovah',
-		'[Hymns 29] A Poor Wayfaring Man of Grief',
-		'[Hymns 30] Come, Come, Ye Saints',
-		'[Hymns 31] O God, Our Help in Ages Past',
-		'[Hymns 32] The Happy Day at Last Has Come',
-		'[Hymns 33] Our Mountain Home So Dear',
-		'[Hymns 34] O Ye Mountains High',
-		'[Hymns 35] For the Strength of the Hills',
-		'[Hymns 36] They, the Builders of the Nation',
-		'[Hymns 37] The Wintry Day, Descending to Its Close',
-		'[Hymns 38] Come, All Ye Saints of Zion',
-		'[Hymns 39] O Saints of Zion',
-		'[Hymns 40] Arise, O Glorious Zion',
-		'[Hymns 41] Let Zion in Her Beauty Rise',
-		'[Hymns 42] Hail to the Brightness of Zion’s Glad Morning!',
-		'[Hymns 43] Zion Stands with Hills Surrounded',
-		'[Hymns 44] Beautiful Zion, Built Above',
-		'[Hymns 45] Lead Me into Life Eternal',
-		'[Hymns 46] Glorious Things of Thee Are Spoken',
-		'[Hymns 47] We Will Sing of Zion',
-		'[Hymns 48] Glorious Things Are Sung of Zion',
-		'[Hymns 49] Adam-ondi-Ahman',
-		'[Hymns 50] Come, Thou Glorious Day of Promise',
-		'[Hymns 51] Sons of Michael, He Approaches',
-		'[Hymns 52] The Day Dawn Is Breaking',
-		'[Hymns 53] Let Earth’s Inhabitants Rejoice',
-		'[Hymns 54] Behold, the Mountain of the Lord',
-		'[Hymns 55] Lo, the Mighty God Appearing!',
-		'[Hymns 56] Softly Beams the Sacred Dawning',
-		'[Hymns 57] We’re Not Ashamed to Own Our Lord',
-		'[Hymns 58] Come, Ye Children of the Lord',
-		'[Hymns 59] Come, O Thou King of Kings',
-		'[Hymns 60] Battle Hymn of the Republic',
-		'[Hymns 61] Raise Your Voices to the Lord',
-		'[Hymns 62] All Creatures of Our God and King',
-		'[Hymns 63] Great King of Heaven',
-		'[Hymns 64] On This Day of Joy and Gladness',
-		'[Hymns 65] Come, All Ye Saints Who Dwell on Earth',
-		'[Hymns 66] Rejoice, the Lord Is King!',
-		'[Hymns 67] Glory to God on High',
-		'[Hymns 68] A Mighty Fortress Is Our God',
-		'[Hymns 69] All Glory, Laud, and Honor',
-		'[Hymns 70] Sing Praise to Him',
-		'[Hymns 71] With Songs of Praise',
-		'[Hymns 72] Praise to the Lord, the Almighty',
-		'[Hymns 73] Praise the Lord with Heart and Voice',
-		'[Hymns 74] Praise Ye the Lord',
-		'[Hymns 75] In Hymns of Praise',
-		'[Hymns 76] God of Our Fathers, We Come unto Thee',
-		'[Hymns 77] Great Is the Lord',
-		'[Hymns 78] God of Our Fathers, Whose Almighty Hand',
-		'[Hymns 79] With All the Power of Heart and Tongue',
-		'[Hymns 80] God of Our Fathers, Known of Old',
-		'[Hymns 81] Press Forward, Saints',
-		'[Hymns 82] For All the Saints',
-		'[Hymns 83] Guide Us, O Thou Great Jehovah',
-		'[Hymns 84] Faith of Our Fathers',
-		'[Hymns 85] How Firm a Foundation',
-		'[Hymns 86] How Great Thou Art',
-		'[Hymns 87] God Is Love',
-		'[Hymns 88] Great God, Attend While Zion Sings',
-		'[Hymns 89] The Lord Is My Light',
-		'[Hymns 90] From All That Dwell below the Skies',
-		'[Hymns 91] Father, Thy Children to Thee Now Raise',
-		'[Hymns 92] For the Beauty of the Earth',
-		'[Hymns 93] Prayer of Thanksgiving',
-		'[Hymns 94] Come, Ye Thankful People',
-		'[Hymns 95] Now Thank We All Our God',
-		'[Hymns 96] Dearest Children, God Is Near You',
-		'[Hymns 97] Lead, Kindly Light',
-		'[Hymns 98] I Need Thee Every Hour',
-		'[Hymns 99] Nearer, Dear Savior, to Thee',
-		'[Hymns 100] Nearer, My God, to Thee',
-		'[Hymns 101] Guide Me to Thee',
-		'[Hymns 102] Jesus, Lover of My Soul',
-		'[Hymns 103] Precious Savior, Dear Redeemer',
-		'[Hymns 104] Jesus, Savior, Pilot Me',
-		'[Hymns 105] Master, the Tempest Is Raging',
-		'[Hymns 106] God Speed the Right',
-		'[Hymns 107] Lord, Accept Our True Devotion',
-		'[Hymns 108] The Lord Is My Shepherd',
-		'[Hymns 109] The Lord My Pasture Will Prepare',
-		'[Hymns 110] Cast Thy Burden upon the Lord',
-		'[Hymns 111] Rock of Ages',
-		'[Hymns 112] Savior, Redeemer of My Soul',
-		'[Hymns 113] Our Savior’s Love',
-		'[Hymns 114] Come unto Him',
-		'[Hymns 115] Come, Ye Disconsolate',
-		'[Hymns 116] Come, Follow Me',
-		'[Hymns 117] Come unto Jesus',
-		'[Hymns 118] Ye Simple Souls Who Stray',
-		'[Hymns 119] Come, We That Love the Lord',
-		'[Hymns 120] Lean on My Ample Arm',
-		'[Hymns 121] I’m a Pilgrim, I’m a Stranger',
-		'[Hymns 122] Though Deepening Trials',
-		'[Hymns 123] Oh, May My Soul Commune with Thee',
-		'[Hymns 124] Be Still, My Soul',
-		'[Hymns 125] How Gentle God’s Commands',
-		'[Hymns 126] How Long, O Lord Most Holy and True',
-		'[Hymns 127] Does the Journey Seem Long?',
-		'[Hymns 128] When Faith Endures',
-		'[Hymns 129] Where Can I Turn for Peace?',
-		'[Hymns 130] Be Thou Humble',
-		'[Hymns 131] More Holiness Give Me',
-		'[Hymns 132] God Is in His Holy Temple',
-		'[Hymns 133] Father in Heaven',
-		'[Hymns 134] I Believe in Christ',
-		'[Hymns 135] My Redeemer Lives',
-		'[Hymns 136] I Know That My Redeemer Lives',
-		'[Hymns 137] Testimony',
-		'[Hymns 138] Bless Our Fast, We Pray',
-		'[Hymns 139] In Fasting We Approach Thee',
-		'[Hymns 140] Did You Think to Pray?',
-		'[Hymns 141] Jesus, the Very Thought of Thee',
-		'[Hymns 142] Sweet Hour of Prayer',
-		'[Hymns 143] Let the Holy Spirit Guide',
-		'[Hymns 144] Secret Prayer',
-		'[Hymns 145] Prayer Is the Soul’s Sincere Desire',
-		'[Hymns 146] Gently Raise the Sacred Strain',
-		'[Hymns 147] Sweet Is the Work',
-		'[Hymns 148] Sabbath Day',
-		'[Hymns 149] As the Dew from Heaven Distilling',
-		'[Hymns 150] O Thou Kind and Gracious Father',
-		'[Hymns 151] We Meet, Dear Lord',
-		'[Hymns 152] God Be with You Till We Meet Again',
-		'[Hymns 153] Lord, We Ask Thee Ere We Part',
-		'[Hymns 154] Father, This Hour Has Been One of Joy',
-		'[Hymns 155] We Have Partaken of Thy Love',
-		'[Hymns 156] Sing We Now at Parting',
-		'[Hymns 157] Thy Spirit, Lord, Has Stirred Our Souls',
-		'[Hymns 158] Before Thee, Lord, I Bow My Head',
-		'[Hymns 159] Now the Day Is Over',
-		'[Hymns 160] Softly Now the Light of Day',
-		'[Hymns 161] The Lord Be with Us',
-		'[Hymns 162] Lord, We Come before Thee Now',
-		'[Hymns 163] Lord, Dismiss Us with Thy Blessing',
-		'[Hymns 164] Great God, to Thee My Evening Song',
-		'[Hymns 165] Abide with Me; ’Tis Eventide',
-		'[Hymns 166] Abide with Me!',
-		'[Hymns 167] Come, Let Us Sing an Evening Hymn',
-		'[Hymns 168] As the Shadows Fall',
-		'[Hymns 169] As Now We Take the Sacrament',
-		'[Hymns 170] God, Our Father, Hear Us Pray',
-		'[Hymns 171] With Humble Heart',
-		'[Hymns 172] In Humility, Our Savior',
-		'[Hymns 173] While of These Emblems We Partake',
-		'[Hymns 174] While of These Emblems We Partake',
-		'[Hymns 175] O God, the Eternal Father',
-		'[Hymns 176] ’Tis Sweet to Sing the Matchless Love',
-		'[Hymns 177] ’Tis Sweet To Sing the Matchless Love',
-		'[Hymns 178] O Lord of Hosts',
-		'[Hymns 179] Again, Our Dear Redeeming Lord',
-		'[Hymns 180] Father in Heaven, We Do Believe',
-		'[Hymns 181] Jesus of Nazareth, Savior and King',
-		'[Hymns 182] We’ll Sing All Hail to Jesus’ Name',
-		'[Hymns 183] In Remembrance of Thy Suffering',
-		'[Hymns 184] Upon the Cross of Calvary',
-		'[Hymns 185] Reverently and Meekly Now',
-		'[Hymns 186] Again We Meet around the Board',
-		'[Hymns 187] God Loved Us, So He Sent His Son',
-		'[Hymns 188] Thy Will, O Lord, Be Done',
-		'[Hymns 189] O Thou, Before the World Began',
-		'[Hymns 190] In Memory of the Crucified',
-		'[Hymns 191] Behold the Great Redeemer Die',
-		'[Hymns 192] He Died! The Great Redeemer Died',
-		'[Hymns 193] I Stand All Amazed',
-		'[Hymns 194] There Is a Green Hill Far Away',
-		'[Hymns 195] How Great the Wisdom and the Love',
-		'[Hymns 196] Jesus, Once of Humble Birth',
-		'[Hymns 197] O Savior, Thou Who Wearest a Crown',
-		'[Hymns 198] That Easter Morn',
-		'[Hymns 199] He Is Risen!',
-		'[Hymns 200] Christ the Lord Is Risen Today',
-		'[Hymns 201] Joy to the World',
-		'[Hymns 202] Oh, Come, All Ye Faithful',
-		'[Hymns 203] Angels We Have Heard on High',
-		'[Hymns 204] Silent Night',
-		'[Hymns 205] Once in Royal David’s City',
-		'[Hymns 206] Away in a Manger',
-		'[Hymns 207] It Came upon the Midnight Clear',
-		'[Hymns 208] O Little Town of Bethlehem',
-		'[Hymns 209] Hark! The Herald Angels Sing',
-		'[Hymns 210] With Wondering Awe',
-		'[Hymns 211] While Shepherds Watched Their Flocks',
-		'[Hymns 212] Far, Far Away on Judea’s Plains',
-		'[Hymns 213] The First Noel',
-		'[Hymns 214] I Heard the Bells on Christmas Day',
-		'[Hymns 215] Ring Out, Wild Bells',
-		'[Hymns 216] We Are Sowing',
-		'[Hymns 217] Come, Let Us Anew',
-		'[Hymns 218] We Give Thee But Thine Own',
-		'[Hymns 219] Because I Have Been Given Much',
-		'[Hymns 220] Lord, I Would Follow Thee',
-		'[Hymns 221] Dear to the Heart of the Shepherd',
-		'[Hymns 222] Hear Thou Our Hymn, O Lord',
-		'[Hymns 223] Have I Done Any Good?',
-		'[Hymns 224] I Have Work Enough to Do',
-		'[Hymns 225] We Are Marching On to Glory',
-		'[Hymns 226] Improve the Shining Moments',
-		'[Hymns 227] There Is Sunshine in My Soul Today',
-		'[Hymns 228] You Can Make the Pathway Bright',
-		'[Hymns 229] Today, While the Sun Shines',
-		'[Hymns 230] Scatter Sunshine',
-		'[Hymns 231] Father, Cheer Our Souls Tonight',
-		'[Hymns 232] Let Us Oft Speak Kind Words',
-		'[Hymns 233] Nay, Speak No Ill',
-		'[Hymns 234] Jesus, Mighty King in Zion',
-		'[Hymns 235] Should You Feel Inclined to Censure',
-		'[Hymns 236] Lord, Accept into Thy Kingdom',
-		'[Hymns 237] Do What Is Right',
-		'[Hymns 238] Behold Thy Sons and Daughters, Lord',
-		'[Hymns 239] Choose the Right',
-		'[Hymns 240] Know This, That Every Soul Is Free',
-		'[Hymns 241] Count Your Blessings',
-		'[Hymns 242] Praise God, from Whom All Blessings Flow',
-		'[Hymns 243] Let Us All Press On',
-		'[Hymns 244] Come Along, Come Along',
-		'[Hymns 245] This House We Dedicate to Thee',
-		'[Hymns 246] Onward, Christian Soldiers',
-		'[Hymns 247] We Love Thy House, O God',
-		'[Hymns 248] Up, Awake, Ye Defenders of Zion',
-		'[Hymns 249] Called to Serve',
-		'[Hymns 250] We Are All Enlisted',
-		'[Hymns 251] Behold! A Royal Army',
-		'[Hymns 252] Put Your Shoulder to the Wheel',
-		'[Hymns 253] Like Ten Thousand Legions Marching',
-		'[Hymns 254] True to the Faith',
-		'[Hymns 255] Carry On',
-		'[Hymns 256] As Zion’s Youth in Latter Days',
-		'[Hymns 257] Rejoice! A Glorious Sound Is Heard',
-		'[Hymns 258] O Thou Rock of Our Salvation',
-		'[Hymns 259] Hope of Israel',
-		'[Hymns 260] Who’s on the Lord’s Side?',
-		'[Hymns 261] Thy Servants Are Prepared',
-		'[Hymns 262] Go, Ye Messengers of Glory',
-		'[Hymns 263] Go Forth with Faith',
-		'[Hymns 264] Hark, All Ye Nations!',
-		'[Hymns 265] Arise, O God, and Shine',
-		'[Hymns 266] The Time Is Far Spent',
-		'[Hymns 267] How Wondrous and Great',
-		'[Hymns 268] Come, All Whose Souls Are Lighted',
-		'[Hymns 269] Jehovah, Lord of Heaven and Earth',
-		'[Hymns 270] I’ll Go Where You Want Me to Go',
-		'[Hymns 271] Oh, Holy Words of Truth and Love',
-		'[Hymns 272] Oh Say, What Is Truth?',
-		'[Hymns 273] Truth Reflects upon Our Senses',
-		'[Hymns 274] The Iron Rod',
-		'[Hymns 275] Men Are That They Might Have Joy',
-		'[Hymns 276] Come Away to the Sunday School',
-		'[Hymns 277] As I Search the Holy Scriptures',
-		'[Hymns 278] Thanks for the Sabbath School',
-		'[Hymns 279] Thy Holy Word',
-		'[Hymns 280] Welcome, Welcome, Sabbath Morning',
-		'[Hymns 281] Help Me Teach with Inspiration',
-		'[Hymns 282] We Meet Again in Sabbath School',
-		'[Hymns 283] The Glorious Gospel Light Has Shone',
-		'[Hymns 284] If You Could Hie to Kolob',
-		'[Hymns 285] God Moves in a Mysterious Way',
-		'[Hymns 286] Oh, What Songs of the Heart',
-		'[Hymns 287] Rise, Ye Saints, and Temples Enter',
-		'[Hymns 288] How Beautiful Thy Temples, Lord',
-		'[Hymns 289] Holy Temples on Mount Zion',
-		'[Hymns 290] Rejoice, Ye Saints of Latter Days',
-		'[Hymns 291] Turn Your Hearts',
-		'[Hymns 292] O My Father',
-		'[Hymns 293] Each Life That Touches Ours for Good',
-		'[Hymns 294] Love at Home',
-		'[Hymns 295] O Love That Glorifies the Son',
-		'[Hymns 296] Our Father, by Whose Name',
-		'[Hymns 297] From Homes of Saints Glad Songs Arise',
-		'[Hymns 298] Home Can Be a Heaven on Earth',
-		'[Hymns 299] Children of Our Heavenly Father',
-		'[Hymns 300] Families Can Be Together Forever',
-		'[Hymns 301] I Am a Child of God',
-		'[Hymns 302] I Know My Father Lives',
-		'[Hymns 303] Keep the Commandments',
-		'[Hymns 304] Teach Me to Walk in the Light',
-		'[Hymns 305] The Light Divine',
-		'[Hymns 306] God’s Daily Care',
-		'[Hymns 307] In Our Lovely Deseret',
-		'[Hymns 308] Love One Another',
-		'[Hymns 309] As Sisters in Zion: (Women)',
-		'[Hymns 310] A Key Was Turned in Latter Days: (Women)',
-		'[Hymns 311] We Meet Again as Sisters: (Women)',
-		'[Hymns 312] We Ever Pray for Thee: (Women)',
-		'[Hymns 313] God Is Love: (Women)',
-		'[Hymns 314] How Gentle God’s Commands: (Women)',
-		'[Hymns 315] Jesus, the Very Thought of Thee: (Women)',
-		'[Hymns 316] The Lord Is My Shepherd: (Women)',
-		'[Hymns 317] Sweet Is the Work: (Women)',
-		'[Hymns 318] Love at Home: (Women)',
-		'[Hymns 319] Ye Elders of Israel: (Men)',
-		'[Hymns 320] The Priesthood of Our Lord: (Men)',
-		'[Hymns 321] Ye Who Are Called to Labor: (Men)',
-		'[Hymns 322] Come, All Ye Sons of God: (Men)',
-		'[Hymns 323] Rise Up, O Men of God: (Men’s Choir)',
-		'[Hymns 324] Rise Up, O Men of God: (Men)',
-		'[Hymns 325] See the Mighty Priesthood Gathered: (Men’s Choir)',
-		'[Hymns 326] Come, Come, Ye Saints: (Men’s Choir)',
-		'[Hymns 327] Go, Ye Messengers of Heaven: (Men’s Choir)',
-		'[Hymns 328] An Angel from on High: (Men’s Choir)',
-		'[Hymns 329] Thy Servants Are Prepared: (Men’s Choir)',
-		'[Hymns 330] See, the Mighty Angel Flying: (Men’s Choir)',
-		'[Hymns 331] Oh Say, What Is Truth?: (Men’s Choir)',
-		'[Hymns 332] Come, O Thou King of Kings: (Men’s Choir)',
-		'[Hymns 333] High on the Mountain Top: (Men’s Choir)',
-		'[Hymns 334] I Need Thee Every Hour: (Men’s Choir)',
-		'[Hymns 335] Brightly Beams Our Father’s Mercy: (Men’s Choir)',
-		'[Hymns 336] School Thy Feelings: (Men’s Choir)',
-		'[Hymns 337] O Home Beloved: (Men’s Choir)',
-		'[Hymns 338] America the Beautiful',
-		'[Hymns 339] My Country, ’Tis of Thee',
-		'[Hymns 340] The Star-Spangled Banner',
-		'[Hymns 341] God Save the King'
+		{
+			title: 'If The Savior Stood Beside Me'
+		},
+		{
+			title: 'Scripture Power',
+			first_line: "Because I want to be like the Savior, and I can"
+		},
+		{
+			title: 'My Eternal Family',
+			first_line: "I am a builder working each day"
+		},
+		{
+			title: 'The Family Is of God',
+			first_line: "Our Father has a family"
+		},
+		{
+			pages: 'CS 2–3',
+			title: 'I Am a Child of God'
+		},
+		{
+			pages: 'CS 4',
+			title: 'I Lived in Heaven'
+		},
+		{
+			pages: 'CS 5',
+			title: 'I Know My Father Lives'
+		},
+		{
+			pages: 'CS 6',
+			title: 'Thanks to Thee',
+			first_line: "When I'm home or far away"
+		},
+		{
+			pages: 'CS 7',
+			title: 'I Thank Thee, Dear Father'
+		},
+		{
+			pages: 'CS 8',
+			title: 'Father, We Thank Thee for the Night'
+		},
+		{
+			pages: 'CS 9',
+			title: 'Can a Little Child like Me?'
+		},
+		{
+			pages: 'CS 10',
+			title: 'Thank Thee for Everything',
+			first_line: 'Father, please hear us sing'
+		},
+		{
+			pages: 'CS 11',
+			title: "I'm Thankful to Be Me",
+			first_line: "At night, when I'm alone in bed"
+		},
+		{
+			pages: 'CS 12–13',
+			title: "A Child's Prayer",
+			first_line: 'Heavenly Father, are you really there?'
+		},
+		{
+			pages: 'CS 14',
+			title: 'I Pray in Faith',
+			first_line: "I kneel to pray ev'ry day"
+		},
+		{
+			pages: 'CS 15',
+			title: 'If with All Your Hearts'
+		},
+		{
+			pages: 'CS 16–17',
+			title: 'Children All Over the World',
+			first_line: 'All over the world at the end of day'
+		},
+		{
+			pages: 'CS 18',
+			title: 'I Need My Heavenly Father'
+		},
+		{
+			pages: 'CS 19',
+			title: 'Heavenly Father, Now I Pray'
+		},
+		{
+			pages: 'CS 20',
+			title: 'A Song of Thanks',
+			first_line: "Thank thee for the world so sweet"
+		},
+		{
+			pages: 'CS 20',
+			title: 'Thanks to Our Father'
+		},
+		{
+			pages: 'CS 21',
+			title: 'For Health and Strength'
+		},
+		{
+			pages: 'CS 21',
+			title: 'For Thy Bounteous Blessings'
+		},
+		{
+			pages: 'CS 22',
+			title: 'A Prayer Song',
+			first_line: "We bow our heads in prayer today"
+		},
+		{
+			pages: 'CS 22',
+			title: 'A Prayer',
+			first_line: 'Father in Heaven, on this lovely day'
+		},
+		{
+			pages: 'CS 23',
+			title: 'Father Up Above',
+			first_line: "O Father, look on us today"
+		},
+		{
+			pages: 'CS 23',
+			title: 'Heavenly Father, While I Pray'
+		},
+		{
+			pages: 'CS 24',
+			title: 'Thank Thee, Father'
+		},
+		{
+			pages: 'CS 25',
+			title: 'We Bow Our Heads'
+		},
+		{
+			pages: 'CS 25',
+			title: 'I Love to Pray',
+			first_line: 'In the morning when I wake'
+		},
+		{
+			pages: 'CS 26',
+			title: 'Reverently, Quietly'
+		},
+		{
+			pages: 'CS 27',
+			title: 'Reverence',
+			first_line: "Today, dear Father, I will show"
+		},
+		{
+			pages: 'CS 27',
+			title: 'We Are Reverent'
+		},
+		{
+			pages: 'CS 28',
+			title: 'I Want to Be Reverent'
+		},
+		{
+			pages: 'CS 28',
+			title: 'I Will Try to Be Reverent',
+			first_line: 'I Want to Be Reverent'
+		},
+		{
+			pages: 'CS 29',
+			title: 'Father, I Will Reverent Be'
+		},
+		{
+			pages: 'CS 30',
+			title: "This Is God's House"
+		},
+		{
+			pages: 'CS 30',
+			title: 'Our Chapel Is a Sacred Place'
+		},
+		{
+			pages: 'CS 31',
+			title: 'Reverence Is Love',
+			first_line: "Rev'rence is more than just quietly sitting"
+		},
+		{
+			pages: 'CS 34–35',
+			title: 'He Sent His Son',
+			first_line: 'How could the Father tell the world of love and tenderness?'
+		},
+		{
+			pages: 'CS 36',
+			title: 'Samuel Tells of the Baby Jesus',
+			first_line: 'Said Samuel, "Within five years'
+		},
+		{
+			pages: 'CS 37',
+			title: 'Stars Were Gleaming'
+		},
+		{
+			pages: 'CS 38–39',
+			title: 'When Joseph Went to Bethlehem'
+		},
+		{
+			pages: 'CS 39',
+			title: 'Little Jesus'
+		},
+		{
+			pages: 'CS 40',
+			title: 'There Was Starlight on the Hillside'
+		},
+		{
+			pages: 'CS 40',
+			title: "The Shepherd's Carol"
+		},
+		{
+			pages: 'CS 41',
+			title: 'Once within a Lowly Stable'
+		},
+		{
+			pages: 'CS 42–43',
+			title: 'Away in a Manger'
+		},
+		{
+			pages: 'CS 44–45',
+			title: "Mary's Lullaby",
+			first_line: 'Lullaby, lullaby, my little one'
+		},
+		{
+			pages: 'CS 46',
+			title: 'Who Is the Child?'
+		},
+		{
+			pages: 'CS 47',
+			title: 'Sleep, Little Jesus'
+		},
+		{
+			pages: 'CS 48–49',
+			title: 'Oh, Hush Thee, My Baby'
+		},
+		{
+			pages: 'CS 50–51',
+			title: 'Picture a Christmas',
+			first_line: "Picture a stable in Judea"
+		},
+		{
+			pages: 'CS 51',
+			title: 'Have a Very Merry Christmas!'
+		},
+		{
+			pages: 'CS 52–53',
+			title: 'The Nativity Song',
+			first_line: "This is the season beloved of the year"
+		},
+		{
+			pages: 'CS 54',
+			title: 'Christmas Bells'
+		},
+		{
+			pages: 'CS 55',
+			title: 'Jesus Once Was a Little Child'
+		},
+		{
+			pages: 'CS 56',
+			title: 'I Think When I Read That Sweet Story'
+		},
+		{
+			pages: 'CS 57',
+			title: 'Tell Me the Stories of Jesus'
+		},
+		{
+			pages: 'CS 58',
+			title: 'Little Lambs So White and Fair'
+		},
+		{
+			pages: 'CS 58',
+			title: 'Jesus Is Our Loving Friend'
+		},
+		{
+			pages: 'CS 59',
+			title: 'Jesus Loved the Little Children'
+		},
+		{
+			pages: 'CS 60–61',
+			title: 'Jesus Wants Me for a Sunbeam'
+		},
+		{
+			pages: 'CS 61',
+			title: 'Jesus Said Love Everyone'
+		},
+		{
+			pages: 'CS 62–63',
+			title: 'Beautiful Savior',
+			first_line: 'Fair is the sunshine'
+		},
+		{
+			pages: 'CS 64',
+			title: 'Did Jesus Really Live Again?'
+		},
+		{
+			pages: 'CS 65',
+			title: 'He Died That We Might Live Again'
+		},
+		{
+			pages: 'CS 66–67',
+			title: 'Hosanna'
+		},
+		{
+			pages: 'CS 68–69',
+			title: 'Easter Hosanna',
+			first_line: "The prophecies of long ago were now at last fulfilled"
+		},
+		{
+			pages: 'CS 70',
+			title: 'Jesus Has Risen'
+		},
+		{
+			pages: 'CS 71',
+			title: 'To Think about Jesus',
+			first_line: "It shouldn't be hard to sit very still"
+		},
+		{
+			pages: 'CS 72',
+			title: 'The Sacrament',
+			first_line: 'As I take the water and bread'
+		},
+		{
+			pages: 'CS 73',
+			title: 'Before I Take the Sacrament'
+		},
+		{
+			pages: 'CS 73',
+			title: 'Help Us, O God, to Understand'
+		},
+		{
+			pages: 'CS 74–75',
+			title: "I Feel My Savior's Love"
+		},
+		{
+			pages: 'CS 76',
+			title: 'This Is My Beloved Son',
+			first_line: "Jesus entered Jordan's waters"
+		},
+		{
+			pages: 'CS 77',
+			title: 'The Church of Jesus Christ',
+			first_line: 'I belong to The Church of Jesus Christ of Latter-day Saints'
+		},
+		{
+			pages: 'CS 78–79',
+			title: "I'm Trying to Be like Jesus"
+		},
+		{
+			pages: 'CS 80–81',
+			title: 'Had I Been a Child'
+		},
+		{
+			pages: 'CS 82–83',
+			title: 'When He Comes Again',
+			first_line: 'I wonder, when he comes again'
+		},
+		{
+			pages: 'CS 86',
+			title: 'An Angel Came to Joseph Smith'
+		},
+		{
+			pages: 'CS 86',
+			title: 'The Golden Plates',
+			first_line: "The Golden Plates lay hidden"
+		},
+		{
+			pages: 'CS 87',
+			title: 'The Sacred Grove'
+		},
+		{
+			pages: 'CS 88',
+			title: 'On a Golden Springtime'
+		},
+		{
+			pages: 'CS 89',
+			title: 'The Priesthood Is Restored'
+		},
+		{
+			pages: 'CS 90–91',
+			title: 'Truth from Elijah',
+			first_line: 'The hearts of the children have turned to their fathers'
+		},
+		{
+			pages: 'CS 92–93',
+			title: 'The Hearts of the Children'
+		},
+		{
+			pages: 'CS 94',
+			title: 'Family History—I Am Doing It'
+		},
+		{
+			pages: 'CS 95',
+			title: 'I Love to See the Temple'
+		},
+		{
+			pages: 'CS 96–97',
+			title: 'Faith'
+		},
+		{
+			pages: 'CS 97',
+			title: "God's Love",
+			first_line: "We do not see the wind"
+		},
+		{
+			pages: 'CS 98',
+			title: 'Repentance'
+		},
+		{
+			pages: 'CS 99',
+			title: 'Help Me, Dear Father'
+		},
+		{
+			pages: 'CS 100–101',
+			title: 'Baptism',
+			first_line: 'Jesus came to John the Baptist'
+		},
+		{
+			pages: 'CS 102',
+			title: 'When Jesus Christ Was Baptized'
+		},
+		{
+			pages: 'CS 103',
+			title: 'When I Am Baptized',
+			first_line: 'I like to look for rainbows whenever there is rain'
+		},
+		{
+			pages: 'CS 104',
+			title: 'I Like My Birthdays'
+		},
+		{
+			pages: 'CS 105',
+			title: 'The Holy Ghost',
+			first_line: "When Christ was on the earth"
+		},
+		{
+			pages: 'CS 106–7',
+			title: 'The Still Small Voice',
+			first_line: 'Through a still small voice, the Spirit speaks to me'
+		},
+		{
+			pages: 'CS 107',
+			title: 'Listen, Listen',
+			first_line: 'Listen to the still small voice'
+		},
+		{
+			pages: 'CS 108',
+			title: 'Seek the Lord Early',
+			first_line: "I'll seek the Lord early while in my youth"
+		},
+		{
+			pages: 'CS 109',
+			title: 'Search, Ponder, and Pray',
+			first_line: 'I love to read the holy scriptures'
+		},
+		{
+			pages: 'CS 110–11',
+			title: 'Follow the Prophet',
+			first_line: 'Adam was a prophet, first one that we know'
+		},
+		{
+			pages: 'CS 112–13',
+			title: 'The Commandments',
+			first_line: "Thou shalt have no gods but Me"
+		},
+		{
+			pages: 'CS 114–15',
+			title: 'The Books in the Old Testament',
+			first_line: 'Genesis, Exodus, Leviticus, Numbers'
+		},
+		{
+			pages: 'CS 116–17',
+			title: 'The Books in the New Testament',
+			first_line: 'Matthew, Mark, Luke, John, the Acts and Romans'
+		},
+		{
+			pages: 'CS 118–19',
+			title: 'Book of Mormon Stories'
+		},
+		{
+			pages: 'CS 119',
+			title: 'The Books in the Book of Mormon',
+			first_line: 'First and second books of Nephi'
+		},
+		{
+			pages: 'CS 120–21',
+			title: "Nephi's Courage",
+			first_line: "The Lord commanded Nephi to go and get the plates"
+		},
+		{
+			pages: 'CS 122',
+			title: 'The First Article of Faith',
+			first_line: "We believe in God, the Eternal Father"
+		},
+		{
+			pages: 'CS 122',
+			title: 'The Second Article of Faith',
+			first_line: "We believe that men will be punished for their own sins"
+		},
+		{
+			pages: 'CS 123',
+			title: 'The Third Article of Faith',
+			first_line: "We believe that through the Atonement of Christ"
+		},
+		{
+			pages: 'CS 124',
+			title: 'The Fourth Article of Faith',
+			first_line: "We believe that the first principles and ordinances of the Gospel are"
+		},
+		{
+			pages: 'CS 125',
+			title: 'The Fifth Article of Faith',
+			first_line: "We believe that a man must be called of God"
+		},
+		{
+			pages: 'CS 126',
+			title: 'The Sixth Article of Faith',
+			first_line: "We believe in the same organization that existed in the Primitive Church"
+		},
+		{
+			pages: 'CS 126',
+			title: 'The Seventh Article of Faith',
+			first_line: "We believe in the gift of tongues, prophecy, revelation, visions"
+		},
+		{
+			pages: 'CS 127',
+			title: 'The Eighth Article of Faith',
+			first_line: "We believe the Bible to be the word of God"
+		},
+		{
+			pages: 'CS 128',
+			title: 'The Ninth Article of Faith',
+			first_line: 'We believe all that God has revealed'
+		},
+		{
+			pages: 'CS 128–29',
+			title: 'The Tenth Article of Faith',
+			first_line: "We believe in the literal gathering of Israel"
+		},
+		{
+			pages: 'CS 130',
+			title: 'The Eleventh Article of Faith',
+			first_line: "We claim the priv'lege of worshiping Almighty God"
+		},
+		{
+			pages: 'CS 131',
+			title: 'The Twelfth Article of Faith',
+			first_line: "We believe in being subject to kings"
+		},
+		{
+			pages: 'CS 132–33',
+			title: 'The Thirteenth Article of Faith',
+			first_line: 'We believe in being honest, true, chaste, benevolent'
+		},
+		{
+			pages: 'CS 134',
+			title: 'Latter-day Prophets'
+		},
+		{
+			pages: 'CS 135',
+			title: 'Our Bishop',
+			first_line: 'Busy as a man can be'
+		},
+		{
+			pages: 'CS 136',
+			title: 'Love One Another',
+			first_line: 'As I have loved you'
+		},
+		{
+			pages: 'CS 138–39',
+			title: 'Where Love Is'
+		},
+		{
+			pages: 'CS 140–41',
+			title: "I'll Walk with You",
+			first_line: "If you don't walk as most people do"
+		},
+		{
+			pages: 'CS 142–43',
+			title: 'Every Star Is Different',
+			first_line: "Ev'ry star is diff'rent"
+		},
+		{
+			pages: 'CS 144',
+			title: 'Shine On',
+			first_line: 'My light is but a little one'
+		},
+		{
+			pages: 'CS 145',
+			title: 'A Special Gift Is Kindness',
+			first_line: "foo"
+		},
+		{
+			pages: 'CS 145',
+			title: 'Kindness Begins with Me'
+		},
+		{
+			pages: 'CS 146–47',
+			title: 'Keep the Commandments'
+		},
+		{
+			pages: 'CS 148',
+			title: 'I Want to Live the Gospel'
+		},
+		{
+			pages: 'CS 149',
+			title: 'I Believe in Being Honest'
+		},
+		{
+			pages: 'CS 150',
+			title: "I'm Glad to Pay 6a Tithing"
+		},
+		{
+			pages: 'CS 150',
+			title: 'I Want to Give the Lord My Tenth'
+		},
+		{
+			pages: 'CS 151',
+			title: 'I Am Glad for Many Things'
+		},
+		{
+			pages: 'CS 152',
+			title: 'Hum Your Favorite Hymn',
+			first_line: 'If on occasion you have found'
+		},
+		{
+			pages: 'CS 153',
+			title: 'The Lord Gave Me a Temple'
+		},
+		{
+			pages: 'CS 154–55',
+			title: 'The Word of Wisdom'
+		},
+		{
+			pages: 'CS 155',
+			title: 'Remember the Sabbath Day'
+		},
+		{
+			pages: 'CS 156',
+			title: 'The Chapel Doors'
+		},
+		{
+			pages: 'CS 157',
+			title: 'When I Go to Church',
+			first_line: 'I always have a happy feeling'
+		},
+		{
+			pages: 'CS 158',
+			title: 'Dare to Do Right'
+		},
+		{
+			pages: 'CS 159',
+			title: 'Stand for the Right',
+			first_line: "Our prophet has some words for you"
+		},
+		{
+			pages: 'CS 160–61',
+			title: 'Choose the Right Way',
+			first_line: "There's a right way to live and be happy"
+		},
+		{
+			pages: 'CS 161',
+			title: 'I Pledge Myself to Love the Right'
+		},
+		{
+			pages: 'CS 162',
+			title: 'I Will Be Valiant',
+			first_line: "The Lord needs valiant servants"
+		},
+		{
+			pages: 'CS 163',
+			title: 'I Am like a Star'
+		},
+		{
+			pages: 'CS 164–65',
+			title: "I Will Follow God's Plan",
+			first_line: 'My life is a gift'
+		},
+		{
+			pages: 'CS 166–67',
+			title: 'A Young Man Prepared',
+			first_line: "Though a boy I may appear"
+		},
+		{
+			pages: 'CS 167',
+			title: 'Go the Second Mile',
+			first_line: "When there is a task to do, do it with a smile"
+		},
+		{
+			pages: 'CS 168',
+			title: 'I Want to Be a Missionary Now'
+		},
+		{
+			pages: 'CS 169',
+			title: 'I Hope They Call Me on a Mission'
+		},
+		{
+			pages: 'CS 170–71',
+			title: 'The Things I Do',
+			first_line: "I'm much too young to go abroad"
+		},
+		{
+			pages: 'CS 172–73',
+			title: "We'll Bring the World His Truth: Army of Helaman",
+			first_line: "We have been born, as Nephi of old"
+		},
+		{
+			pages: 'CS 174–75',
+			title: 'Called to Serve'
+		},
+		{
+			pages: 'CS 176',
+			title: 'Tell Me, Dear Lord'
+		},
+		{
+			pages: 'CS 177',
+			title: 'Teach Me to Walk in the Light'
+		},
+		{
+			pages: 'CS 178–79',
+			title: 'Teacher, Do You Love Me?'
+		},
+		{
+			pages: 'CS 180–81',
+			title: 'How Dear to God Are Little Children'
+		},
+		{
+			pages: 'CS 182–85',
+			title: 'How Will They Know?'
+		},
+		{
+			pages: 'CS 188',
+			title: 'Families Can Be Together Forever',
+			first_line: "I have a fam'ly here on earth0247 "
+		},
+		{
+			pages: 'CS 189',
+			title: 'Family Prayer',
+			first_line: 'Let us gather in a circle'
+		},
+		{
+			pages: 'CS 190–91',
+			title: 'Love Is Spoken Here',
+			first_line: 'I see my mother kneeling with our family each day'
+		},
+		{
+			pages: 'CS 192',
+			title: 'Home'
+		},
+		{
+			pages: 'CS 193',
+			title: 'Sing Your Way Home'
+		},
+		{
+			pages: 'CS 194',
+			title: 'The Family',
+			first_line: "When the fam'ly gets together, after evening work is done"
+		},
+		{
+			pages: 'CS 195',
+			title: 'Family Night',
+			first_line: "This is the night we've waited for"
+		},
+		{
+			pages: 'CS 196',
+			title: 'Saturday'
+		},
+		{
+			pages: 'CS 197',
+			title: 'A Happy Helper'
+		},
+		{
+			pages: 'CS 197',
+			title: "Quickly I'll Obey"
+		},
+		{
+			pages: 'CS 198',
+			title: 'A Happy Family'
+		},
+		{
+			pages: 'CS 198',
+			title: "When We're Helping"
+		},
+		{
+			pages: 'CS 199',
+			title: 'I Have a Family Tree'
+		},
+		{
+			pages: 'CS 200',
+			title: 'Grandmother',
+			first_line: "You give me a kiss"
+		},
+		{
+			pages: 'CS 201',
+			title: 'When Grandpa Comes',
+			first_line: "It's always fun when grandpa comes"
+		},
+		{
+			pages: 'CS 202',
+			title: 'I Often Go Walking'
+		},
+		{
+			pages: 'CS 203',
+			title: 'My Mother Dear',
+			first_line: 'Like sunshine in the morning that wakens day from night'
+		},
+		{
+			pages: 'CS 204–5',
+			title: 'Mother, Tell Me the Story'
+		},
+		{
+			pages: 'CS 206',
+			title: 'Mother Dear'
+		},
+		{
+			pages: 'CS 206',
+			title: 'Dearest Mother, I Love You'
+		},
+		{
+			pages: 'CS 207',
+			title: 'Mother, I Love You'
+		},
+		{
+			pages: 'CS 208',
+			title: 'The Dearest Names',
+			first_line: 'I know a name, a glorious name'
+		},
+		{
+			pages: 'CS 209',
+			title: 'Fathers',
+			first_line: "The father of our home leads our family"
+		},
+		{
+			pages: 'CS 210',
+			title: "Daddy's Homecoming",
+			first_line: "I'm so glad when daddy comes home"
+		},
+		{
+			pages: 'CS 211',
+			title: 'My Dad'
+		},
+		{
+			pages: 'CS 214',
+			title: 'Pioneer Children Sang As They Walked'
+		},
+		{
+			pages: 'CS 215',
+			title: 'Pioneer Children Were Quick to Obey'
+		},
+		{
+			pages: 'CS 216–17',
+			title: 'Little Pioneer Children'
+		},
+		{
+			pages: 'CS 217',
+			title: 'Westward Ho!',
+			first_line: "Over the winding trail forward we go"
+		},
+		{
+			pages: 'CS 218–19',
+			title: 'To Be a Pioneer',
+			first_line: "You don't have to push a handcart"
+		},
+		{
+			pages: 'CS 219',
+			title: 'The Oxcart',
+			first_line: 'Here comes the oxcart, oh, how slow'
+		},
+		{
+			pages: 'CS 220',
+			title: 'The Handcart Song',
+			first_line: "When pioneers moved to the West"
+		},
+		{
+			pages: 'CS 221',
+			title: 'Covered Wagons',
+			first_line: 'Day after day the wagons are rolling'
+		},
+		{
+			pages: 'CS 222–23',
+			title: 'Whenever I Think about Pioneers'
+		},
+		{
+			pages: 'CS 224',
+			title: 'My Country',
+			first_line: "This is my country"
+		},
+		{
+			pages: 'CS 225',
+			title: 'My Flag, My Flag'
+		},
+		{
+			pages: 'CS 228–29',
+			title: 'My Heavenly Father Loves Me',
+			first_line: "Whenever I hear the song of a bird"
+		},
+		{
+			pages: 'CS 230',
+			title: 'I Think the World Is Glorious'
+		},
+		{
+			pages: 'CS 231',
+			title: 'All Things Bright and Beautiful'
+		},
+		{
+			pages: 'CS 232–33',
+			title: 'Beauty Everywhere',
+			first_line: "Skies are fair above us"
+		},
+		{
+			pages: 'CS 233',
+			title: 'The World Is So Lovely'
+		},
+		{
+			pages: 'CS 234',
+			title: 'Because God Loves Me',
+			first_line: 'God planned the day'
+		},
+		{
+			pages: 'CS 235',
+			title: 'The World Is So Big'
+		},
+		{
+			pages: 'CS 236',
+			title: '“Give,” Said the Little Stream'
+		},
+		{
+			pages: 'CS 237',
+			title: 'The Prophet Said to Plant a Garden'
+		},
+		{
+			pages: 'CS 239',
+			title: "Because It's Spring",
+			first_line: "Why is the sky so blue and clear?"
+		},
+		{
+			pages: 'CS 240',
+			title: 'In the Leafy Treetops'
+		},
+		{
+			pages: 'CS 241',
+			title: 'Birds in the Tree'
+		},
+		{
+			pages: 'CS 241',
+			title: 'Rain Is Falling All Around'
+		},
+		{
+			pages: 'CS 242–43',
+			title: 'Popcorn Popping',
+			first_line: 'I looked out the window, and what did I see?'
+		},
+		{
+			pages: 'CS 243',
+			title: 'Little Seeds Lie Fast Asleep'
+		},
+		{
+			pages: 'CS 244',
+			title: 'Little Purple Pansies'
+		},
+		{
+			pages: 'CS 245',
+			title: 'Oh, What Do You Do in the Summertime?'
+		},
+		{
+			pages: 'CS 246',
+			title: "It's Autumntime"
+		},
+		{
+			pages: 'CS 247',
+			title: 'Autumn Day'
+		},
+		{
+			pages: 'CS 248',
+			title: 'Falling Snow'
+		},
+		{
+			pages: 'CS 249',
+			title: 'Once There Was a Snowman'
+		},
+		{
+			pages: 'CS 252',
+			title: 'Lift Up Your Voice and Sing',
+			first_line: 'A song is a wonderful kind of thing'
+		},
+		{
+			pages: 'CS 253',
+			title: 'Sing a Song'
+		},
+		{
+			pages: 'CS 253',
+			title: 'Fun to Do'
+		},
+		{
+			pages: 'CS 254',
+			title: 'Hello, Friends!'
+		},
+		{
+			pages: 'CS 254',
+			title: 'Our Door Is Always Open'
+		},
+		{
+			pages: 'CS 255',
+			title: 'Come with Me to Primary',
+			first_line: "Oh, come with me to Primary"
+		},
+		{
+			pages: 'CS 256–57',
+			title: 'We Welcome You'
+		},
+		{
+			pages: 'CS 258',
+			title: 'Our Primary Colors'
+		},
+		{
+			pages: 'CS 259',
+			title: "We're All Together Again"
+		},
+		{
+			pages: 'CS 260',
+			title: 'Hello Song'
+		},
+		{
+			pages: 'CS 261',
+			title: 'Here We Are Together'
+		},
+		{
+			pages: 'CS 262',
+			title: 'Friends Are Fun',
+			first_line: 'It is fun to have a friend who will play with you'
+		},
+		{
+			pages: 'CS 263',
+			title: 'We Are Different',
+			first_line: 'I know you, and you know me'
+		},
+		{
+			pages: 'CS 264',
+			title: 'Happy Song',
+			first_line: 'Ducks in the pond quack a happy song'
+		},
+		{
+			pages: 'CS 266',
+			title: "If You're Happy"
+		},
+		{
+			pages: 'CS 267',
+			title: 'Smiles',
+			first_line: "If you chance to meet a frown"
+		},
+		{
+			pages: 'CS 267',
+			title: 'A Smile Is like the Sunshine'
+		},
+		{
+			pages: 'CS 268',
+			title: 'Two Little Eyes'
+		},
+		{
+			pages: 'CS 269',
+			title: 'I Have Two Ears'
+		},
+		{
+			pages: 'CS 270',
+			title: 'Two Happy Feet',
+			first_line: 'I have two happy little feet'
+		},
+		{
+			pages: 'CS 271',
+			title: 'I Wiggle'
+		},
+		{
+			pages: 'CS 272',
+			title: 'I Have Two Little Hands'
+		},
+		{
+			pages: 'CS 273',
+			title: 'My Hands'
+		},
+		{
+			pages: 'CS 274',
+			title: 'Roll Your Hands'
+		},
+		{
+			pages: 'CS 275',
+			title: 'Head, Shoulders, Knees, and Toes'
+		},
+		{
+			pages: 'CS 275',
+			title: 'To Get Quiet'
+		},
+		{
+			pages: 'CS 276',
+			title: "Do As I'm Doing"
+		},
+		{
+			pages: 'CS 277',
+			title: 'Hinges',
+			first_line: "I'm all made of hinges, 'cause ev'rything bends"
+		},
+		{
+			pages: 'CS 278',
+			title: 'Stand Up',
+			first_line: 'I will stand up when "stand up" is said'
+		},
+		{
+			pages: 'CS 279',
+			title: 'Oh, How We Love to Stand'
+		},
+		{
+			pages: 'CS 280',
+			title: 'Healthy, Wealthy, and Wise',
+			first_line: 'Early to bed and early to rise'
+		},
+		{
+			pages: 'CS 281',
+			title: 'The Wise Man and the Foolish Man'
+		},
+		{
+			pages: 'CS 282',
+			title: 'Feliz Cumpleaños'
+		},
+		{
+			pages: 'CS 283',
+			title: 'Your Happy Birthday',
+			first_line: "This month is such a special one"
+		},
+		{
+			pages: 'CS 284',
+			title: 'Happy, Happy Birthday'
+		},
+		{
+			pages: 'CS 284–85',
+			title: 'Have a Very Happy Birthday!'
+		},
+		{
+			pages: 'CS 285',
+			title: "You've Had a Birthday"
+		},
+		{
+			pages: 'Hymns 1',
+			title: 'The Morning Breaks'
+		},
+		{
+			pages: 'Hymns 2',
+			title: 'The Spirit of God'
+		},
+		{
+			pages: 'Hymns 3',
+			title: 'Now Let Us Rejoice'
+		},
+		{
+			pages: 'Hymns 4',
+			title: 'Truth Eternal'
+		},
+		{
+			pages: 'Hymns 5',
+			title: 'High on the Mountain Top'
+		},
+		{
+			pages: 'Hymns 6',
+			title: 'Redeemer of Israel'
+		},
+		{
+			pages: 'Hymns 7',
+			title: 'Israel, Israel, God Is Calling'
+		},
+		{
+			pages: 'Hymns 8',
+			title: 'Awake and Arise'
+		},
+		{
+			pages: 'Hymns 9',
+			title: 'Come, Rejoice'
+		},
+		{
+			pages: 'Hymns 10',
+			title: 'Come, Sing to the Lord'
+		},
+		{
+			pages: 'Hymns 11',
+			title: 'What Was Witnessed in the Heavens?'
+		},
+		{
+			pages: 'Hymns 12',
+			title: "'Twas Witnessed in the Morning Sky"
+		},
+		{
+			pages: 'Hymns 13',
+			title: 'An Angel from on High'
+		},
+		{
+			pages: 'Hymns 14',
+			title: 'Sweet Is the Peace the Gospel Brings'
+		},
+		{
+			pages: 'Hymns 15',
+			title: 'I Saw a Mighty Angel Fly'
+		},
+		{
+			pages: 'Hymns 16',
+			title: 'What Glorious Scenes Mine Eyes Behold'
+		},
+		{
+			pages: 'Hymns 17',
+			title: 'Awake, Ye Saints of God, Awake!'
+		},
+		{
+			pages: 'Hymns 18',
+			title: 'The Voice of God Again Is Heard'
+		},
+		{
+			pages: 'Hymns 19',
+			title: 'We Thank Thee, O God, for a Prophet'
+		},
+		{
+			pages: 'Hymns 20',
+			title: 'God of Power, God of Right'
+		},
+		{
+			pages: 'Hymns 21',
+			title: "Come, Listen to a Prophet's Voice"
+		},
+		{
+			pages: 'Hymns 22',
+			title: "We Listen to a Prophet's Voice"
+		},
+		{
+			pages: 'Hymns 23',
+			title: 'We Ever Pray for Thee'
+		},
+		{
+			pages: 'Hymns 24',
+			title: 'God Bless Our Prophet Dear'
+		},
+		{
+			pages: 'Hymns 25',
+			title: "Now We'll Sing with One Accord"
+		},
+		{
+			pages: 'Hymns 26',
+			title: "Joseph Smith's First Prayer",
+			first_line: 'Oh, how lovely was the morning'
+		},
+		{
+			pages: 'Hymns 27',
+			title: 'Praise to the Man'
+		},
+		{
+			pages: 'Hymns 28',
+			title: 'Saints, Behold How Great Jehovah'
+		},
+		{
+			pages: 'Hymns 29',
+			title: 'A Poor Wayfaring Man of Grief'
+		},
+		{
+			pages: 'Hymns 30',
+			title: 'Come, Come, Ye Saints'
+		},
+		{
+			pages: 'Hymns 31',
+			title: 'O God, Our Help in Ages Past'
+		},
+		{
+			pages: 'Hymns 32',
+			title: 'The Happy Day at Last Has Come'
+		},
+		{
+			pages: 'Hymns 33',
+			title: 'Our Mountain Home So Dear'
+		},
+		{
+			pages: 'Hymns 34',
+			title: 'O Ye Mountains High'
+		},
+		{
+			pages: 'Hymns 35',
+			title: 'For the Strength of the Hills'
+		},
+		{
+			pages: 'Hymns 36',
+			title: 'They, the Builders of the Nation'
+		},
+		{
+			pages: 'Hymns 37',
+			title: 'The Wintry Day, Descending to Its Close'
+		},
+		{
+			pages: 'Hymns 38',
+			title: 'Come, All Ye Saints of Zion'
+		},
+		{
+			pages: 'Hymns 39',
+			title: 'O Saints of Zion'
+		},
+		{
+			pages: 'Hymns 40',
+			title: 'Arise, O Glorious Zion'
+		},
+		{
+			pages: 'Hymns 41',
+			title: 'Let Zion in Her Beauty Rise'
+		},
+		{
+			pages: 'Hymns 42',
+			title: "Hail to the Brightness of Zion's Glad Morning!"
+		},
+		{
+			pages: 'Hymns 43',
+			title: 'Zion Stands with Hills Surrounded'
+		},
+		{
+			pages: 'Hymns 44',
+			title: 'Beautiful Zion, Built Above'
+		},
+		{
+			pages: 'Hymns 45',
+			title: 'Lead Me into Life Eternal'
+		},
+		{
+			pages: 'Hymns 46',
+			title: 'Glorious Things of Thee Are Spoken'
+		},
+		{
+			pages: 'Hymns 47',
+			title: 'We Will Sing of Zion'
+		},
+		{
+			pages: 'Hymns 48',
+			title: 'Glorious Things Are Sung of Zion'
+		},
+		{
+			pages: 'Hymns 49',
+			title: 'Adam-ondi-Ahman',
+			first_line: 'This earth was once a garden place'
+		},
+		{
+			pages: 'Hymns 50',
+			title: 'Come, Thou Glorious Day of Promise'
+		},
+		{
+			pages: 'Hymns 51',
+			title: 'Sons of Michael, He Approaches'
+		},
+		{
+			pages: 'Hymns 52',
+			title: 'The Day Dawn Is Breaking'
+		},
+		{
+			pages: 'Hymns 53',
+			title: "Let Earth's Inhabitants Rejoice"
+		},
+		{
+			pages: 'Hymns 54',
+			title: 'Behold, the Mountain of the Lord'
+		},
+		{
+			pages: 'Hymns 55',
+			title: 'Lo, the Mighty God Appearing!'
+		},
+		{
+			pages: 'Hymns 56',
+			title: 'Softly Beams the Sacred Dawning'
+		},
+		{
+			pages: 'Hymns 57',
+			title: "We're Not Ashamed to Own Our Lord"
+		},
+		{
+			pages: 'Hymns 58',
+			title: 'Come, Ye Children of the Lord'
+		},
+		{
+			pages: 'Hymns 59',
+			title: 'Come, O Thou King of Kings'
+		},
+		{
+			pages: 'Hymns 60',
+			title: 'Battle Hymn of the Republic',
+			first_line: 'Mine eyes have seen the glory of the coming of the Lord'
+		},
+		{
+			pages: 'Hymns 61',
+			title: 'Raise Your Voices to the Lord'
+		},
+		{
+			pages: 'Hymns 62',
+			title: 'All Creatures of Our God and King'
+		},
+		{
+			pages: 'Hymns 63',
+			title: 'Great King of Heaven'
+		},
+		{
+			pages: 'Hymns 64',
+			title: 'On This Day of Joy and Gladness'
+		},
+		{
+			pages: 'Hymns 65',
+			title: 'Come, All Ye Saints Who Dwell on Earth'
+		},
+		{
+			pages: 'Hymns 66',
+			title: 'Rejoice, the Lord Is King!'
+		},
+		{
+			pages: 'Hymns 67',
+			title: 'Glory to God on High'
+		},
+		{
+			pages: 'Hymns 68',
+			title: 'A Mighty Fortress Is Our God'
+		},
+		{
+			pages: 'Hymns 69',
+			title: 'All Glory, Laud, and Honor'
+		},
+		{
+			pages: 'Hymns 70',
+			title: 'Sing Praise to Him'
+		},
+		{
+			pages: 'Hymns 71',
+			title: 'With Songs of Praise'
+		},
+		{
+			pages: 'Hymns 72',
+			title: 'Praise to the Lord, the Almighty'
+		},
+		{
+			pages: 'Hymns 73',
+			title: 'Praise the Lord with Heart and Voice'
+		},
+		{
+			pages: 'Hymns 74',
+			title: 'Praise Ye the Lord'
+		},
+		{
+			pages: 'Hymns 75',
+			title: 'In Hymns of Praise'
+		},
+		{
+			pages: 'Hymns 76',
+			title: 'God of Our Fathers, We Come unto Thee'
+		},
+		{
+			pages: 'Hymns 77',
+			title: 'Great Is the Lord'
+		},
+		{
+			pages: 'Hymns 78',
+			title: 'God of Our Fathers, Whose Almighty Hand'
+		},
+		{
+			pages: 'Hymns 79',
+			title: 'With All the Power of Heart and Tongue'
+		},
+		{
+			pages: 'Hymns 80',
+			title: 'God of Our Fathers, Known of Old'
+		},
+		{
+			pages: 'Hymns 81',
+			title: 'Press Forward, Saints'
+		},
+		{
+			pages: 'Hymns 82',
+			title: 'For All the Saints'
+		},
+		{
+			pages: 'Hymns 83',
+			title: 'Guide Us, O Thou Great Jehovah'
+		},
+		{
+			pages: 'Hymns 84',
+			title: 'Faith of Our Fathers'
+		},
+		{
+			pages: 'Hymns 85',
+			title: 'How Firm a Foundation'
+		},
+		{
+			pages: 'Hymns 86',
+			title: 'How Great Thou Art'
+		},
+		{
+			pages: 'Hymns 87',
+			title: 'God Is Love',
+			first_line: "Earth, with her ten thousand flow'rs"
+		},
+		{
+			pages: 'Hymns 88',
+			title: 'Great God, Attend While Zion Sings'
+		},
+		{
+			pages: 'Hymns 89',
+			title: 'The Lord Is My Light'
+		},
+		{
+			pages: 'Hymns 90',
+			title: 'From All That Dwell below the Skies'
+		},
+		{
+			pages: 'Hymns 91',
+			title: 'Father, Thy Children to Thee Now Raise'
+		},
+		{
+			pages: 'Hymns 92',
+			title: 'For the Beauty of the Earth'
+		},
+		{
+			pages: 'Hymns 93',
+			title: 'Prayer of Thanksgiving',
+			first_line: "We gather together to ask the Lord's blessing"
+		},
+		{
+			pages: 'Hymns 94',
+			title: 'Come, Ye Thankful People'
+		},
+		{
+			pages: 'Hymns 95',
+			title: 'Now Thank We All Our God'
+		},
+		{
+			pages: 'Hymns 96',
+			title: 'Dearest Children, God Is Near You'
+		},
+		{
+			pages: 'Hymns 97',
+			title: 'Lead, Kindly Light'
+		},
+		{
+			pages: 'Hymns 98',
+			title: 'I Need Thee Every Hour'
+		},
+		{
+			pages: 'Hymns 99',
+			title: 'Nearer, Dear Savior, to Thee'
+		},
+		{
+			pages: 'Hymns 100',
+			title: 'Nearer, My God, to Thee'
+		},
+		{
+			pages: 'Hymns 101',
+			title: 'Guide Me to Thee',
+			first_line: 'Jesus, my Savior true'
+		},
+		{
+			pages: 'Hymns 102',
+			title: 'Jesus, Lover of My Soul'
+		},
+		{
+			pages: 'Hymns 103',
+			title: 'Precious Savior, Dear Redeemer'
+		},
+		{
+			pages: 'Hymns 104',
+			title: 'Jesus, Savior, Pilot Me'
+		},
+		{
+			pages: 'Hymns 105',
+			title: 'Master, the Tempest Is Raging'
+		},
+		{
+			pages: 'Hymns 106',
+			title: 'God Speed the Right',
+			first_line: "Now to heav'n our prayer ascending"
+		},
+		{
+			pages: 'Hymns 107',
+			title: 'Lord, Accept Our True Devotion'
+		},
+		{
+			pages: 'Hymns 108',
+			title: 'The Lord Is My Shepherd'
+		},
+		{
+			pages: 'Hymns 109',
+			title: 'The Lord My Pasture Will Prepare'
+		},
+		{
+			pages: 'Hymns 110',
+			title: 'Cast Thy Burden upon the Lord'
+		},
+		{
+			pages: 'Hymns 111',
+			title: 'Rock of Ages'
+		},
+		{
+			pages: 'Hymns 112',
+			title: 'Savior, Redeemer of My Soul'
+		},
+		{
+			pages: 'Hymns 113',
+			title: "Our Savior's Love"
+		},
+		{
+			pages: 'Hymns 114',
+			title: 'Come unto Him',
+			first_line: 'I wander through the still of night'
+		},
+		{
+			pages: 'Hymns 115',
+			title: 'Come, Ye Disconsolate'
+		},
+		{
+			pages: 'Hymns 116',
+			title: 'Come, Follow Me'
+		},
+		{
+			pages: 'Hymns 117',
+			title: 'Come unto Jesus'
+		},
+		{
+			pages: 'Hymns 118',
+			title: 'Ye Simple Souls Who Stray'
+		},
+		{
+			pages: 'Hymns 119',
+			title: 'Come, We That Love the Lord'
+		},
+		{
+			pages: 'Hymns 120',
+			title: 'Lean on My Ample Arm'
+		},
+		{
+			pages: 'Hymns 121',
+			title: "I'm a Pilgrim, I'm a Stranger"
+		},
+		{
+			pages: 'Hymns 122',
+			title: 'Though Deepening Trials'
+		},
+		{
+			pages: 'Hymns 123',
+			title: 'Oh, May My Soul Commune with Thee'
+		},
+		{
+			pages: 'Hymns 124',
+			title: 'Be Still, My Soul'
+		},
+		{
+			pages: 'Hymns 125',
+			title: "How Gentle God's Commands"
+		},
+		{
+			pages: 'Hymns 126',
+			title: 'How Long, O Lord Most Holy and True'
+		},
+		{
+			pages: 'Hymns 127',
+			title: 'Does the Journey Seem Long?'
+		},
+		{
+			pages: 'Hymns 128',
+			title: 'When Faith Endures',
+			first_line: 'I will not doubt, I will not fear'
+		},
+		{
+			pages: 'Hymns 129',
+			title: 'Where Can I Turn for Peace?'
+		},
+		{
+			pages: 'Hymns 130',
+			title: 'Be Thou Humble'
+		},
+		{
+			pages: 'Hymns 131',
+			title: 'More Holiness Give Me'
+		},
+		{
+			pages: 'Hymns 132',
+			title: 'God Is in His Holy Temple'
+		},
+		{
+			pages: 'Hymns 133',
+			title: 'Father in Heaven'
+		},
+		{
+			pages: 'Hymns 134',
+			title: 'I Believe in Christ'
+		},
+		{
+			pages: 'Hymns 135',
+			title: 'My Redeemer Lives',
+			first_line: 'I know that my Redeemer lives'
+		},
+		{
+			pages: 'Hymns 136',
+			title: 'I Know That My Redeemer Lives'
+		},
+		{
+			pages: 'Hymns 137',
+			title: 'Testimony',
+			first_line: 'The witness of the Holy Ghost'
+		},
+		{
+			pages: 'Hymns 138',
+			title: 'Bless Our Fast, We Pray',
+			first_line: 'On bended knees, with broken hearts'
+		},
+		{
+			pages: 'Hymns 139',
+			title: 'In Fasting We Approach Thee'
+		},
+		{
+			pages: 'Hymns 140',
+			title: 'Did You Think to Pray?',
+			first_line: 'Ere you left your room this morning'
+		},
+		{
+			pages: 'Hymns 141',
+			title: 'Jesus, the Very Thought of Thee'
+		},
+		{
+			pages: 'Hymns 142',
+			title: 'Sweet Hour of Prayer'
+		},
+		{
+			pages: 'Hymns 143',
+			title: 'Let the Holy Spirit Guide'
+		},
+		{
+			pages: 'Hymns 144',
+			title: 'Secret Prayer',
+			first_line: 'There is an hour of peace and rest'
+		},
+		{
+			pages: 'Hymns 145',
+			title: "Prayer Is the Soul's Sincere Desire"
+		},
+		{
+			pages: 'Hymns 146',
+			title: 'Gently Raise the Sacred Strain'
+		},
+		{
+			pages: 'Hymns 147',
+			title: 'Sweet Is the Work'
+		},
+		{
+			pages: 'Hymns 148',
+			title: 'Sabbath Day',
+			first_line: 'In sweet remembrance of thy Son'
+		},
+		{
+			pages: 'Hymns 149',
+			title: 'As the Dew from Heaven Distilling'
+		},
+		{
+			pages: 'Hymns 150',
+			title: 'O Thou Kind and Gracious Father'
+		},
+		{
+			pages: 'Hymns 151',
+			title: 'We Meet, Dear Lord'
+		},
+		{
+			pages: 'Hymns 152',
+			title: 'God Be with You Till We Meet Again'
+		},
+		{
+			pages: 'Hymns 153',
+			title: 'Lord, We Ask Thee Ere We Part'
+		},
+		{
+			pages: 'Hymns 154',
+			title: 'Father, This Hour Has Been One of Joy'
+		},
+		{
+			pages: 'Hymns 155',
+			title: 'We Have Partaken of Thy Love'
+		},
+		{
+			pages: 'Hymns 156',
+			title: 'Sing We Now at Parting'
+		},
+		{
+			pages: 'Hymns 157',
+			title: 'Thy Spirit, Lord, Has Stirred Our Souls'
+		},
+		{
+			pages: 'Hymns 158',
+			title: 'Before Thee, Lord, I Bow My Head'
+		},
+		{
+			pages: 'Hymns 159',
+			title: 'Now the Day Is Over'
+		},
+		{
+			pages: 'Hymns 160',
+			title: 'Softly Now the Light of Day'
+		},
+		{
+			pages: 'Hymns 161',
+			title: 'The Lord Be with Us'
+		},
+		{
+			pages: 'Hymns 162',
+			title: 'Lord, We Come before Thee Now'
+		},
+		{
+			pages: 'Hymns 163',
+			title: 'Lord, Dismiss Us with Thy Blessing'
+		},
+		{
+			pages: 'Hymns 164',
+			title: 'Great God, to Thee My Evening Song'
+		},
+		{
+			pages: 'Hymns 165',
+			title: "Abide with Me; 'Tis Eventide"
+		},
+		{
+			pages: 'Hymns 166',
+			title: 'Abide with Me!'
+		},
+		{
+			pages: 'Hymns 167',
+			title: 'Come, Let Us Sing an Evening Hymn'
+		},
+		{
+			pages: 'Hymns 168',
+			title: 'As the Shadows Fall'
+		},
+		{
+			pages: 'Hymns 169',
+			title: 'As Now We Take the Sacrament'
+		},
+		{
+			pages: 'Hymns 170',
+			title: 'God, Our Father, Hear Us Pray'
+		},
+		{
+			pages: 'Hymns 171',
+			title: 'With Humble Heart'
+		},
+		{
+			pages: 'Hymns 172',
+			title: 'In Humility, Our Savior'
+		},
+		{
+			pages: 'Hymns 173',
+			title: 'While of These Emblems We Partake'
+		},
+		{
+			pages: 'Hymns 174',
+			title: 'While of These Emblems We Partake'
+		},
+		{
+			pages: 'Hymns 175',
+			title: 'O God, the Eternal Father'
+		},
+		{
+			pages: 'Hymns 176',
+			title: "'Tis Sweet to Sing the Matchless Love"
+		},
+		{
+			pages: 'Hymns 177',
+			title: "'Tis Sweet To Sing the Matchless Love"
+		},
+		{
+			pages: 'Hymns 178',
+			title: 'O Lord of Hosts'
+		},
+		{
+			pages: 'Hymns 179',
+			title: 'Again, Our Dear Redeeming Lord'
+		},
+		{
+			pages: 'Hymns 180',
+			title: 'Father in Heaven, We Do Believe'
+		},
+		{
+			pages: 'Hymns 181',
+			title: 'Jesus of Nazareth, Savior and King'
+		},
+		{
+			pages: 'Hymns 182',
+			title: "We'll Sing All Hail to Jesus' Name"
+		},
+		{
+			pages: 'Hymns 183',
+			title: 'In Remembrance of Thy Suffering'
+		},
+		{
+			pages: 'Hymns 184',
+			title: 'Upon the Cross of Calvary'
+		},
+		{
+			pages: 'Hymns 185',
+			title: 'Reverently and Meekly Now',
+			first_line: "Rev'rently and meekly now"
+		},
+		{
+			pages: 'Hymns 186',
+			title: 'Again We Meet around the Board'
+		},
+		{
+			pages: 'Hymns 187',
+			title: 'God Loved Us, So He Sent His Son'
+		},
+		{
+			pages: 'Hymns 188',
+			title: 'Thy Will, O Lord, Be Done',
+			first_line: 'When in the wondrous realms above'
+		},
+		{
+			pages: 'Hymns 189',
+			title: 'O Thou, Before the World Began'
+		},
+		{
+			pages: 'Hymns 190',
+			title: 'In Memory of the Crucified'
+		},
+		{
+			pages: 'Hymns 191',
+			title: 'Behold the Great Redeemer Die'
+		},
+		{
+			pages: 'Hymns 192',
+			title: 'He Died! The Great Redeemer Died'
+		},
+		{
+			pages: 'Hymns 193',
+			title: 'I Stand All Amazed'
+		},
+		{
+			pages: 'Hymns 194',
+			title: 'There Is a Green Hill Far Away'
+		},
+		{
+			pages: 'Hymns 195',
+			title: 'How Great the Wisdom and the Love'
+		},
+		{
+			pages: 'Hymns 196',
+			title: 'Jesus, Once of Humble Birth'
+		},
+		{
+			pages: 'Hymns 197',
+			title: 'O Savior, Thou Who Wearest a Crown'
+		},
+		{
+			pages: 'Hymns 198',
+			title: 'That Easter Morn'
+		},
+		{
+			pages: 'Hymns 199',
+			title: 'He Is Risen!'
+		},
+		{
+			pages: 'Hymns 200',
+			title: 'Christ the Lord Is Risen Today'
+		},
+		{
+			pages: 'Hymns 201',
+			title: 'Joy to the World'
+		},
+		{
+			pages: 'Hymns 202',
+			title: 'Oh, Come, All Ye Faithful'
+		},
+		{
+			pages: 'Hymns 203',
+			title: 'Angels We Have Heard on High'
+		},
+		{
+			pages: 'Hymns 204',
+			title: 'Silent Night'
+		},
+		{
+			pages: 'Hymns 205',
+			title: "Once in Royal David's City"
+		},
+		{
+			pages: 'Hymns 206',
+			title: 'Away in a Manger'
+		},
+		{
+			pages: 'Hymns 207',
+			title: 'It Came upon the Midnight Clear'
+		},
+		{
+			pages: 'Hymns 208',
+			title: 'O Little Town of Bethlehem'
+		},
+		{
+			pages: 'Hymns 209',
+			title: 'Hark! The Herald Angels Sing'
+		},
+		{
+			pages: 'Hymns 210',
+			title: 'With Wondering Awe'
+		},
+		{
+			pages: 'Hymns 211',
+			title: 'While Shepherds Watched Their Flocks'
+		},
+		{
+			pages: 'Hymns 212',
+			title: "Far, Far Away on Judea's Plains"
+		},
+		{
+			pages: 'Hymns 213',
+			title: 'The First Noel'
+		},
+		{
+			pages: 'Hymns 214',
+			title: 'I Heard the Bells on Christmas Day'
+		},
+		{
+			pages: 'Hymns 215',
+			title: 'Ring Out, Wild Bells'
+		},
+		{
+			pages: 'Hymns 216',
+			title: 'We Are Sowing'
+		},
+		{
+			pages: 'Hymns 217',
+			title: 'Come, Let Us Anew'
+		},
+		{
+			pages: 'Hymns 218',
+			title: 'We Give Thee But Thine Own'
+		},
+		{
+			pages: 'Hymns 219',
+			title: 'Because I Have Been Given Much'
+		},
+		{
+			pages: 'Hymns 220',
+			title: 'Lord, I Would Follow Thee',
+			first_line: 'Savior, may I learn to love thee'
+		},
+		{
+			pages: 'Hymns 221',
+			title: 'Dear to the Heart of the Shepherd'
+		},
+		{
+			pages: 'Hymns 222',
+			title: 'Hear Thou Our Hymn, O Lord'
+		},
+		{
+			pages: 'Hymns 223',
+			title: 'Have I Done Any Good?'
+		},
+		{
+			pages: 'Hymns 224',
+			title: 'I Have Work Enough to Do'
+		},
+		{
+			pages: 'Hymns 225',
+			title: 'We Are Marching On to Glory'
+		},
+		{
+			pages: 'Hymns 226',
+			title: 'Improve the Shining Moments'
+		},
+		{
+			pages: 'Hymns 227',
+			title: 'There Is Sunshine in My Soul Today'
+		},
+		{
+			pages: 'Hymns 228',
+			title: 'You Can Make the Pathway Bright'
+		},
+		{
+			pages: 'Hymns 229',
+			title: 'Today, While the Sun Shines'
+		},
+		{
+			pages: 'Hymns 230',
+			title: 'Scatter Sunshine',
+			first_line: 'In a world where sorrow'
+		},
+		{
+			pages: 'Hymns 231',
+			title: 'Father, Cheer Our Souls Tonight'
+		},
+		{
+			pages: 'Hymns 232',
+			title: 'Let Us Oft Speak Kind Words'
+		},
+		{
+			pages: 'Hymns 233',
+			title: 'Nay, Speak No Ill'
+		},
+		{
+			pages: 'Hymns 234',
+			title: 'Jesus, Mighty King in Zion'
+		},
+		{
+			pages: 'Hymns 235',
+			title: 'Should You Feel Inclined to Censure'
+		},
+		{
+			pages: 'Hymns 236',
+			title: 'Lord, Accept into Thy Kingdom'
+		},
+		{
+			pages: 'Hymns 237',
+			title: 'Do What Is Right'
+		},
+		{
+			pages: 'Hymns 238',
+			title: 'Behold Thy Sons and Daughters, Lord'
+		},
+		{
+			pages: 'Hymns 239',
+			title: 'Choose the Right'
+		},
+		{
+			pages: 'Hymns 240',
+			title: 'Know This, That Every Soul Is Free'
+		},
+		{
+			pages: 'Hymns 241',
+			title: 'Count Your Blessings',
+			first_line: "When upon life's billows you are tempest-tossed"
+		},
+		{
+			pages: 'Hymns 242',
+			title: 'Praise God, from Whom All Blessings Flow'
+		},
+		{
+			pages: 'Hymns 243',
+			title: 'Let Us All Press On'
+		},
+		{
+			pages: 'Hymns 244',
+			title: 'Come Along, Come Along'
+		},
+		{
+			pages: 'Hymns 245',
+			title: 'This House We Dedicate to Thee'
+		},
+		{
+			pages: 'Hymns 246',
+			title: 'Onward, Christian Soldiers'
+		},
+		{
+			pages: 'Hymns 247',
+			title: 'We Love Thy House, O God'
+		},
+		{
+			pages: 'Hymns 248',
+			title: 'Up, Awake, Ye Defenders of Zion'
+		},
+		{
+			pages: 'Hymns 249',
+			title: 'Called to Serve'
+		},
+		{
+			pages: 'Hymns 250',
+			title: 'We Are All Enlisted'
+		},
+		{
+			pages: 'Hymns 251',
+			title: 'Behold! A Royal Army'
+		},
+		{
+			pages: 'Hymns 252',
+			title: 'Put Your Shoulder to the Wheel',
+			first_line: 'The world has need of willing men'
+		},
+		{
+			pages: 'Hymns 253',
+			title: 'Like Ten Thousand Legions Marching'
+		},
+		{
+			pages: 'Hymns 254',
+			title: 'True to the Faith',
+			first_line: 'Shall the youth of Zion falter'
+		},
+		{
+			pages: 'Hymns 255',
+			title: 'Carry On',
+			first_line: 'Firm as the mountains around us'
+		},
+		{
+			pages: 'Hymns 256',
+			title: "As Zion's Youth in Latter Days"
+		},
+		{
+			pages: 'Hymns 257',
+			title: 'Rejoice! A Glorious Sound Is Heard'
+		},
+		{
+			pages: 'Hymns 258',
+			title: 'O Thou Rock of Our Salvation'
+		},
+		{
+			pages: 'Hymns 259',
+			title: 'Hope of Israel'
+		},
+		{
+			pages: 'Hymns 260',
+			title: "Who's on the Lord's Side?"
+		},
+		{
+			pages: 'Hymns 261',
+			title: 'Thy Servants Are Prepared'
+		},
+		{
+			pages: 'Hymns 262',
+			title: 'Go, Ye Messengers of Glory'
+		},
+		{
+			pages: 'Hymns 263',
+			title: 'Go Forth with Faith'
+		},
+		{
+			pages: 'Hymns 264',
+			title: 'Hark, All Ye Nations!'
+		},
+		{
+			pages: 'Hymns 265',
+			title: 'Arise, O God, and Shine'
+		},
+		{
+			pages: 'Hymns 266',
+			title: 'The Time Is Far Spent'
+		},
+		{
+			pages: 'Hymns 267',
+			title: 'How Wondrous and Great'
+		},
+		{
+			pages: 'Hymns 268',
+			title: 'Come, All Whose Souls Are Lighted'
+		},
+		{
+			pages: 'Hymns 269',
+			title: 'Jehovah, Lord of Heaven and Earth'
+		},
+		{
+			pages: 'Hymns 270',
+			title: "I'll Go Where You Want Me to Go",
+			first_line: 'It may not be on the mountain height'
+		},
+		{
+			pages: 'Hymns 271',
+			title: 'Oh, Holy Words of Truth and Love'
+		},
+		{
+			pages: 'Hymns 272',
+			title: 'Oh Say, What Is Truth?'
+		},
+		{
+			pages: 'Hymns 273',
+			title: 'Truth Reflects upon Our Senses'
+		},
+		{
+			pages: 'Hymns 274',
+			title: 'The Iron Rod',
+			first_line: 'To Nephi, seer of olden time'
+		},
+		{
+			pages: 'Hymns 275',
+			title: 'Men Are That They Might Have Joy',
+			first_line: 'A voice hath spoken from the dust'
+		},
+		{
+			pages: 'Hymns 276',
+			title: 'Come Away to the Sunday School',
+			first_line: 'When the rosy light of morning'
+		},
+		{
+			pages: 'Hymns 277',
+			title: 'As I Search the Holy Scriptures'
+		},
+		{
+			pages: 'Hymns 278',
+			title: 'Thanks for the Sabbath School'
+		},
+		{
+			pages: 'Hymns 279',
+			title: 'Thy Holy Word',
+			first_line: 'We love to hear thy holy word'
+		},
+		{
+			pages: 'Hymns 280',
+			title: 'Welcome, Welcome, Sabbath Morning'
+		},
+		{
+			pages: 'Hymns 281',
+			title: 'Help Me Teach with Inspiration'
+		},
+		{
+			pages: 'Hymns 282',
+			title: 'We Meet Again in Sabbath School'
+		},
+		{
+			pages: 'Hymns 283',
+			title: 'The Glorious Gospel Light Has Shone'
+		},
+		{
+			pages: 'Hymns 284',
+			title: 'If You Could Hie to Kolob'
+		},
+		{
+			pages: 'Hymns 285',
+			title: 'God Moves in a Mysterious Way'
+		},
+		{
+			pages: 'Hymns 286',
+			title: 'Oh, What Songs of the Heart'
+		},
+		{
+			pages: 'Hymns 287',
+			title: 'Rise, Ye Saints, and Temples Enter'
+		},
+		{
+			pages: 'Hymns 288',
+			title: 'How Beautiful Thy Temples, Lord'
+		},
+		{
+			pages: 'Hymns 289',
+			title: 'Holy Temples on Mount Zion'
+		},
+		{
+			pages: 'Hymns 290',
+			title: 'Rejoice, Ye Saints of Latter Days'
+		},
+		{
+			pages: 'Hymns 291',
+			title: 'Turn Your Hearts'
+		},
+		{
+			pages: 'Hymns 292',
+			title: 'O My Father'
+		},
+		{
+			pages: 'Hymns 293',
+			title: 'Each Life That Touches Ours for Good'
+		},
+		{
+			pages: 'Hymns 294',
+			title: 'Love at Home',
+			first_line: 'There is beauty all around'
+		},
+		{
+			pages: 'Hymns 295',
+			title: 'O Love That Glorifies the Son'
+		},
+		{
+			pages: 'Hymns 296',
+			title: 'Our Father, by Whose Name'
+		},
+		{
+			pages: 'Hymns 297',
+			title: 'From Homes of Saints Glad Songs Arise'
+		},
+		{
+			pages: 'Hymns 298',
+			title: 'Home Can Be a Heaven on Earth'
+		},
+		{
+			pages: 'Hymns 299',
+			title: 'Children of Our Heavenly Father'
+		},
+		{
+			pages: 'Hymns 300',
+			title: 'Families Can Be Together Forever',
+			first_line: "I have a fam'ly here on earth"
+		},
+		{
+			pages: 'Hymns 301',
+			title: 'I Am a Child of God'
+		},
+		{
+			pages: 'Hymns 302',
+			title: 'I Know My Father Lives'
+		},
+		{
+			pages: 'Hymns 303',
+			title: 'Keep the Commandments'
+		},
+		{
+			pages: 'Hymns 304',
+			title: 'Teach Me to Walk in the Light'
+		},
+		{
+			pages: 'Hymns 305',
+			title: 'The Light Divine'
+		},
+		{
+			pages: 'Hymns 306',
+			title: "God's Daily Care",
+			first_line: 'As I watch the rising sun'
+		},
+		{
+			pages: 'Hymns 307',
+			title: 'In Our Lovely Deseret'
+		},
+		{
+			pages: 'Hymns 308',
+			title: 'Love One Another',
+			first_line: 'As I have loved you'
+		},
+		{
+			pages: 'Hymns 309',
+			title: 'As Sisters in Zion: (Women)'
+		},
+		{
+			pages: 'Hymns 310',
+			title: 'A Key Was Turned in Latter Days: (Women)'
+		},
+		{
+			pages: 'Hymns 311',
+			title: 'We Meet Again as Sisters: (Women)'
+		},
+		{
+			pages: 'Hymns 312',
+			title: 'We Ever Pray for Thee: (Women)'
+		},
+		{
+			pages: 'Hymns 313',
+			title: 'God Is Love: (Women)',
+			first_line: "Earth, with her ten thousand flow'rs"
+		},
+		{
+			pages: 'Hymns 314',
+			title: "How Gentle God's Commands: (Women)"
+		},
+		{
+			pages: 'Hymns 315',
+			title: 'Jesus, the Very Thought of Thee: (Women)'
+		},
+		{
+			pages: 'Hymns 316',
+			title: 'The Lord Is My Shepherd: (Women)'
+		},
+		{
+			pages: 'Hymns 317',
+			title: 'Sweet Is the Work: (Women)'
+		},
+		{
+			pages: 'Hymns 318',
+			title: 'Love at Home: (Women)',
+			first_line: 'There is beauty all around'
+		},
+		{
+			pages: 'Hymns 319',
+			title: 'Ye Elders of Israel: (Men)'
+		},
+		{
+			pages: 'Hymns 320',
+			title: 'The Priesthood of Our Lord: (Men)',
+			first_line: "Brethren, pow'r by earthly standards"
+		},
+		{
+			pages: 'Hymns 321',
+			title: 'Ye Who Are Called to Labor: (Men)'
+		},
+		{
+			pages: 'Hymns 322',
+			title: 'Come, All Ye Sons of God: (Men)'
+		},
+		{
+			pages: 'Hymns 323',
+			title: "Rise Up, O Men of God: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 324',
+			title: 'Rise Up, O Men of God: (Men)'
+		},
+		{
+			pages: 'Hymns 325',
+			title: "See the Mighty Priesthood Gathered: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 326',
+			title: "Come, Come, Ye Saints: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 327',
+			title: "Go, Ye Messengers of Heaven: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 328',
+			title: "An Angel from on High: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 329',
+			title: "Thy Servants Are Prepared: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 330',
+			title: "See, the Mighty Angel Flying: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 331',
+			title: "Oh Say, What Is Truth?: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 332',
+			title: "Come, O Thou King of Kings: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 333',
+			title: "High on the Mountain Top: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 334',
+			title: "I Need Thee Every Hour: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 335',
+			title: "Brightly Beams Our Father's Mercy: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 336',
+			title: "School Thy Feelings: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 337',
+			title: "O Home Beloved: (Men's Choir)"
+		},
+		{
+			pages: 'Hymns 338',
+			title: 'America the Beautiful',
+			first_line: 'Oh, beautiful for spacious skies'
+		},
+		{
+			pages: 'Hymns 339',
+			title: "My Country, 'Tis of Thee"
+		},
+		{
+			pages: 'Hymns 340',
+			title: 'The Star-Spangled Banner',
+			first_line: "Oh say, can you see, by the dawn's early light"
+		},
+		{
+			pages: 'Hymns 341',
+			title: 'God Save the King'
+		}
 	];
 	$( ".auto-complete" ).autocomplete({
-		source: songs
+		source: function( request, response ) {
+			var sValue = request.term.toLowerCase();
+			var aSearch = [];
+			$(songs).each(function(i, song) {
+
+				// Add the 'pages' and 'first_line' parameters if they don't exist
+				if(typeof(song.first_line) === 'undefined') {
+					song.first_line = '';
+				}
+				if(typeof(song.pages) === 'undefined') {
+					song.pages = '';
+				}
+
+				// check to see if any of them match the search query
+				var matchPages = song.pages.toLowerCase().search(sValue) != -1;
+				var matchTitle = song.title.toLowerCase().search(sValue) != -1;
+				var matchFirstLine = song.first_line.toLowerCase().search(sValue) != -1;
+
+				if( matchPages || matchTitle || matchFirstLine ) {
+
+					var songLabel = song.title;
+					if(song.pages != '') {
+						songLabel = '['+song.pages+'] '+songLabel;
+					}
+
+					var songValue = songLabel;
+
+					// only show the first line if it's part of the search query but the query doesn't match the title
+					if(
+						!matchPages && !matchTitle &&
+						song.first_line != ''
+					) {
+						songLabel = songLabel + ' ('+song.first_line+')';
+					}
+
+					aSearch.push({
+						label: songLabel,
+						value: songValue
+					});
+				}
+			});
+
+			response(aSearch);
+		}
 	});
 	$( "#Date" ).datepicker();
 });
