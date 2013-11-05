@@ -8,6 +8,10 @@ $(function() {
 			first_line: "Because I want to be like the Savior, and I can"
 		},
 		{
+			title: 'As a Child of God',
+			first_line: "I came to earth with power to choose"
+		},
+		{
 			title: 'My Eternal Family',
 			first_line: "I am a builder working each day"
 		},
