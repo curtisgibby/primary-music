@@ -29,3 +29,8 @@ body {
 .printable a:visited {
 	margin-left: 30px;
 }
+
+td.page {
+	text-align: right;
+	white-space: nowrap;
+}
