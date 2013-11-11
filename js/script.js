@@ -581,8 +581,7 @@ $(function() {
 		},
 		{
 			pages: 'CS 145',
-			title: 'A Special Gift Is Kindness',
-			first_line: "foo"
+			title: 'A Special Gift Is Kindness'
 		},
 		{
 			pages: 'CS 145',
