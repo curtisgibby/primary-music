@@ -19,13 +19,13 @@
 
 		<div class="form-group clearfix">
 			<div class="col-md-9">
-				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "Next Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Singing Time section as you like.</p>
+				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists. You can enter as many or as few songs in the Singing Time section as you like.</p>
 
 				<form name="music" class="form-horizontal" role="form" action="post.php" method="post">
 				<div class="form-group">
 				  <div class="col-md-12">
 					<label for="Date">Date</label>
-					<input type="text" class="form-control" id="Date" value="<?php echo date("m/d/Y", strtotime("Next Sunday"))?>" name="Date">
+					<input type="text" class="form-control" id="Date" value="<?php echo date("m/d/Y", strtotime("this Sunday", (time() - 84600)))?>" name="Date">
 				  </div>
 				</div>
 
