@@ -94,10 +94,10 @@ if(isset($form['Date'])) {
 		<tr><td colspan=2><h2>Closing Song</h2></td></tr>
 		<?php echo renderSong($form['ClosingSong']); ?>
 		</tbody></table>
-		<?php endif;?>
 
 		<hr>
 		<a href="index.php" class="hidden-print">&laquo; Go Back</a>
+		<?php endif;?>
 
 		<?php else :?>
 
