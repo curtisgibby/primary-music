@@ -54,7 +54,7 @@ if(isset($form['Date'])) {
 			<h1><?php echo $pageTitle?></h1>
 		</div>
 
-		<?php if(!empty($form)) :?>
+		<?php if(!empty($form['Date'])) :?>
 
 		<table><tbody>
 
