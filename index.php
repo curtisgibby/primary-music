@@ -2,12 +2,15 @@
 
 function renderSong($input) {
 	$query = $title = $input;
+	$page = '';
 	$collection = 'music-for-children';
 
 	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $input, $matches);
 
 	if(!empty($matches)) {
 		$query = $matches[2];
+		$page = $matches[0];
+		$title = str_replace($page, '', $title);
 		switch ($matches[1]) {
 			case 'Hymns':
 				$collection = 'hymnal';
@@ -18,7 +21,11 @@ function renderSong($input) {
 				break;
 		}
 	}
-	return '<a href="http://www.lds.org/music/library/search?lang=eng&collection='.$collection.'&query='.$query.'">'.$title.'</a>';
+	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection='.$collection.'&query='.$query;
+	return '<tr>'.
+		'<td class="page"><a href="'.$queryUrl.'">'.trim($page).'</a></td>'.
+		'<td><a href="'.$queryUrl.'">'.$title.'</a></td>'.
+	'</tr>';
 }
 $pageTitle = 'Primary Music';
 $bodyClass = 'container';
@@ -49,41 +56,44 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form)) :?>
 
+		<table><tbody>
+
 		<?php if(!empty($form['WelcomeSong'])) :?>
-		<h2>Welcome Song</h2>
-		<p><?php echo renderSong($form['WelcomeSong']); ?></p>
+		<tr><td colspan=2><h2>Welcome Song</h2></td></tr>
+		<?php echo renderSong($form['WelcomeSong']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['OpeningSong'])) :?>
-		<h2>Opening Song</h2>
-		<p><?php echo renderSong($form['OpeningSong']); ?></p>
+		<tr><td colspan=2><h2>Opening Song</h2></td></tr>
+		<?php echo renderSong($form['OpeningSong']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['BirthdaySong'])) :?>
-		<h2>Birthday Song</h2>
-		<p><?php echo renderSong($form['BirthdaySong']); ?></p>
+		<tr><td colspan=2><h2>Birthday Song</h2></td></tr>
+		<?php echo renderSong($form['BirthdaySong']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['ReverenceSong'])) :?>
-		<h2>Reverence Song</h2>
-		<p><?php echo renderSong($form['ReverenceSong']); ?></p>
+		<tr><td colspan=2><h2>Reverence Song</h2></td></tr>
+		<?php echo renderSong($form['ReverenceSong']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SingingTime'])) :
 		$singingTime = array_filter($form['SingingTime']);
 		if(!empty($singingTime)):
 		?>
-		<h2>Singing Time</h2>
+		<tr><td colspan=2><h2>Singing Time</h2></td></tr>
 		<?php
 		foreach ($singingTime as $song) {
-			echo "<p>".renderSong($song)."</p>";
+			echo renderSong($song);
 		}
 		endif; // ! empty singingTime
 		endif; // ! empty form singingTime?>
 
 		<?php if(!empty($form['ClosingSong'])) :?>
-		<h2>Closing Song</h2>
-		<p><?php echo renderSong($form['ClosingSong']); ?></p>
+		<tr><td colspan=2><h2>Closing Song</h2></td></tr>
+		<?php echo renderSong($form['ClosingSong']); ?>
+		</tbody></table>
 		<?php endif;?>
 
 		<hr>
