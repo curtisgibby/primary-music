@@ -601,7 +601,7 @@ $(function() {
 		},
 		{
 			pages: 'CS 150',
-			title: "I'm Glad to Pay 6a Tithing"
+			title: "I'm Glad to Pay a Tithing"
 		},
 		{
 			pages: 'CS 150',
