@@ -93,9 +93,14 @@ if(isset($form['Date'])) {
 		<?php if(!empty($form['ClosingSong'])) :?>
 		<tr><td colspan=2><h2>Closing Song</h2></td></tr>
 		<?php echo renderSong($form['ClosingSong']); ?>
-		</tbody></table>
 		<?php endif;?>
 
+		<?php if(!empty($form['Notes'])) :?>
+		<tr><td colspan=2><h2>Notes</h2></td></tr>
+		<tr><td colspan=2><?php echo $form['Notes'] ?></tr>
+		<?php endif; // ! empty form notes?>
+
+		</tbody></table>
 		<hr>
 		<a href="index.php" class="hidden-print">&laquo; Go Back</a>
 
@@ -202,6 +207,13 @@ if(isset($form['Date'])) {
 			<input type="text" class="form-control auto-complete" id="ClosingSong" name="ClosingSong">
 		  </div>
 		  <div class="col-md-6">&nbsp;</div>
+		</div>
+
+		<div class="form-group clearfix">
+			<div class="col-md-12">
+				<label for="Notes">Notes</label>
+				<textarea rows=6 class="form-control" id="Notes" name="Notes"></textarea>
+			</div>
 		</div>
 
 		<button type="submit" class="btn btn-default">Submit</button>
