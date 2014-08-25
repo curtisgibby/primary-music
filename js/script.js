@@ -2578,5 +2578,7 @@ $(function() {
 			response(aSearch);
 		}
 	});
+
+	$('select.song-label').combobox();
 	$( "#Date" ).datepicker();
 });

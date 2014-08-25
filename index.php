@@ -27,6 +27,29 @@ function renderSong($input) {
 		'<td><a href="'.$queryUrl.'">'.$title.'</a></td>'.
 	'</tr>';
 }
+
+function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
+	echo '<select name="'. $name . 'Label" class="song-label">';
+	$labels = array(
+		'Welcome Song',
+		'Opening Song',
+		'Birthday Song',
+		'Baptism Song',
+		'Article of Faith Song',
+		'Scripture Song',
+		'Reverence Song',
+		'Wiggle Song',
+		'Closing Song',
+	);
+	foreach ($labels as $label) {
+		$selected = '';
+		if ($label == $defaultLabel) {
+			$selected = ' selected="selected"';
+		}
+		echo '<option' . $selected . '>' . $label . '</option>';
+	}
+	echo "</select>";
+}
 $pageTitle = 'Primary Music';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
@@ -45,6 +68,7 @@ if(isset($form['Date'])) {
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 		<script src="js/script.js"></script>
+		<script src="js/ext-jquery-ui.min.js"></script>
 	</head>
 
 	<body class="<?php echo $bodyClass; ?>">
@@ -56,24 +80,32 @@ if(isset($form['Date'])) {
 
 		<table><tbody>
 
-		<?php if(!empty($form['WelcomeSong'])) :?>
-		<tr><td colspan=2><h2>Welcome Song</h2></td></tr>
-		<?php echo renderSong($form['WelcomeSong']); ?>
+		<?php if(!empty($form['SongA'])) :?>
+			<?php if(!empty($form['SongALabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongALabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongA']); ?>
 		<?php endif;?>
 
-		<?php if(!empty($form['OpeningSong'])) :?>
-		<tr><td colspan=2><h2>Opening Song</h2></td></tr>
-		<?php echo renderSong($form['OpeningSong']); ?>
+		<?php if(!empty($form['SongB'])) :?>
+			<?php if(!empty($form['SongBLabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongBLabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongB']); ?>
 		<?php endif;?>
 
-		<?php if(!empty($form['BirthdaySong'])) :?>
-		<tr><td colspan=2><h2>Birthday Song</h2></td></tr>
-		<?php echo renderSong($form['BirthdaySong']); ?>
+		<?php if(!empty($form['SongC'])) :?>
+			<?php if(!empty($form['SongCLabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongCLabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongC']); ?>
 		<?php endif;?>
 
-		<?php if(!empty($form['ReverenceSong'])) :?>
-		<tr><td colspan=2><h2>Reverence Song</h2></td></tr>
-		<?php echo renderSong($form['ReverenceSong']); ?>
+		<?php if(!empty($form['SongD'])) :?>
+			<?php if(!empty($form['SongDLabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongDLabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongD']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SingingTime'])) :
@@ -88,9 +120,11 @@ if(isset($form['Date'])) {
 		endif; // ! empty singingTime
 		endif; // ! empty form singingTime?>
 
-		<?php if(!empty($form['ClosingSong'])) :?>
-		<tr><td colspan=2><h2>Closing Song</h2></td></tr>
-		<?php echo renderSong($form['ClosingSong']); ?>
+		<?php if(!empty($form['SongE'])) :?>
+			<?php if(!empty($form['SongELabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongELabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongE']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
@@ -118,22 +152,22 @@ if(isset($form['Date'])) {
 
 				<div class="form-group">
 				  <div class="col-md-6">
-					<label for="WelcomeSong">Welcome Song</label>
-					<input type="text" class="form-control auto-complete" id="WelcomeSong" name="WelcomeSong">
+					<?php echo labelSelect('SongA', 'Welcome Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongA" name="SongA">
 				  </div>
 				  <div class="col-md-6">
-					<label for="OpeningSong">Opening Song</label>
-					<input type="text" class="form-control auto-complete" id="OpeningSong" name="OpeningSong">
+					<?php echo labelSelect('SongB', 'Opening Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongB" name="SongB">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <div class="col-md-6">
-					<label for="BirthdaySong">Birthday Song</label>
-					<input type="text" class="form-control auto-complete" id="BirthdaySong" name="BirthdaySong">
+				  	<?php echo labelSelect('SongC', 'Birthday Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongC" name="SongC">
 				  </div>
 				  <div class="col-md-6">
-					<label for="ReverenceSong">Reverence Song</label>
-					<input type="text" class="form-control auto-complete" id="ReverenceSong" name="ReverenceSong">
+				  	<?php echo labelSelect('SongD', 'Reverence Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongD" name="SongD">
 				  </div>
 				</div>
 
@@ -201,8 +235,8 @@ if(isset($form['Date'])) {
 		</div>
 		<div class="form-group clearfix">
 		  <div class="col-md-6">
-			<label for="ClosingSong">Closing Song</label>
-			<input type="text" class="form-control auto-complete" id="ClosingSong" name="ClosingSong">
+			<?php echo labelSelect('SongE', 'Closing Song') ?>
+			<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
 		  </div>
 		  <div class="col-md-6">&nbsp;</div>
 		</div>
