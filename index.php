@@ -37,6 +37,7 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 		'Baptism Song',
 		'Article of Faith Song',
 		'Scripture Song',
+		'Sharing Time Song',
 		'Reverence Song',
 		'Wiggle Song',
 		'Closing Song',
