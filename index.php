@@ -95,7 +95,7 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form['Notes'])) :?>
 		<tr><td colspan=2><h2>Notes</h2></td></tr>
-		<tr><td colspan=2><?php echo $form['Notes'] ?></tr>
+		<tr><td colspan=2><?php echo nl2br($form['Notes']) ?></tr>
 		<?php endif; // ! empty form notes?>
 
 		</tbody></table>
