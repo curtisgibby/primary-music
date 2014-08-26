@@ -31,6 +31,7 @@ function renderSong($input) {
 function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	echo '<select name="'. $name . 'Label" class="song-label">';
 	$labels = array(
+		'Prelude Song',
 		'Welcome Song',
 		'Opening Song',
 		'Birthday Song',
