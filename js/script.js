@@ -4,6 +4,10 @@ $(function() {
 			title: 'If The Savior Stood Beside Me'
 		},
 		{
+			title: 'I Know That My Savior Loves Me',
+			first_line: "A long time ago in a beautiful place"
+		},
+		{
 			title: 'Scripture Power',
 			first_line: "Because I want to be like the Savior, and I can"
 		},
