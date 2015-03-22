@@ -34,3 +34,9 @@ td.page {
 	text-align: right;
 	white-space: nowrap;
 }
+
+.ui-button.ui-button-icon-only {
+	height: 26px;
+	margin-top: -4px;
+	width: 26px;
+}
