@@ -110,6 +110,20 @@ if(isset($form['Date'])) {
 		<?php echo renderSong($form['SongD']); ?>
 		<?php endif;?>
 
+		<?php if(!empty($form['SongE'])) :?>
+			<?php if(!empty($form['SongELabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongELabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongE']); ?>
+		<?php endif;?>
+
+		<?php if(!empty($form['SongF'])) :?>
+			<?php if(!empty($form['SongFLabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongFLabel'] ?></h2></td></tr>
+			<?php endif;?>
+		<?php echo renderSong($form['SongF']); ?>
+		<?php endif;?>
+
 		<?php if(!empty($form['SingingTime'])) :
 		$singingTime = array_filter($form['SingingTime']);
 		if(!empty($singingTime)):
@@ -122,11 +136,11 @@ if(isset($form['Date'])) {
 		endif; // ! empty singingTime
 		endif; // ! empty form singingTime?>
 
-		<?php if(!empty($form['SongE'])) :?>
-			<?php if(!empty($form['SongELabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongELabel'] ?></h2></td></tr>
+		<?php if(!empty($form['SongG'])) :?>
+			<?php if(!empty($form['SongGLabel'])) :?>
+			<tr><td colspan=2><h2><?php echo $form['SongGLabel'] ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongE']); ?>
+		<?php echo renderSong($form['SongG']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
@@ -171,6 +185,16 @@ if(isset($form['Date'])) {
 				  <div class="col-md-6">
 				  	<?php echo labelSelect('SongD', 'Reverence Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="col-md-6">
+				  	<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
+				  </div>
+				  <div class="col-md-6">
+				  	<?php echo labelSelect('SongF', 'Wiggle Song') ?>
+					<input type="text" class="form-control auto-complete" id="SongF" name="SongF">
 				  </div>
 				</div>
 
@@ -238,8 +262,8 @@ if(isset($form['Date'])) {
 		</div>
 		<div class="form-group clearfix">
 		  <div class="col-md-6">
-			<?php echo labelSelect('SongE', 'Closing Song') ?>
-			<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
+			<?php echo labelSelect('SongG', 'Closing Song') ?>
+			<input type="text" class="form-control auto-complete" id="SongG" name="SongG">
 		  </div>
 		  <div class="col-md-6">&nbsp;</div>
 		</div>
@@ -251,7 +275,7 @@ if(isset($form['Date'])) {
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 
 		<?php endif;?>
