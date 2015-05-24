@@ -52,7 +52,7 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	}
 	echo "</select>";
 }
-$pageTitle = 'Primary Music';
+$pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
 if(isset($form['Date'])) {
