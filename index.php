@@ -52,7 +52,7 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	}
 	echo "</select>";
 }
-$pageTitle = 'Primary Music';
+$pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
 if(isset($form['Date'])) {
@@ -159,7 +159,7 @@ if(isset($form['Date'])) {
 				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-primary">Submit</button>
 				<div class="form-group">
 				  <div class="col-md-12">
 					<label for="Date">Date</label>
