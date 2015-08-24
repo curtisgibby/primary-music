@@ -179,21 +179,21 @@ if(isset($form['Date'])) {
 				</div>
 				<div class="form-group">
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongC', 'Birthday Song') ?>
+					<?php echo labelSelect('SongC', 'Birthday Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongC" name="SongC">
 				  </div>
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongD', 'Reverence Song') ?>
+					<?php echo labelSelect('SongD', 'Reverence Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
+					<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
 				  </div>
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongF', 'Wiggle Song') ?>
+					<?php echo labelSelect('SongF', 'Wiggle Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongF" name="SongF">
 				  </div>
 				</div>
@@ -277,6 +277,35 @@ if(isset($form['Date'])) {
 
 		<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
+
+		<script>
+		(function () {
+			var printMessage = 'You probably do not want to print this page. Rather, cancel the printing and hit the submit button to get a nice page formatted for printing.';
+			if ("onbeforeprint" in window) {
+				window.onbeforeprint = function () {
+					window.alert(printMessage);
+				}
+			}
+
+			else if (window.matchMedia) {
+				var mqList = window.matchMedia("print");
+				mqList.addListener(function (mql) {
+					if(mql.matches) {
+						window.alert(printMessage);
+					};
+				});
+			}
+
+			else {
+				(function (oldPrint) {
+					window.print = function () {
+						window.alert(printMessage);
+						oldPrint();
+					}
+				})(window.print);
+			}
+		})();
+		</script>
 
 		<?php endif;?>
 <?php include('../include/google-analytics.inc'); ?>
