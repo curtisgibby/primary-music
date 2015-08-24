@@ -278,6 +278,35 @@ if(isset($form['Date'])) {
 		<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 
+		<script>
+		(function () {
+			var printMessage = 'You probably do not want to print this page. Rather, cancel the printing and hit the submit button to get a nice page formatted for printing.';
+			if ("onbeforeprint" in window) {
+				window.onbeforeprint = function () {
+					window.alert(printMessage);
+				}
+			}
+
+			else if (window.matchMedia) {
+				var mqList = window.matchMedia("print");
+				mqList.addListener(function (mql) {
+					if(mql.matches) {
+						window.alert(printMessage);
+					};
+				});
+			}
+
+			else {
+				(function (oldPrint) {
+					window.print = function () {
+						window.alert(printMessage);
+						oldPrint();
+					}
+				})(window.print);
+			}
+		})();
+		</script>
+
 		<?php endif;?>
 	</body>
 </html>
