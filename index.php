@@ -179,21 +179,21 @@ if(isset($form['Date'])) {
 				</div>
 				<div class="form-group">
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongC', 'Birthday Song') ?>
+					<?php echo labelSelect('SongC', 'Birthday Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongC" name="SongC">
 				  </div>
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongD', 'Reverence Song') ?>
+					<?php echo labelSelect('SongD', 'Reverence Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
+					<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
 				  </div>
 				  <div class="col-md-6">
-				  	<?php echo labelSelect('SongF', 'Wiggle Song') ?>
+					<?php echo labelSelect('SongF', 'Wiggle Song') ?>
 					<input type="text" class="form-control auto-complete" id="SongF" name="SongF">
 				  </div>
 				</div>
