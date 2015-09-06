@@ -24,6 +24,10 @@ $(function() {
 			first_line: "Our Father has a family"
 		},
 		{
+			title: 'If I Listen with My Heart',
+			first_line: "If I had been a little child"
+		},
+		{
 			pages: 'CS 2–3',
 			title: 'I Am a Child of God'
 		},
