@@ -21,10 +21,10 @@ function renderSong($input) {
 				break;
 		}
 	}
-	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection='.$collection.'&query='.$query;
-	return '<tr>'.
-		'<td class="page"><a href="'.$queryUrl.'">'.trim($page).'</a></td>'.
-		'<td><a href="'.$queryUrl.'">'.$title.'</a></td>'.
+	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection=' . $collection . '&query=' . $query;
+	return '<tr>' .
+		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
+		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.
 	'</tr>';
 }
 
@@ -141,42 +141,42 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form['SongA'])) :?>
 			<?php if(!empty($form['SongALabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongALabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongALabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongA']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongB'])) :?>
 			<?php if(!empty($form['SongBLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongBLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongBLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongB']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongC'])) :?>
 			<?php if(!empty($form['SongCLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongCLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongCLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongC']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongD'])) :?>
 			<?php if(!empty($form['SongDLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongDLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongDLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongD']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongE'])) :?>
 			<?php if(!empty($form['SongELabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongELabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongELabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongE']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongF'])) :?>
 			<?php if(!empty($form['SongFLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongFLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongFLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongF']); ?>
 		<?php endif;?>
@@ -195,14 +195,14 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form['SongG'])) :?>
 			<?php if(!empty($form['SongGLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongGLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongGLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongG']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
 		<tr><td colspan=2><h2>Notes</h2></td></tr>
-		<tr><td colspan=2><?php echo nl2br($form['Notes']) ?></tr>
+		<tr><td colspan=2><?php echo nl2br(htmlentities($form['Notes'], ENT_QUOTES, 'utf-8')); ?></tr>
 		<?php endif; // ! empty form notes?>
 
 		</tbody></table>
