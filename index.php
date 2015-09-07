@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function renderSong($input) {
 	$query = $title = $input;
 	$page = '';
@@ -28,7 +28,27 @@ function renderSong($input) {
 	'</tr>';
 }
 
+function resetForm() {
+	return '
+	<form action="index.php" method="post">
+		<input type="hidden" name="reset" value="reset">
+		<button type="submit" class="btn btn-danger pull-right hidden-print">Reset</button>
+	</form>';
+}
+
+function singingTimeInput($index) {
+	return '
+	<div class="col-md-4">
+		<label for="SingingTime' . ($index + 1) . '">#' . ($index + 1). '</label>
+		<input type="text" class="form-control auto-complete" id="SingingTime' . ($index + 1) . '" name="SingingTime[]" value="' . (!empty($_SESSION['form']['SingingTime'][$index]) ? $_SESSION['form']['SingingTime'][$index] : '') . '">
+	</div>';
+}
+
 function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
+	$selectedLabel = $defaultLabel;
+	if (!empty($_SESSION['form'][$name . 'Label'])) {
+		$selectedLabel = $_SESSION['form'][$name . 'Label'];
+	}
 	echo '<select name="'. $name . 'Label" class="song-label">';
 	$labels = array(
 		'Prelude Song',
@@ -45,7 +65,7 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	);
 	foreach ($labels as $label) {
 		$selected = '';
-		if ($label == $defaultLabel) {
+		if ($label == $selectedLabel) {
 			$selected = ' selected="selected"';
 		}
 		echo '<option' . $selected . '>' . $label . '</option>';
@@ -55,6 +75,15 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 $pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
+
+if (!empty($form['reset'])) {
+	unset($form);
+	session_unset();
+}
+
+if (!empty($form)) {
+	$_SESSION['form'] = $form;
+}
 if(isset($form['Date'])) {
 	$pageTitle .= ' - '. date('j M Y', strtotime($form['Date']));
 	$bodyClass .= ' printable';
@@ -150,52 +179,61 @@ if(isset($form['Date'])) {
 
 		</tbody></table>
 		<hr>
-		<a href="index.php" class="hidden-print">&laquo; Go Back</a>
+		<a href="index.php" class="hidden-print pull-left">&laquo; Go Back</a>
+		<?php echo resetForm(); ?>
 
 		<?php else :?>
+		<?php
+		$selectedDate = strtotime('this Sunday', (time() - 42300));
+		if (!empty($_SESSION['form']['Date'])) {
+			$selectedDate = strtotime($_SESSION['form']['Date']);
+		}
+		?>
 
 		<div class="form-group clearfix">
 			<div class="col-md-9">
 				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
 
+				<?php echo resetForm(); ?>
+
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
 				<button type="submit" class="btn btn-primary">Submit</button>
 				<div class="form-group">
-				  <div class="col-md-12">
+					<div class="col-md-12">
 					<label for="Date">Date</label>
-					<input type="text" class="form-control" id="Date" value="<?php echo date("m/d/Y", strtotime("this Sunday", (time() - 42300)))?>" name="Date">
-				  </div>
+					<input type="text" class="form-control" id="Date" value="<?php echo date('m/d/Y', $selectedDate)?>" name="Date">
+					</div>
 				</div>
 
 				<div class="form-group">
-				  <div class="col-md-6">
+					<div class="col-md-6">
 					<?php echo labelSelect('SongA', 'Welcome Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongA" name="SongA">
-				  </div>
-				  <div class="col-md-6">
+					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? $_SESSION['form']['SongA'] : ''; ?>">
+					</div>
+					<div class="col-md-6">
 					<?php echo labelSelect('SongB', 'Opening Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongB" name="SongB">
-				  </div>
+					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? $_SESSION['form']['SongB'] : ''; ?>">
+					</div>
 				</div>
 				<div class="form-group">
-				  <div class="col-md-6">
+					<div class="col-md-6">
 					<?php echo labelSelect('SongC', 'Birthday Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongC" name="SongC">
-				  </div>
-				  <div class="col-md-6">
+					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? $_SESSION['form']['SongC'] : ''; ?>">
+					</div>
+					<div class="col-md-6">
 					<?php echo labelSelect('SongD', 'Reverence Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongD" name="SongD">
-				  </div>
+					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? $_SESSION['form']['SongD'] : ''; ?>">
+					</div>
 				</div>
 				<div class="form-group">
-				  <div class="col-md-6">
+					<div class="col-md-6">
 					<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongE" name="SongE">
-				  </div>
-				  <div class="col-md-6">
+					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? $_SESSION['form']['SongE'] : ''; ?>">
+					</div>
+					<div class="col-md-6">
 					<?php echo labelSelect('SongF', 'Wiggle Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongF" name="SongF">
-				  </div>
+					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? $_SESSION['form']['SongF'] : ''; ?>">
+					</div>
 				</div>
 
 			</div>
@@ -204,79 +242,53 @@ if(isset($form['Date'])) {
 
 		<h3>Singing Time</h3>
 		<div class="form-group">
-		  <p>You can enter as many or as few songs in this section as you like.</p>
-		  <div class="col-md-4">
-			<label for="SingingTime1">#1</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime1" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime2">#2</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime2" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime3">#3</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime3" name="SingingTime[]">
-		  </div>
-	  </div>
-	  <div class="form-group">
-		  <div class="col-md-4">
-			<label for="SingingTime4">#4</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime4" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime5">#5</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime5" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime6">#6</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime6" name="SingingTime[]">
-		  </div>
+			<p>You can enter as many or as few songs in this section as you like.</p>
+			<?php
+			$index = 0;
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+			?>
 		</div>
 		<div class="form-group">
-		  <div class="col-md-4">
-			<label for="SingingTime7">#7</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime7" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime8">#8</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime8" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime9">#9</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime9" name="SingingTime[]">
-		  </div>
+		<?php
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+		?>
 		</div>
 		<div class="form-group">
-		  <div class="col-md-4">
-			<label for="SingingTime10">#10</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime10" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime11">#11</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime11" name="SingingTime[]">
-		  </div>
-		  <div class="col-md-4">
-			<label for="SingingTime12">#12</label>
-			<input type="text" class="form-control auto-complete" id="SingingTime12" name="SingingTime[]">
-		  </div>
+		<?php
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+		?>
+		</div>
+		<div class="form-group">
+		<?php
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+			echo singingTimeInput($index++);
+		?>
 		</div>
 		<div class="form-group clearfix">
-		  <div class="col-md-6">
+			<div class="col-md-6">
 			<?php echo labelSelect('SongG', 'Closing Song') ?>
-			<input type="text" class="form-control auto-complete" id="SongG" name="SongG">
-		  </div>
-		  <div class="col-md-6">&nbsp;</div>
+			<input type="text" class="form-control auto-complete" id="SongG" name="SongG" value="<?php echo !empty($_SESSION['form']['SongG']) ? $_SESSION['form']['SongG'] : ''; ?>">
+			</div>
+			<div class="col-md-6">&nbsp;</div>
 		</div>
 
 		<div class="form-group clearfix">
 			<div class="col-md-12">
 				<label for="Notes">Notes</label>
-				<textarea rows=6 class="form-control" id="Notes" name="Notes"></textarea>
+				<textarea rows=6 class="form-control" id="Notes" name="Notes"><?php echo !empty($_SESSION['form']['Notes']) ? $_SESSION['form']['Notes'] : ''; ?></textarea>
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary pull-left">Submit</button>
 		</form>
+		<?php echo resetForm(); ?>
 
 		<script>
 		(function () {
