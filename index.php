@@ -88,6 +88,7 @@ if (!empty($form['hash'])) {
 		$contents = file_get_contents($filename);
 		$form = unserialize($contents);
 		if (is_array($form)) {
+			$_SESSION['form'] = $form;
 			$fromFile = true;
 			$errorMessage = '';
 		}
