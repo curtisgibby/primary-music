@@ -99,7 +99,7 @@ if (!empty($form['reset'])) {
 	session_unset();
 }
 
-if (!empty($form) && !$fromFile) {
+if (!empty($form['Date']) && !$fromFile) {
 	$_SESSION['form'] = $form;
 	$serialized = serialize($form);
 	$md5 = md5($serialized . time());
