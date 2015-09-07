@@ -28,6 +28,14 @@ function renderSong($input) {
 	'</tr>';
 }
 
+function resetForm() {
+	return '
+	<form action="index.php" method="post">
+		<input type="hidden" name="reset" value="reset">
+		<button type="submit" class="btn btn-danger pull-right hidden-print">Reset</button>
+	</form>';
+}
+
 function singingTimeInput($index) {
 	return '
 	<div class="col-md-4">
@@ -67,6 +75,12 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 $pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
+
+if (!empty($form['reset'])) {
+	unset($form);
+	session_unset();
+}
+
 if (!empty($form)) {
 	$_SESSION['form'] = $form;
 }
@@ -165,7 +179,8 @@ if(isset($form['Date'])) {
 
 		</tbody></table>
 		<hr>
-		<a href="index.php" class="hidden-print">&laquo; Go Back</a>
+		<a href="index.php" class="hidden-print pull-left">&laquo; Go Back</a>
+		<?php echo resetForm(); ?>
 
 		<?php else :?>
 		<?php
@@ -178,6 +193,8 @@ if(isset($form['Date'])) {
 		<div class="form-group clearfix">
 			<div class="col-md-9">
 				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
+
+				<?php echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
 				<button type="submit" class="btn btn-primary">Submit</button>
@@ -269,8 +286,9 @@ if(isset($form['Date'])) {
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary pull-left">Submit</button>
 		</form>
+		<?php echo resetForm(); ?>
 
 		<script>
 		(function () {
