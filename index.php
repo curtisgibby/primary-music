@@ -21,10 +21,10 @@ function renderSong($input) {
 				break;
 		}
 	}
-	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection='.$collection.'&query='.$query;
-	return '<tr>'.
-		'<td class="page"><a href="'.$queryUrl.'">'.trim($page).'</a></td>'.
-		'<td><a href="'.$queryUrl.'">'.$title.'</a></td>'.
+	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection=' . $collection . '&query=' . $query;
+	return '<tr>' .
+		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
+		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.
 	'</tr>';
 }
 
@@ -72,17 +72,45 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	}
 	echo "</select>";
 }
+
+define('SAVE_FILEPATH', __DIR__ . DIRECTORY_SEPARATOR . 'saved' . DIRECTORY_SEPARATOR);
+
 $pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
+
+$fromFile = false;
+if (!empty($form['hash'])) {
+	$filename = SAVE_FILEPATH . $form['hash'];
+	unset($form['hash']);
+	$errorMessage = 'Invalid save file';
+	if (file_exists($filename)) {
+		$contents = file_get_contents($filename);
+		$form = unserialize($contents);
+		if (is_array($form)) {
+			$fromFile = true;
+			$errorMessage = '';
+		}
+	}
+}
 
 if (!empty($form['reset'])) {
 	unset($form);
 	session_unset();
 }
 
-if (!empty($form)) {
+if (!empty($form) && !$fromFile) {
 	$_SESSION['form'] = $form;
+	$serialized = serialize($form);
+	$md5 = md5($serialized . time());
+	$filepath = SAVE_FILEPATH . $md5;
+	$f = fopen($filepath, 'w');
+	fwrite($f, $serialized);
+	fclose($f);
+
+	// redirect to result page
+	header('Location: ' . basename(__FILE__) . '?hash=' . $md5);
+	exit();
 }
 if(isset($form['Date'])) {
 	$pageTitle .= ' - '. date('j M Y', strtotime($form['Date']));
@@ -113,42 +141,42 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form['SongA'])) :?>
 			<?php if(!empty($form['SongALabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongALabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongALabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongA']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongB'])) :?>
 			<?php if(!empty($form['SongBLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongBLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongBLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongB']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongC'])) :?>
 			<?php if(!empty($form['SongCLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongCLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongCLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongC']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongD'])) :?>
 			<?php if(!empty($form['SongDLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongDLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongDLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongD']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongE'])) :?>
 			<?php if(!empty($form['SongELabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongELabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongELabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongE']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongF'])) :?>
 			<?php if(!empty($form['SongFLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongFLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongFLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongF']); ?>
 		<?php endif;?>
@@ -167,14 +195,14 @@ if(isset($form['Date'])) {
 
 		<?php if(!empty($form['SongG'])) :?>
 			<?php if(!empty($form['SongGLabel'])) :?>
-			<tr><td colspan=2><h2><?php echo $form['SongGLabel'] ?></h2></td></tr>
+			<tr><td colspan=2><h2><?php echo htmlentities($form['SongGLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
 		<?php echo renderSong($form['SongG']); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
 		<tr><td colspan=2><h2>Notes</h2></td></tr>
-		<tr><td colspan=2><?php echo nl2br($form['Notes']) ?></tr>
+		<tr><td colspan=2><?php echo nl2br(htmlentities($form['Notes'], ENT_QUOTES, 'utf-8')); ?></tr>
 		<?php endif; // ! empty form notes?>
 
 		</tbody></table>
@@ -194,7 +222,11 @@ if(isset($form['Date'])) {
 			<div class="col-md-9">
 				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
 
-				<?php echo resetForm(); ?>
+				<?php
+				if (!empty($errorMessage)) {
+					echo '<p class="alert alert-danger">' . $errorMessage . '</p>';
+				}
+				echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
 				<button type="submit" class="btn btn-primary">Submit</button>
