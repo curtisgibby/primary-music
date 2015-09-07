@@ -72,17 +72,45 @@ function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
 	}
 	echo "</select>";
 }
+
+define('SAVE_FILEPATH', __DIR__ . DIRECTORY_SEPARATOR . 'saved' . DIRECTORY_SEPARATOR);
+
 $pageTitle = 'Primary Music Planner';
 $bodyClass = 'container';
 $form = array_filter($_REQUEST);
+
+$fromFile = false;
+if (!empty($form['hash'])) {
+	$filename = SAVE_FILEPATH . $form['hash'];
+	unset($form['hash']);
+	$errorMessage = 'Invalid save file';
+	if (file_exists($filename)) {
+		$contents = file_get_contents($filename);
+		$form = unserialize($contents);
+		if (is_array($form)) {
+			$fromFile = true;
+			$errorMessage = '';
+		}
+	}
+}
 
 if (!empty($form['reset'])) {
 	unset($form);
 	session_unset();
 }
 
-if (!empty($form)) {
+if (!empty($form) && !$fromFile) {
 	$_SESSION['form'] = $form;
+	$serialized = serialize($form);
+	$md5 = md5($serialized . time());
+	$filepath = SAVE_FILEPATH . $md5;
+	$f = fopen($filepath, 'w');
+	fwrite($f, $serialized);
+	fclose($f);
+
+	// redirect to result page
+	header('Location: ' . basename(__FILE__) . '?hash=' . $md5);
+	exit();
 }
 if(isset($form['Date'])) {
 	$pageTitle .= ' - '. date('j M Y', strtotime($form['Date']));
@@ -194,7 +222,11 @@ if(isset($form['Date'])) {
 			<div class="col-md-9">
 				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
 
-				<?php echo resetForm(); ?>
+				<?php
+				if (!empty($errorMessage)) {
+					echo '<p class="alert alert-danger">' . $errorMessage . '</p>';
+				}
+				echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
 				<button type="submit" class="btn btn-primary">Submit</button>
