@@ -40,7 +40,7 @@ function singingTimeInput($index) {
 	return '
 	<div class="col-md-4">
 		<label for="SingingTime' . ($index + 1) . '">#' . ($index + 1). '</label>
-		<input type="text" class="form-control auto-complete" id="SingingTime' . ($index + 1) . '" name="SingingTime[]" value="' . (!empty($_SESSION['form']['SingingTime'][$index]) ? $_SESSION['form']['SingingTime'][$index] : '') . '">
+		<input type="text" class="form-control auto-complete" id="SingingTime' . ($index + 1) . '" name="SingingTime[]" value="' . (!empty($_SESSION['form']['SingingTime'][$index]) ? htmlentities($_SESSION['form']['SingingTime'][$index], ENT_QUOTES, 'utf-8') : '') . '">
 	</div>';
 }
 
@@ -241,31 +241,31 @@ if(isset($form['Date'])) {
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo labelSelect('SongA', 'Welcome Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? $_SESSION['form']['SongA'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? htmlentities($_SESSION['form']['SongA'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo labelSelect('SongB', 'Opening Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? $_SESSION['form']['SongB'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? htmlentities($_SESSION['form']['SongB'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo labelSelect('SongC', 'Birthday Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? $_SESSION['form']['SongC'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? htmlentities($_SESSION['form']['SongC'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo labelSelect('SongD', 'Reverence Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? $_SESSION['form']['SongD'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? htmlentities($_SESSION['form']['SongD'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? $_SESSION['form']['SongE'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? htmlentities($_SESSION['form']['SongE'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo labelSelect('SongF', 'Wiggle Song') ?>
-					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? $_SESSION['form']['SongF'] : ''; ?>">
+					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? htmlentities($_SESSION['form']['SongF'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 
@@ -307,7 +307,7 @@ if(isset($form['Date'])) {
 		<div class="form-group clearfix">
 			<div class="col-md-6">
 			<?php echo labelSelect('SongG', 'Closing Song') ?>
-			<input type="text" class="form-control auto-complete" id="SongG" name="SongG" value="<?php echo !empty($_SESSION['form']['SongG']) ? $_SESSION['form']['SongG'] : ''; ?>">
+			<input type="text" class="form-control auto-complete" id="SongG" name="SongG" value="<?php echo !empty($_SESSION['form']['SongG']) ? htmlentities($_SESSION['form']['SongG'], ENT_QUOTES, 'utf-8') : ''; ?>">
 			</div>
 			<div class="col-md-6">&nbsp;</div>
 		</div>
@@ -315,7 +315,7 @@ if(isset($form['Date'])) {
 		<div class="form-group clearfix">
 			<div class="col-md-12">
 				<label for="Notes">Notes</label>
-				<textarea rows=6 class="form-control" id="Notes" name="Notes"><?php echo !empty($_SESSION['form']['Notes']) ? $_SESSION['form']['Notes'] : ''; ?></textarea>
+				<textarea rows=6 class="form-control" id="Notes" name="Notes"><?php echo !empty($_SESSION['form']['Notes']) ? htmlentities($_SESSION['form']['Notes'], ENT_QUOTES, 'utf-8') : ''; ?></textarea>
 			</div>
 		</div>
 
