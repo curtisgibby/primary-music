@@ -239,7 +239,7 @@ if(isset($form['Date'])) {
 
 		<div class="form-group clearfix">
 			<div class="col-md-9">
-				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or copy-paste them in an email to your accompanists.</p>
+				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or send the URL in an email to your accompanists or Primary Presidency.</p>
 
 				<?php
 				if (!empty($errorMessage)) {
