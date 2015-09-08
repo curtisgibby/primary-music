@@ -113,9 +113,15 @@ if (!empty($form['Date']) && !$fromFile) {
 	header('Location: ' . basename(__FILE__) . '?hash=' . $md5);
 	exit();
 }
+$headerScript = $qrCode = '';
 if(isset($form['Date'])) {
 	$pageTitle .= ' - '. date('j M Y', strtotime($form['Date']));
 	$bodyClass .= ' printable';
+	$currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$qrCode = '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=' . urlencode($currentUrl) . '&amp;qzone=1&amp;margin=0&amp;size=100x100&amp;ecc=L" alt="qr code" class="pull-right"/>';
+	$headerScript = '<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "fad20de0-c042-4748-835f-44d7d3ace9df", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>';
 }
 ?>
 <html>
@@ -124,14 +130,16 @@ if(isset($form['Date'])) {
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" media="screen">
-		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style.min.css" rel="stylesheet">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 		<script src="js/script.min.js"></script>
 		<script src="js/ext-jquery-ui.min.js"></script>
+		<?php echo $headerScript; ?>
 	</head>
 
 	<body class="<?php echo $bodyClass; ?>">
+		<?php echo $qrCode; ?>
 		<div class="page-header">
 			<h1><?php echo $pageTitle?></h1>
 		</div>
@@ -210,6 +218,16 @@ if(isset($form['Date'])) {
 		<hr>
 		<a href="index.php" class="hidden-print pull-left">&laquo; Go Back</a>
 		<?php echo resetForm(); ?>
+
+		<div class="hidden-print share clearfix">
+			<h2>Share This Plan</h2>
+			<input type="text" class="form-control" value="<?php echo $currentUrl;?>">
+			<span class='st_facebook' displayText='Facebook'></span>
+			<span class='st_twitter' displayText='Tweet'></span>
+			<span class='st_linkedin' displayText='LinkedIn'></span>
+			<span class='st_pinterest' displayText='Pinterest'></span>
+			<span class='st_email' displayText='Email'></span>
+		</div>
 
 		<?php else :?>
 		<?php
