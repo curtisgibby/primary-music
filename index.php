@@ -150,6 +150,9 @@ if (!empty($form['Date']) && !$fromFile) {
 }
 $qrCode = '';
 $headerScript = '<script src="js/locale/' . $language . '.js"></script>';
+if ($language != 'en') {
+	$headerScript .= '<script src="js/locale/datepicker-' . $language . '.js"></script>';
+}
 if(isset($form['Date'])) {
 	setlocale(LC_TIME, $GLOBALS['locale']);
 	$pageTitle .= ' - ' . strftime('%d %B %Y (%Y-%m-%d)', strtotime($form['Date']));
