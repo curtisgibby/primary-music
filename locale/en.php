@@ -1,5 +1,6 @@
 <?php
 $GLOBALS = array(
+	'locale' => 'en_US',
 	'language_code' => 'eng',
 	'labels' => array(
 		'LABEL_PAGE_TITLE'               => 'LDS Primary Music Planner',

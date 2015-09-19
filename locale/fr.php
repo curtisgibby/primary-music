@@ -1,5 +1,6 @@
 <?php
 $GLOBALS = array(
+	'locale' => 'fr_FR',
 	'language_code' => 'fra',
 	'labels' => array(
 		'LABEL_PAGE_TITLE'               => 'Planificateur de Musique de primaire SDJ',
