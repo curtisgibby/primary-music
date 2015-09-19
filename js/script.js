@@ -3,10 +3,7 @@ $(function() {
 		cache: true
 	});
 	$(document).on('change', '#Language', function(){
-		$.getScript('js/locale/' + $(this).val() + '.js')
-		.done(function( script, textStatus ) {
-			$('.auto-complete').val('');
-		});
+		window.location.href = 'index.php?language=' + $(this).val() + '&reset=1';
 	});
 
 	$( ".auto-complete" ).autocomplete({

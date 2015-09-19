@@ -150,6 +150,9 @@ if (!empty($form['Date']) && !$fromFile) {
 }
 $qrCode = '';
 $headerScript = '<script src="js/locale/' . $language . '.js"></script>';
+if ($language != 'en') {
+	$headerScript .= '<script src="js/locale/datepicker-' . $language . '.js"></script>';
+}
 if(isset($form['Date'])) {
 	setlocale(LC_TIME, $GLOBALS['locale']);
 	$pageTitle .= ' - ' . strftime('%d %B %Y (%Y-%m-%d)', strtotime($form['Date']));
@@ -339,7 +342,7 @@ if(isset($form['Date'])) {
 				</div>
 
 			</div>
-			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3">
+			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3 hidden-xs">
 		</div>
 
 		<h3><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h3>
