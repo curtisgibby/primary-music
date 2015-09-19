@@ -339,7 +339,7 @@ if(isset($form['Date'])) {
 				</div>
 
 			</div>
-			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3">
+			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3 hidden-xs">
 		</div>
 
 		<h3><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h3>
