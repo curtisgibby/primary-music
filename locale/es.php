@@ -1,5 +1,6 @@
 <?php
 $GLOBALS = array(
+	'locale' => 'es_ES',
 	'language_code' => 'spa',
 	'labels' => array(
 		'LABEL_PAGE_TITLE'               => 'Planificador de música para Primaria SUD',

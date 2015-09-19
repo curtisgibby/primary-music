@@ -151,7 +151,7 @@ if (!empty($form['Date']) && !$fromFile) {
 $qrCode = '';
 $headerScript = '<script src="js/locale/' . $language . '.js"></script>';
 if(isset($form['Date'])) {
-	setlocale(LC_TIME, $language);
+	setlocale(LC_TIME, $GLOBALS['locale']);
 	$pageTitle .= ' - ' . strftime('%d %B %Y (%Y-%m-%d)', strtotime($form['Date']));
 	$bodyClass .= ' printable';
 	$currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
