@@ -44,3 +44,9 @@ td.page {
 .share {
 	margin-top: 50px;
 }
+
+footer {
+	font-style: italic;
+	font-size: 80%;
+	margin-top: 30px;
+}

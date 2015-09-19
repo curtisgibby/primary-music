@@ -1,38 +1,83 @@
 <?php
 session_start();
+$form = array_filter($_REQUEST);
+
+$language = 'en';
+$availableLanguages = array(
+	'en' => 'English',
+	'es' => 'Spanish (español)',
+	'fr' => 'French (français)',
+	'pt' => 'Portuguese (português)'
+);
+$preferredLanguages = _getLanguagesFromHTTPHeader();
+if (!empty($form['language'])) {
+	$preferredLanguages = array($form['language']);
+}
+foreach ($preferredLanguages as $preferredLanguage) {
+	if (array_key_exists($preferredLanguage, $availableLanguages)) {
+		$language = $preferredLanguage;
+		break;
+	}
+}
+require_once 'locale/' . $language . '.php';
+
+function _getLanguagesFromHTTPHeader() {
+	$languages = array();
+	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+		// break up string into pieces (languages and q factors)
+		preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $langParse);
+
+		if (count($langParse[1])) {
+			// create a list like 'en' => 0.8
+			$languageRegions = array_combine($langParse[1], $langParse[4]);
+
+			// set default to 1 for any without q factor
+			foreach ($languageRegions as $key => $val) {
+				if ($val === '') {
+					$languageRegions[$key] = 1;
+				}
+			}
+
+			// sort list based on value, higher values first
+			arsort($languageRegions, SORT_NUMERIC);
+			//Now we don't care about the actual numeric rankings, just
+			//that the languages are in preferred order
+			foreach($languageRegions as $language => $ignoreRankingNow) {
+				//Don't care about regions ('en' vs 'en-us')
+				$languages[] = strtolower(substr($language, 0, 2));
+			}
+		}
+	}
+	return $languages;
+}
+
 function renderSong($input) {
 	$query = $title = $input;
 	$page = '';
-	$collection = 'music-for-children';
 
 	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $input, $matches);
 
+	$collection = $GLOBALS['collections']['default'];
 	if(!empty($matches)) {
 		$query = $matches[2];
 		$page = $matches[0];
 		$title = str_replace($page, '', $title);
-		switch ($matches[1]) {
-			case 'Hymns':
-				$collection = 'hymnal';
-				break;
-			
-			case 'CS':
-				$collection = 'childrens-songbook';
-				break;
+		if (array_key_exists($matches[1], $GLOBALS['collections'])) {
+			$collection = $GLOBALS['collections'][$matches[1]];
 		}
 	}
-	$queryUrl = 'http://www.lds.org/music/library/search?lang=eng&collection=' . $collection . '&query=' . $query;
+	$queryUrl = 'http://www.lds.org/music/library/search?lang=' . $GLOBALS['language_code'] . '&collection=' . $collection . '&query=' . $query;
 	return '<tr>' .
 		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
 		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.
 	'</tr>';
 }
 
-function resetForm() {
+function resetForm($class = '') {
 	return '
-	<form action="index.php" method="post">
+	<form action="index.php" method="post" class="' . $class . '">
 		<input type="hidden" name="reset" value="reset">
-		<button type="submit" class="btn btn-danger pull-right hidden-print">Reset</button>
+		<button type="submit" class="btn btn-danger pull-right hidden-print">' . $GLOBALS['labels']['LABEL_RESET'] . '</button>
 	</form>';
 }
 
@@ -44,40 +89,23 @@ function singingTimeInput($index) {
 	</div>';
 }
 
-function labelSelect($name = 'SongA', $defaultLabel = 'Opening Song') {
-	$selectedLabel = $defaultLabel;
+function optionSelect($name = 'SongA', $defaultOption = 'OPTION_OPENING') {
+	$selectedOption = $defaultOption;
 	if (!empty($_SESSION['form'][$name . 'Label'])) {
-		$selectedLabel = $_SESSION['form'][$name . 'Label'];
+		$selectedOption = $_SESSION['form'][$name . 'Label'];
 	}
 	echo '<select name="'. $name . 'Label" class="song-label">';
-	$labels = array(
-		'Prelude Song',
-		'Welcome Song',
-		'Opening Song',
-		'Birthday Song',
-		'Baptism Song',
-		'Article of Faith Song',
-		'Scripture Song',
-		'Sharing Time Song',
-		'Reverence Song',
-		'Wiggle Song',
-		'Closing Song',
-	);
-	foreach ($labels as $label) {
+	foreach ($GLOBALS['options'] as $optionKey => $option) {
 		$selected = '';
-		if ($label == $selectedLabel) {
+		if ($optionKey == $selectedOption) {
 			$selected = ' selected="selected"';
 		}
-		echo '<option' . $selected . '>' . $label . '</option>';
+		echo '<option' . $selected . '>' . $option . '</option>';
 	}
 	echo "</select>";
 }
 
 define('SAVE_FILEPATH', __DIR__ . DIRECTORY_SEPARATOR . 'saved' . DIRECTORY_SEPARATOR);
-
-$pageTitle = 'Primary Music Planner';
-$bodyClass = 'container';
-$form = array_filter($_REQUEST);
 
 $fromFile = false;
 if (!empty($form['hash'])) {
@@ -91,9 +119,16 @@ if (!empty($form['hash'])) {
 			$_SESSION['form'] = $form;
 			$fromFile = true;
 			$errorMessage = '';
+			if (!empty($form['Language'])) {
+				$language = $form['Language'];
+				require_once 'locale/' . $language . '.php';
+			}
 		}
 	}
 }
+
+$pageTitle = $GLOBALS['labels']['LABEL_PAGE_TITLE'];
+$bodyClass = 'container';
 
 if (!empty($form['reset'])) {
 	unset($form);
@@ -113,9 +148,11 @@ if (!empty($form['Date']) && !$fromFile) {
 	header('Location: ' . basename(__FILE__) . '?hash=' . $md5);
 	exit();
 }
-$headerScript = $qrCode = '';
+$qrCode = '';
+$headerScript = '<script src="js/locale/' . $language . '.js"></script>';
 if(isset($form['Date'])) {
-	$pageTitle .= ' - '. date('j M Y', strtotime($form['Date']));
+	setlocale(LC_TIME, $language);
+	$pageTitle .= ' - ' . strftime('%d %B %Y (%Y-%m-%d)', strtotime($form['Date']));
 	$bodyClass .= ' printable';
 	$currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	$qrCode = '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=' . urlencode($currentUrl) . '&amp;qzone=1&amp;margin=0&amp;size=100x100&amp;ecc=L" alt="qr code" class="pull-right"/>';
@@ -133,9 +170,9 @@ if(isset($form['Date'])) {
 		<link href="css/style.min.css" rel="stylesheet">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<?php echo $headerScript; ?>
 		<script src="js/script.min.js"></script>
 		<script src="js/ext-jquery-ui.min.js"></script>
-		<?php echo $headerScript; ?>
 	</head>
 
 	<body class="<?php echo $bodyClass; ?>">
@@ -194,7 +231,7 @@ if(isset($form['Date'])) {
 		$singingTime = array_filter($form['SingingTime']);
 		if(!empty($singingTime)):
 		?>
-		<tr><td colspan=2><h2>Singing Time</h2></td></tr>
+		<tr><td colspan=2><h2><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h2></td></tr>
 		<?php
 		foreach ($singingTime as $song) {
 			echo renderSong($song);
@@ -210,17 +247,17 @@ if(isset($form['Date'])) {
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
-		<tr><td colspan=2><h2>Notes</h2></td></tr>
+		<tr><td colspan=2><h2><?= $GLOBALS['labels']['LABEL_NOTES'] ?></h2></td></tr>
 		<tr><td colspan=2><?php echo nl2br(htmlentities($form['Notes'], ENT_QUOTES, 'utf-8')); ?></tr>
 		<?php endif; // ! empty form notes?>
 
 		</tbody></table>
 		<hr>
-		<a href="index.php" class="hidden-print pull-left">&laquo; Go Back</a>
+		<a href="index.php" class="hidden-print pull-left">&laquo; <?= $GLOBALS['labels']['LABEL_BACK'] ?></a>
 		<?php echo resetForm(); ?>
 
 		<div class="hidden-print share clearfix">
-			<h2>Share This Plan</h2>
+			<h2><?= $GLOBALS['labels']['LABEL_SHARE'] ?></h2>
 			<input type="text" class="form-control" value="<?php echo $currentUrl;?>">
 			<span class='st_facebook' displayText='Facebook'></span>
 			<span class='st_twitter' displayText='Tweet'></span>
@@ -239,7 +276,7 @@ if(isset($form['Date'])) {
 
 		<div class="form-group clearfix">
 			<div class="col-md-9">
-				<p>This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or send the URL in an email to your accompanists or Primary Presidency.</p>
+				<p><?= $GLOBALS['labels']['LABEL_EXPLANATION'] ?></p>
 
 				<?php
 				if (!empty($errorMessage)) {
@@ -248,52 +285,66 @@ if(isset($form['Date'])) {
 				echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary"><?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
 				<div class="form-group">
-					<div class="col-md-12">
-					<label for="Date">Date</label>
-					<input type="text" class="form-control" id="Date" value="<?php echo date('m/d/Y', $selectedDate)?>" name="Date">
+					<div class="col-md-9">
+						<label for="Date"><?= $GLOBALS['labels']['LABEL_DATE'] ?></label>
+						<input type="text" class="form-control" id="Date" value="<?php echo date('Y-m-d', $selectedDate)?>" name="Date">
+					</div>
+					<div class="col-md-3">
+						<label for="Language"><?= $GLOBALS['labels']['LABEL_LANGUAGE'] ?></label>
+						<?php
+						echo '<select id="Language" name="Language" class="form-control">';
+						foreach ($availableLanguages as $code => $title) {
+							$selected = '';
+							if ($language == $code) {
+								$selected = ' selected="selected"';
+							}
+							echo '<option value="' . $code . '"' . $selected . '>' . $title . '</option>';
+						}
+						echo "</select>";
+						?>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-md-6">
-					<?php echo labelSelect('SongA', 'Welcome Song') ?>
+					<?php echo optionSelect('SongA', 'OPTION_WELCOME') ?>
 					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? htmlentities($_SESSION['form']['SongA'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
-					<?php echo labelSelect('SongB', 'Opening Song') ?>
+					<?php echo optionSelect('SongB', 'OPTION_OPENING') ?>
 					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? htmlentities($_SESSION['form']['SongB'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-					<?php echo labelSelect('SongC', 'Birthday Song') ?>
+					<?php echo optionSelect('SongC', 'OPTION_BIRTHDAY') ?>
 					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? htmlentities($_SESSION['form']['SongC'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
-					<?php echo labelSelect('SongD', 'Reverence Song') ?>
+					<?php echo optionSelect('SongD', 'OPTION_REVERENCE') ?>
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? htmlentities($_SESSION['form']['SongD'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-					<?php echo labelSelect('SongE', 'Sharing Time Song') ?>
+					<?php echo optionSelect('SongE', 'OPTION_SHARING') ?>
 					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? htmlentities($_SESSION['form']['SongE'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
-					<?php echo labelSelect('SongF', 'Wiggle Song') ?>
+					<?php echo optionSelect('SongF', 'OPTION_WIGGLE') ?>
 					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? htmlentities($_SESSION['form']['SongF'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 
 			</div>
-			<img src="childrens-songbook.jpg" class="col-md-3">
+			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3">
 		</div>
 
-		<h3>Singing Time</h3>
+		<h3><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h3>
 		<div class="form-group">
-			<p>You can enter as many or as few songs in this section as you like.</p>
+			<p><?= $GLOBALS['labels']['LABEL_SINGING_TIME_EXPLANATION'] ?></p>
 			<?php
 			$index = 0;
 			echo singingTimeInput($index++);
@@ -324,7 +375,7 @@ if(isset($form['Date'])) {
 		</div>
 		<div class="form-group clearfix">
 			<div class="col-md-6">
-			<?php echo labelSelect('SongG', 'Closing Song') ?>
+			<?php echo optionSelect('SongG', 'OPTION_CLOSING') ?>
 			<input type="text" class="form-control auto-complete" id="SongG" name="SongG" value="<?php echo !empty($_SESSION['form']['SongG']) ? htmlentities($_SESSION['form']['SongG'], ENT_QUOTES, 'utf-8') : ''; ?>">
 			</div>
 			<div class="col-md-6">&nbsp;</div>
@@ -332,44 +383,24 @@ if(isset($form['Date'])) {
 
 		<div class="form-group clearfix">
 			<div class="col-md-12">
-				<label for="Notes">Notes</label>
+				<label for="Notes"><?= $GLOBALS['labels']['LABEL_NOTES'] ?></label>
 				<textarea rows=6 class="form-control" id="Notes" name="Notes"><?php echo !empty($_SESSION['form']['Notes']) ? htmlentities($_SESSION['form']['Notes'], ENT_QUOTES, 'utf-8') : ''; ?></textarea>
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary pull-left">Submit</button>
+		<button type="submit" class="btn btn-primary pull-left"><?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
 		</form>
-		<?php echo resetForm(); ?>
+		<?php echo resetForm('clearfix'); ?>
 
 		<script>
 		(function () {
-			var printMessage = 'You probably do not want to print this page. Rather, cancel the printing and hit the submit button to get a nice page formatted for printing.';
-			if ("onbeforeprint" in window) {
-				window.onbeforeprint = function () {
-					window.alert(printMessage);
-				}
-			}
-
-			else if (window.matchMedia) {
-				var mqList = window.matchMedia("print");
-				mqList.addListener(function (mql) {
-					if(mql.matches) {
-						window.alert(printMessage);
-					};
-				});
-			}
-
-			else {
-				(function (oldPrint) {
-					window.print = function () {
-						window.alert(printMessage);
-						oldPrint();
-					}
-				})(window.print);
-			}
+			var printMessage = <?= json_encode($GLOBALS['labels']['LABEL_NO_PRINT']); ?>;
+			if("onbeforeprint"in window)window.onbeforeprint=function(){window.alert(printMessage)};else if(window.matchMedia){var mqList=window.matchMedia("print");mqList.addListener(function(a){a.matches&&window.alert(printMessage)})}else!function(a){window.print=function(){window.alert(printMessage),a()}}(window.print);
 		})();
 		</script>
 
 		<?php endif;?>
+
+		<footer class='hidden-print'><div class="container"><?= $GLOBALS['labels']['LABEL_NOT_OFFICIAL'] ?></div></footer>
 	</body>
 </html>
