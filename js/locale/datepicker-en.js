@@ -1,0 +1,1 @@
+!function(a){"function"==typeof define&&define.amd?define(["../widgets/datepicker"],a):a(jQuery.datepicker)}(function(a){return a.regional.en={dateFormat:"yy-mm-dd"},a.setDefaults(a.regional.en),a.regional.en});
