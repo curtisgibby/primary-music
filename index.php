@@ -131,8 +131,8 @@ $pageTitle = $GLOBALS['labels']['LABEL_PAGE_TITLE'];
 $bodyClass = 'container';
 
 if (!empty($form['reset'])) {
-	unset($form);
 	session_unset();
+	header('Location: ' . str_replace('&reset=1', '', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']));
 }
 
 if (!empty($form['Date']) && !$fromFile) {
