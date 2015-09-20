@@ -1,5 +1,6 @@
 <?php
 session_start();
+DEFINE('COOKIE_PREFIX', 'primary_music_planner_');
 $form = array_filter($_REQUEST);
 
 $language = 'en';
@@ -10,9 +11,15 @@ $availableLanguages = array(
 	'pt' => 'Portuguese (português)'
 );
 $preferredLanguages = _getLanguagesFromHTTPHeader();
+
+if (!empty($_COOKIE['primary_music_planner_Language'])) {
+	$preferredLanguages = array($_COOKIE['primary_music_planner_Language']);
+}
+
 if (!empty($form['language'])) {
 	$preferredLanguages = array($form['language']);
 }
+
 foreach ($preferredLanguages as $preferredLanguage) {
 	if (array_key_exists($preferredLanguage, $availableLanguages)) {
 		$language = $preferredLanguage;
@@ -91,13 +98,19 @@ function singingTimeInput($index) {
 
 function optionSelect($name = 'SongA', $defaultOption = 'OPTION_OPENING') {
 	$selectedOption = $defaultOption;
-	if (!empty($_SESSION['form'][$name . 'Label'])) {
-		$selectedOption = $_SESSION['form'][$name . 'Label'];
+	$label = $name . 'Label';
+	if (!empty($_COOKIE[COOKIE_PREFIX . $label]) && in_array(COOKIE_PREFIX . $label, $GLOBALS['options']) !== false) {
+		$selectedOption = $_COOKIE[COOKIE_PREFIX . $label];
 	}
+
+	if (!empty($_SESSION['form'][$label]) && in_array(COOKIE_PREFIX . $label, $GLOBALS['options']) !== false) {
+		$selectedOption = $_SESSION['form'][$label];
+	}
+
 	echo '<select name="'. $name . 'Label" class="song-label">';
 	foreach ($GLOBALS['options'] as $optionKey => $option) {
 		$selected = '';
-		if ($optionKey == $selectedOption) {
+		if ($optionKey == $selectedOption || $option == $selectedOption) {
 			$selected = ' selected="selected"';
 		}
 		echo '<option' . $selected . '>' . $option . '</option>';
@@ -131,12 +144,32 @@ $pageTitle = $GLOBALS['labels']['LABEL_PAGE_TITLE'];
 $bodyClass = 'container';
 
 if (!empty($form['reset'])) {
-	unset($form);
 	session_unset();
+	header('Location: ' . str_replace('&reset=1', '', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']));
 }
 
 if (!empty($form['Date']) && !$fromFile) {
 	$_SESSION['form'] = $form;
+
+	$cookieFields = array(
+		'Language',
+		'SongALabel',
+		'SongBLabel',
+		'SongCLabel',
+		'SongDLabel',
+		'SongELabel',
+		'SongFLabel',
+		'SongGLabel',
+	);
+
+	foreach ($cookieFields as $cookieField) {
+		setcookie(
+			COOKIE_PREFIX . $cookieField,
+			$form[$cookieField],
+			2147483647 // just before Y2038 bug hits
+		);
+	}
+
 	$serialized = serialize($form);
 	$md5 = md5($serialized . time());
 	$filepath = SAVE_FILEPATH . $md5;
