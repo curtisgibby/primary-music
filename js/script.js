@@ -6,9 +6,27 @@ $(function() {
 		window.location.href = 'index.php?language=' + $(this).val() + '&reset=1';
 	});
 
+	function string_to_slug(str) {
+	  str = str.replace(/^\s+|\s+$/g, ''); // trim
+	  str = str.toLowerCase();
+	  
+	  // remove accents, swap ñ for n, etc
+	  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	  var to   = "aaaaeeeeiiiioooouuuunc------";
+	  for (var i=0, l=from.length ; i<l ; i++) {
+	    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	  }
+
+	  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	    .replace(/-+/g, '-'); // collapse dashes
+
+	  return str;
+	}
+
 	$( ".auto-complete" ).autocomplete({
 		source: function( request, response ) {
-			var sValue = request.term.toLowerCase();
+			var sValue = string_to_slug(request.term);
 			var aSearch = [];
 			$(songs).each(function(i, song) {
 
@@ -21,9 +39,9 @@ $(function() {
 				}
 
 				// check to see if any of them match the search query
-				var matchPages = song.pages.toLowerCase().search(sValue) != -1;
-				var matchTitle = song.title.toLowerCase().search(sValue) != -1;
-				var matchFirstLine = song.first_line.toLowerCase().search(sValue) != -1;
+				var matchPages = string_to_slug(song.pages).search(sValue) != -1;
+				var matchTitle = string_to_slug(song.title).search(sValue) != -1;
+				var matchFirstLine = string_to_slug(song.first_line).search(sValue) != -1;
 
 				if( matchPages || matchTitle || matchFirstLine ) {
 
