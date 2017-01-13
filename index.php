@@ -6,9 +6,11 @@ $form = array_filter($_REQUEST);
 $language = 'en';
 $availableLanguages = array(
 	'en' => 'English',
+	'de' => 'German (deutsch)',
 	'es' => 'Spanish (español)',
 	'fr' => 'French (français)',
-	'pt' => 'Portuguese (português)'
+	'it' => 'Italian (italiano)',
+	'pt' => 'Portuguese (português)',
 );
 $preferredLanguages = _getLanguagesFromHTTPHeader();
 
