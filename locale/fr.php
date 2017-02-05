@@ -8,6 +8,7 @@ $GLOBALS = array(
 		'LABEL_EXPLANATION'              => "Cette page est destinée à aider les chefs de musique SDJ primaires sélectionner de la musique pour leurs réunions primaires. Choisissez une date (par défaut à \"ce dimanche\"), puis sur l'onglet à travers les champs de la chanson, tapant un mot ou le nombre et la cueillette des chansons de la pop-up, et soumettre le formulaire. Puis imprimer les résultats ou envoyer l'URL dans un courriel à vos accompagnateurs ou présidence de la Primaire.",
 		'LABEL_SUBMIT'                   => 'Soumettre',
 		'LABEL_RESET'                    => 'Réinitialiser',
+		'LABEL_RESET_CONFIRM'            => 'Voulez-vous vraiment réinitialiser le formulaire?',
 		'LABEL_LANGUAGE'                 => 'Langue',
 		'LABEL_DATE'                     => 'Date',
 		'LABEL_SINGING_TIME'             => 'Période de les chants',

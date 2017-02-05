@@ -8,6 +8,7 @@ $GLOBALS = array(
 		'LABEL_EXPLANATION'              => 'Esta página destina-se a ajudar os líderes de música Primária SUD a selecionar música para suas reuniões do Primária. Escolha uma data (o padrão é "neste domingo"), e depois no separador através dos campos da canção, digitar uma palavra ou número e pegar músicas do pop-up, e enviar o formulário. Em seguida, imprimir os resultados ou enviar a URL em um e-mail aos seus acompanhantes ou Presidência da Primária.',
 		'LABEL_SUBMIT'                   => 'Enviar',
 		'LABEL_RESET'                    => 'Reiniciar',
+		'LABEL_RESET_CONFIRM'            => 'Tem certeza de que deseja redefinir o formulário?',
 		'LABEL_LANGUAGE'                 => 'Idioma',
 		'LABEL_DATE'                     => 'Data',
 		'LABEL_SINGING_TIME'             => 'Tempo de cantar',

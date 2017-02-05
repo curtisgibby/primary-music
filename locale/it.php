@@ -8,6 +8,7 @@ $GLOBALS = array(
 		'LABEL_EXPLANATION'              => "Questa pagina ha lo scopo di aiutare i dirigenti della musica LDS Primaria selezionare la musica per le loro riunioni primarie. Scegliere una data (il default è \"questa Domenica\"), quindi la scheda attraverso i campi di canzoni, digitando una parola o un numero e raccogliendo i brani dal pop-up, e inviare il modulo. Poi stampare i risultati o inviare l'URL in una e-mail ai vostri accompagnatori o presidenza della Primaria.",
 		'LABEL_SUBMIT'                   => 'Invio',
 		'LABEL_RESET'                    => 'Reset',
+		'LABEL_RESET_CONFIRM'            => 'Sei sicuro di voler ripristinare la forma?',
 		'LABEL_LANGUAGE'                 => 'Lingua',
 		'LABEL_DATE'                     => 'Data',
 		'LABEL_SINGING_TIME'             => 'Attività di gruppo',

@@ -8,6 +8,7 @@ $GLOBALS = array(
 		'LABEL_EXPLANATION'              => "Diese Seite soll dazu beitragen, HLT Primary Music Leaders wählen Musik für ihre primären Treffen. Wählen Sie ein Datum (standardmäßig auf \"diesen Sonntag\"), dann rufen Sie durch die Song-Felder, geben Sie ein Wort oder eine Nummer und wählen Sie Songs aus dem Pop-up, und senden Sie das Formular. Dann drucken Sie die Ergebnisse oder senden Sie die URL in einer E-Mail an Ihre Begleiter oder Präsident­schaft der Primar­vereinigung.",
 		'LABEL_SUBMIT'                   => 'Einreichen',
 		'LABEL_RESET'                    => 'Zurücksetzen',
+		'LABEL_RESET_CONFIRM'            => 'Möchten Sie das Formular wirklich zurücksetzen?',
 		'LABEL_LANGUAGE'                 => 'Sprache',
 		'LABEL_DATE'                     => 'Termin',
 		'LABEL_SINGING_TIME'             => 'Miteinander',
