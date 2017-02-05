@@ -8,6 +8,7 @@ $GLOBALS = array(
 		'LABEL_EXPLANATION'              => 'This page is intended to help LDS Primary music leaders select music for their Primary meetings. Choose a date (defaults to "this Sunday"), then tab through the song fields, typing a word or number and picking songs from the pop-up, and submit the form. Then print the results or send the URL in an email to your accompanists or Primary Presidency.',
 		'LABEL_SUBMIT'                   => 'Submit',
 		'LABEL_RESET'                    => 'Reset',
+		'LABEL_RESET_CONFIRM'            => 'Are you sure you want to reset the form?',
 		'LABEL_LANGUAGE'                 => 'Language',
 		'LABEL_DATE'                     => 'Date',
 		'LABEL_SINGING_TIME'             => 'Singing Time',

@@ -86,7 +86,7 @@ function resetForm($class = '') {
 	return '
 	<form action="index.php" method="post" class="' . $class . '">
 		<input type="hidden" name="reset" value="reset">
-		<button type="submit" class="btn btn-danger pull-right hidden-print">' . $GLOBALS['labels']['LABEL_RESET'] . '</button>
+		<button type="submit" class="btn btn-danger btn-sm pull-right hidden-print" onclick="return confirm(\'' . addslashes($GLOBALS['labels']['LABEL_RESET_CONFIRM']) . '\');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' . $GLOBALS['labels']['LABEL_RESET'] . '</button>
 	</form>';
 }
 
@@ -321,7 +321,7 @@ if(isset($form['Date'])) {
 				echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
-				<button type="submit" class="btn btn-primary"><?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
+				<button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
 				<div class="form-group">
 					<div class="col-md-9">
 						<label for="Date"><?= $GLOBALS['labels']['LABEL_DATE'] ?></label>
@@ -424,7 +424,7 @@ if(isset($form['Date'])) {
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary pull-left"><?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
+		<button type="submit" class="btn btn-primary btn-lg pull-left"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
 		</form>
 		<?php echo resetForm('clearfix'); ?>
 
