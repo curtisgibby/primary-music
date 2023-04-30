@@ -82,7 +82,7 @@ function renderSong($input, $includes) {
 	'</tr>';
 }
 
-function resetForm($class = '') {
+function resetForm($class = '', $includes) {
 	return '
 	<form action="index.php" method="post" class="' . $class . '">
 		<input type="hidden" name="reset" value="reset">
@@ -290,7 +290,7 @@ if(isset($form['Date'])) {
 		</tbody></table>
 		<hr>
 		<a href="index.php" class="hidden-print pull-left">&laquo; <?= $includes['labels']['LABEL_BACK'] ?></a>
-		<?php echo resetForm(); ?>
+		<?php echo resetForm('', $includes); ?>
 
 		<div class="hidden-print share clearfix">
 			<h2><?= $includes['labels']['LABEL_SHARE'] ?></h2>
@@ -318,7 +318,7 @@ if(isset($form['Date'])) {
 				if (!empty($errorMessage)) {
 					echo '<p class="alert alert-danger">' . $errorMessage . '</p>';
 				}
-				echo resetForm(); ?>
+				echo resetForm('', $includes); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
 				<button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $includes['labels']['LABEL_SUBMIT'] ?></button>
@@ -426,7 +426,7 @@ if(isset($form['Date'])) {
 
 		<button type="submit" class="btn btn-primary btn-lg pull-left"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $includes['labels']['LABEL_SUBMIT'] ?></button>
 		</form>
-		<?php echo resetForm('clearfix'); ?>
+		<?php echo resetForm('clearfix', $includes); ?>
 
 		<script>
 		(function () {
