@@ -1,5 +1,5 @@
 <?php
-$GLOBALS = array(
+$includes = array(
 	'locale' => 'de_DE',
 	'language_code' => 'deu',
 	'labels' => array(
