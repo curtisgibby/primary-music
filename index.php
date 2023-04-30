@@ -75,6 +75,9 @@ function renderSong($input, $includes) {
 			$collection = $includes['collections'][$matches[1]];
 		}
 	}
+	if ($collection == 'childrens-songbook') {
+		$collection = '"Children\'s Songbook"';
+	}
 	$queryUrl = 'http://www.lds.org/music/library/search?lang=' . $includes['language_code'] . '&collection=' . $collection . '&query=' . $query;
 	return '<tr>' .
 		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
