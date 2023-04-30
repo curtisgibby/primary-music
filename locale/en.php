@@ -1,5 +1,5 @@
 <?php
-$GLOBALS = array(
+$includes = array(
 	'locale' => 'en_US',
 	'language_code' => 'eng',
 	'labels' => array(
@@ -38,7 +38,7 @@ $GLOBALS = array(
 	)
 );
 
-$GLOBALS['options'] = array(
+$includes['options'] = array(
 	'OPTION_PRELUDE'   => 'Prelude Song',
 	'OPTION_WELCOME'   => 'Welcome Song',
 	'OPTION_OPENING'   => 'Opening Song',
@@ -52,9 +52,9 @@ $GLOBALS['options'] = array(
 	'OPTION_CLOSING'   => 'Closing Song',
 );
 
-$GLOBALS['language_code'] = 'eng';
+$includes['language_code'] = 'eng';
 
-$GLOBALS['collections'] = array(
+$includes['collections'] = array(
 	'default' => 'music-for-children',
 	'CS'      => 'childrens-songbook',
 	'Hymns'   => 'hymnal',
