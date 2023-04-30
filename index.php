@@ -66,16 +66,16 @@ function renderSong($input) {
 
 	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $input, $matches);
 
-	$collection = $GLOBALS['collections']['default'];
+	$collection = $includes['collections']['default'];
 	if(!empty($matches)) {
 		$query = $matches[2];
 		$page = $matches[0];
 		$title = str_replace($page, '', $title);
-		if (array_key_exists($matches[1], $GLOBALS['collections'])) {
-			$collection = $GLOBALS['collections'][$matches[1]];
+		if (array_key_exists($matches[1], $includes['collections'])) {
+			$collection = $includes['collections'][$matches[1]];
 		}
 	}
-	$queryUrl = 'http://www.lds.org/music/library/search?lang=' . $GLOBALS['language_code'] . '&collection=' . $collection . '&query=' . $query;
+	$queryUrl = 'http://www.lds.org/music/library/search?lang=' . $includes['language_code'] . '&collection=' . $collection . '&query=' . $query;
 	return '<tr>' .
 		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
 		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.
@@ -86,7 +86,7 @@ function resetForm($class = '') {
 	return '
 	<form action="index.php" method="post" class="' . $class . '">
 		<input type="hidden" name="reset" value="reset">
-		<button type="submit" class="btn btn-danger btn-sm pull-right hidden-print" onclick="return confirm(\'' . addslashes($GLOBALS['labels']['LABEL_RESET_CONFIRM']) . '\');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' . $GLOBALS['labels']['LABEL_RESET'] . '</button>
+		<button type="submit" class="btn btn-danger btn-sm pull-right hidden-print" onclick="return confirm(\'' . addslashes($includes['labels']['LABEL_RESET_CONFIRM']) . '\');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' . $includes['labels']['LABEL_RESET'] . '</button>
 	</form>';
 }
 
@@ -101,16 +101,16 @@ function singingTimeInput($index) {
 function optionSelect($name = 'SongA', $defaultOption = 'OPTION_OPENING') {
 	$selectedOption = $defaultOption;
 	$label = $name . 'Label';
-	if (!empty($_COOKIE[COOKIE_PREFIX . $label]) && in_array(COOKIE_PREFIX . $label, $GLOBALS['options']) !== false) {
+	if (!empty($_COOKIE[COOKIE_PREFIX . $label]) && in_array(COOKIE_PREFIX . $label, $includes['options']) !== false) {
 		$selectedOption = $_COOKIE[COOKIE_PREFIX . $label];
 	}
 
-	if (!empty($_SESSION['form'][$label]) && in_array(COOKIE_PREFIX . $label, $GLOBALS['options']) !== false) {
+	if (!empty($_SESSION['form'][$label]) && in_array(COOKIE_PREFIX . $label, $includes['options']) !== false) {
 		$selectedOption = $_SESSION['form'][$label];
 	}
 
 	echo '<select name="'. $name . 'Label" class="song-label">';
-	foreach ($GLOBALS['options'] as $optionKey => $option) {
+	foreach ($includes['options'] as $optionKey => $option) {
 		$selected = '';
 		if ($optionKey == $selectedOption || $option == $selectedOption) {
 			$selected = ' selected="selected"';
@@ -142,7 +142,7 @@ if (!empty($form['hash'])) {
 	}
 }
 
-$pageTitle = $GLOBALS['labels']['LABEL_PAGE_TITLE'];
+$pageTitle = $includes['labels']['LABEL_PAGE_TITLE'];
 $bodyClass = 'container';
 
 if (!empty($form['reset'])) {
@@ -187,7 +187,7 @@ $qrCode = '';
 $headerScript = '<script src="js/locale/' . $language . '.js"></script>
 <script src="js/locale/datepicker-' . $language . '.js"></script>';
 if(isset($form['Date'])) {
-	setlocale(LC_TIME, $GLOBALS['locale']);
+	setlocale(LC_TIME, $includes['locale']);
 	$pageTitle .= ' - ' . strftime('%d %B %Y (%Y-%m-%d)', strtotime($form['Date']));
 	$bodyClass .= ' printable';
 	$currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -267,7 +267,7 @@ if(isset($form['Date'])) {
 		$singingTime = array_filter($form['SingingTime']);
 		if(!empty($singingTime)):
 		?>
-		<tr><td colspan=2><h2><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h2></td></tr>
+		<tr><td colspan=2><h2><?= $includes['labels']['LABEL_SINGING_TIME'] ?></h2></td></tr>
 		<?php
 		foreach ($singingTime as $song) {
 			echo renderSong($song);
@@ -283,17 +283,17 @@ if(isset($form['Date'])) {
 		<?php endif;?>
 
 		<?php if(!empty($form['Notes'])) :?>
-		<tr><td colspan=2><h2><?= $GLOBALS['labels']['LABEL_NOTES'] ?></h2></td></tr>
+		<tr><td colspan=2><h2><?= $includes['labels']['LABEL_NOTES'] ?></h2></td></tr>
 		<tr><td colspan=2><?php echo nl2br(htmlentities($form['Notes'], ENT_QUOTES, 'utf-8')); ?></tr>
 		<?php endif; // ! empty form notes?>
 
 		</tbody></table>
 		<hr>
-		<a href="index.php" class="hidden-print pull-left">&laquo; <?= $GLOBALS['labels']['LABEL_BACK'] ?></a>
+		<a href="index.php" class="hidden-print pull-left">&laquo; <?= $includes['labels']['LABEL_BACK'] ?></a>
 		<?php echo resetForm(); ?>
 
 		<div class="hidden-print share clearfix">
-			<h2><?= $GLOBALS['labels']['LABEL_SHARE'] ?></h2>
+			<h2><?= $includes['labels']['LABEL_SHARE'] ?></h2>
 			<input type="text" class="form-control" value="<?php echo $currentUrl;?>">
 			<span class='st_facebook' displayText='Facebook'></span>
 			<span class='st_twitter' displayText='Tweet'></span>
@@ -312,7 +312,7 @@ if(isset($form['Date'])) {
 
 		<div class="form-group clearfix">
 			<div class="col-md-9">
-				<p><?= $GLOBALS['labels']['LABEL_EXPLANATION'] ?></p>
+				<p><?= $includes['labels']['LABEL_EXPLANATION'] ?></p>
 
 				<?php
 				if (!empty($errorMessage)) {
@@ -321,14 +321,14 @@ if(isset($form['Date'])) {
 				echo resetForm(); ?>
 
 				<form name="music" class="form-horizontal" role="form" action="index.php" method="post">
-				<button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
+				<button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $includes['labels']['LABEL_SUBMIT'] ?></button>
 				<div class="form-group">
 					<div class="col-md-9">
-						<label for="Date"><?= $GLOBALS['labels']['LABEL_DATE'] ?></label>
+						<label for="Date"><?= $includes['labels']['LABEL_DATE'] ?></label>
 						<input type="text" class="form-control" id="Date" value="<?php echo date('Y-m-d', $selectedDate)?>" name="Date">
 					</div>
 					<div class="col-md-3">
-						<label for="Language"><?= $GLOBALS['labels']['LABEL_LANGUAGE'] ?></label>
+						<label for="Language"><?= $includes['labels']['LABEL_LANGUAGE'] ?></label>
 						<?php
 						echo '<select id="Language" name="Language" class="form-control">';
 						foreach ($availableLanguages as $code => $title) {
@@ -378,9 +378,9 @@ if(isset($form['Date'])) {
 			<img src="img/songbook-<?php echo $language;?>.jpg" class="col-md-3 hidden-xs">
 		</div>
 
-		<h3><?= $GLOBALS['labels']['LABEL_SINGING_TIME'] ?></h3>
+		<h3><?= $includes['labels']['LABEL_SINGING_TIME'] ?></h3>
 		<div class="form-group">
-			<p><?= $GLOBALS['labels']['LABEL_SINGING_TIME_EXPLANATION'] ?></p>
+			<p><?= $includes['labels']['LABEL_SINGING_TIME_EXPLANATION'] ?></p>
 			<?php
 			$index = 0;
 			echo singingTimeInput($index++);
@@ -419,25 +419,25 @@ if(isset($form['Date'])) {
 
 		<div class="form-group clearfix">
 			<div class="col-md-12">
-				<label for="Notes"><?= $GLOBALS['labels']['LABEL_NOTES'] ?></label>
+				<label for="Notes"><?= $includes['labels']['LABEL_NOTES'] ?></label>
 				<textarea rows=6 class="form-control" id="Notes" name="Notes"><?php echo !empty($_SESSION['form']['Notes']) ? htmlentities($_SESSION['form']['Notes'], ENT_QUOTES, 'utf-8') : ''; ?></textarea>
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary btn-lg pull-left"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $GLOBALS['labels']['LABEL_SUBMIT'] ?></button>
+		<button type="submit" class="btn btn-primary btn-lg pull-left"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <?= $includes['labels']['LABEL_SUBMIT'] ?></button>
 		</form>
 		<?php echo resetForm('clearfix'); ?>
 
 		<script>
 		(function () {
-			var printMessage = <?= json_encode($GLOBALS['labels']['LABEL_NO_PRINT']); ?>;
+			var printMessage = <?= json_encode($includes['labels']['LABEL_NO_PRINT']); ?>;
 			if("onbeforeprint"in window)window.onbeforeprint=function(){window.alert(printMessage)};else if(window.matchMedia){var mqList=window.matchMedia("print");mqList.addListener(function(a){a.matches&&window.alert(printMessage)})}else!function(a){window.print=function(){window.alert(printMessage),a()}}(window.print);
 		})();
 		</script>
 
 		<?php endif;?>
 
-		<footer class='hidden-print'><div class="container"><?= $GLOBALS['labels']['LABEL_NOT_OFFICIAL'] ?></div></footer>
+		<footer class='hidden-print'><div class="container"><?= $includes['labels']['LABEL_NOT_OFFICIAL'] ?></div></footer>
 <?php include('../include/google-analytics.inc'); ?>
 	</body>
 </html>
