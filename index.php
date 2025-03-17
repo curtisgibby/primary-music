@@ -4,22 +4,22 @@ DEFINE('COOKIE_PREFIX', 'primary_music_planner_');
 $form = array_filter($_REQUEST);
 
 $language = 'en';
-$availableLanguages = array(
+$availableLanguages = [
 	'en' => 'English',
 	'de' => 'German (deutsch)',
 	'es' => 'Spanish (español)',
 	'fr' => 'French (français)',
 	'it' => 'Italian (italiano)',
 	'pt' => 'Portuguese (português)',
-);
+];
 $preferredLanguages = _getLanguagesFromHTTPHeader();
 
 if (!empty($_COOKIE['primary_music_planner_Language'])) {
-	$preferredLanguages = array($_COOKIE['primary_music_planner_Language']);
+	$preferredLanguages = [$_COOKIE['primary_music_planner_Language']];
 }
 
 if (!empty($form['language'])) {
-	$preferredLanguages = array($form['language']);
+	$preferredLanguages = [$form['language']];
 }
 
 foreach ($preferredLanguages as $preferredLanguage) {
@@ -60,7 +60,7 @@ function _getLanguagesFromHTTPHeader() {
 	return $languages;
 }
 
-function renderSong($input) {
+function renderSong($input, $includes) {
 	list($slug, $pageNumberAndTitle) = explode("|", $input);
 
 	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $pageNumberAndTitle, $matches);
