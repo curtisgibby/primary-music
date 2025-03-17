@@ -63,13 +63,9 @@ function _getLanguagesFromHTTPHeader() {
 function renderSong($input, $includes) {
 	list($slug, $pageNumberAndTitle) = explode("|", $input);
 
-	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $pageNumberAndTitle, $matches);
-	$page = $matches[2];
-	$title = str_replace($page, '', $pageNumberAndTitle);
 	$queryUrl = 'https://www.churchofjesuschrist.org/media/music/songs/' . $slug . '?lang=' . $includes['language_code'];
 	return '<tr>' .
-		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
-		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.
+		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($pageNumberAndTitle, ENT_QUOTES, 'utf-8') . '</a></td>'.
 	'</tr>';
 }
 
