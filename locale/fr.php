@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => "Partagez ce plan",
 		'LABEL_BACK'                     => 'Retourner',
 	),
-	'collections' => array(
-		'default'   => 'musique-pour-les-enfants',
-		'CPE'        => 'recueil-de-chants-pour-les-enfants',
-		'Cantiques' => 'cantiques',
-	),
 	'options' => array(
 		'OPTION_PRELUDE'   => "Chanson de Prelude",
 		'OPTION_WELCOME'   => "Chanson de Bienvenue",

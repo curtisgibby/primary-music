@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => 'Compartir este plan',
 		'LABEL_BACK'                     => 'Regresar',
 	),
-	'collections' => array(
-		'default' => '',
-		'CN'      => 'canciones-para-los-ninos',
-		'Himnos'  => 'himnos',
-	),
 	'options' => array(
 		'OPTION_PRELUDE'   => 'Canción de Preludio',
 		'OPTION_WELCOME'   => 'Canción de Bienvenido',

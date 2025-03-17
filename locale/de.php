@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => 'Diesen Plan teilen',
 		'LABEL_BACK'                     => 'Zurückgehen',
 	),
-	'collections' => array(
-		'default' => 'lieder-fur-kinder',
-		'LK' => 'liederbuch-fur-kinder',
-		'Gesangbuch' => 'hymnal',
-	),
 	'options' => array(
 		'OPTION_PRELUDE' => 'Lied des Vorspiels',
 		'OPTION_WELCOME' => 'Willkommenes Lied',
