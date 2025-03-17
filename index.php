@@ -85,7 +85,7 @@ function singingTimeInput($index) {
 	return '
 	<div class="col-md-4">
 		<label for="SingingTime' . ($index + 1) . '">#' . ($index + 1). '</label>
-		<input type="hidden" name="HiddenSingingTime[' . ($index + 1) . ']" id="HiddenSingingTime' . ($index + 1) . '" value="">
+		<input type="hidden" name="HiddenSingingTime[' . ($index + 1) . ']" id="HiddenSingingTime' . ($index + 1) . '" value="' . (!empty($_SESSION['form']['HiddenSingingTime'][$index]) ? htmlentities($_SESSION['form']['HiddenSingingTime'][$index], ENT_QUOTES, 'utf-8') : '') . '">
 		<input type="text" class="form-control auto-complete" id="SingingTime' . ($index + 1) . '" name="SingingTime[]" value="' . (!empty($_SESSION['form']['SingingTime'][$index]) ? htmlentities($_SESSION['form']['SingingTime'][$index], ENT_QUOTES, 'utf-8') : '') . '">
 	</div>';
 }
@@ -338,36 +338,36 @@ if(isset($form['Date'])) {
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongA', 'OPTION_WELCOME', $includes) ?>
-					<input type="hidden" name="HiddenSongA" id="HiddenSongA">
+					<input type="hidden" name="HiddenSongA" id="HiddenSongA" value="<?php echo !empty($_SESSION['form']['HiddenSongA']) ? htmlentities($_SESSION['form']['HiddenSongA'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? htmlentities($_SESSION['form']['SongA'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongB', 'OPTION_OPENING', $includes) ?>
-					<input type="hidden" name="HiddenSongB" id="HiddenSongB">
+					<input type="hidden" name="HiddenSongB" id="HiddenSongB" value="<?php echo !empty($_SESSION['form']['HiddenSongB']) ? htmlentities($_SESSION['form']['HiddenSongB'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? htmlentities($_SESSION['form']['SongB'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongC', 'OPTION_BIRTHDAY', $includes) ?>
-					<input type="hidden" name="HiddenSongC" id="HiddenSongC">
+					<input type="hidden" name="HiddenSongC" id="HiddenSongC" 	value="<?php echo !empty($_SESSION['form']['HiddenSongC']) ? htmlentities($_SESSION['form']['HiddenSongC'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? htmlentities($_SESSION['form']['SongC'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongD', 'OPTION_REVERENCE', $includes) ?>
-					<input type="hidden" name="HiddenSongD" id="HiddenSongD">
+					<input type="hidden" name="HiddenSongD" id="HiddenSongD" value="<?php echo !empty($_SESSION['form']['HiddenSongD']) ? htmlentities($_SESSION['form']['HiddenSongD'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? htmlentities($_SESSION['form']['SongD'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongE', 'OPTION_SHARING', $includes) ?>
-					<input type="hidden" name="HiddenSongE" id="HiddenSongE">
+					<input type="hidden" name="HiddenSongE" id="HiddenSongE" value="<?php echo !empty($_SESSION['form']['HiddenSongE']) ? htmlentities($_SESSION['form']['HiddenSongE'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? htmlentities($_SESSION['form']['SongE'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongF', 'OPTION_WIGGLE', $includes) ?>
-					<input type="hidden" name="HiddenSongF" id="HiddenSongF">
+					<input type="hidden" name="HiddenSongF" id="HiddenSongF" value="<?php echo !empty($_SESSION['form']['HiddenSongF']) ? htmlentities($_SESSION['form']['HiddenSongF'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? htmlentities($_SESSION['form']['SongF'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
