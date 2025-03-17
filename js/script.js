@@ -54,6 +54,18 @@ $(function () {
 
       response(aSearch);
     },
+    select: function(event, ui) {
+        // Update the hidden field with the value
+        $("#Hidden" + $(this).attr("id")).val(ui.item.value);
+        // Update the input field with the label
+        $(this).val(ui.item.label);
+        return false; // Prevent default behavior
+    },
+    focus: function(event, ui) {
+        // Show the label when navigating
+        $(this).val(ui.item.label);
+        return false; // Prevent default behavior
+    }
   });
 
   $("select.song-label").combobox();

@@ -85,6 +85,7 @@ function singingTimeInput($index) {
 	return '
 	<div class="col-md-4">
 		<label for="SingingTime' . ($index + 1) . '">#' . ($index + 1). '</label>
+		<input type="hidden" name="HiddenSingingTime[' . ($index + 1) . ']" id="HiddenSingingTime' . ($index + 1) . '" value="">
 		<input type="text" class="form-control auto-complete" id="SingingTime' . ($index + 1) . '" name="SingingTime[]" value="' . (!empty($_SESSION['form']['SingingTime'][$index]) ? htmlentities($_SESSION['form']['SingingTime'][$index], ENT_QUOTES, 'utf-8') : '') . '">
 	</div>';
 }
@@ -216,46 +217,46 @@ if(isset($form['Date'])) {
 			<?php if(!empty($form['SongALabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongALabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongA'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongA'], $includes); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongB'])) :?>
 			<?php if(!empty($form['SongBLabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongBLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongB'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongB'], $includes); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongC'])) :?>
 			<?php if(!empty($form['SongCLabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongCLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongC'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongC'], $includes); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongD'])) :?>
 			<?php if(!empty($form['SongDLabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongDLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongD'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongD'], $includes); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongE'])) :?>
 			<?php if(!empty($form['SongELabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongELabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongE'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongE'], $includes); ?>
 		<?php endif;?>
 
 		<?php if(!empty($form['SongF'])) :?>
 			<?php if(!empty($form['SongFLabel'])) :?>
 			<tr><td colspan=2><h2><?php echo htmlentities($form['SongFLabel'], ENT_QUOTES, 'utf-8'); ?></h2></td></tr>
 			<?php endif;?>
-		<?php echo renderSong($form['SongF'], $includes); ?>
+		<?php echo renderSong($form['HiddenSongF'], $includes); ?>
 		<?php endif;?>
 
-		<?php if(!empty($form['SingingTime'])) :
-		$singingTime = array_filter($form['SingingTime']);
+		<?php if(!empty($form['HiddenSingingTime'])) :
+		$singingTime = array_filter($form['HiddenSingingTime']);
 		if(!empty($singingTime)):
 		?>
 		<tr><td colspan=2><h2><?= $includes['labels']['LABEL_SINGING_TIME'] ?></h2></td></tr>
@@ -264,7 +265,7 @@ if(isset($form['Date'])) {
 			echo renderSong($song, $includes);
 		}
 		endif; // ! empty singingTime
-		endif; // ! empty form singingTime?>
+		endif; // ! empty form HiddenSingingTime?>
 
 		<?php if(!empty($form['SongG'])) :?>
 			<?php if(!empty($form['SongGLabel'])) :?>
@@ -337,30 +338,36 @@ if(isset($form['Date'])) {
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongA', 'OPTION_WELCOME', $includes) ?>
+					<input type="hidden" name="HiddenSongA" id="HiddenSongA">
 					<input type="text" class="form-control auto-complete" id="SongA" name="SongA" value="<?php echo !empty($_SESSION['form']['SongA']) ? htmlentities($_SESSION['form']['SongA'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongB', 'OPTION_OPENING', $includes) ?>
+					<input type="hidden" name="HiddenSongB" id="HiddenSongB">
 					<input type="text" class="form-control auto-complete" id="SongB" name="SongB" value="<?php echo !empty($_SESSION['form']['SongB']) ? htmlentities($_SESSION['form']['SongB'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongC', 'OPTION_BIRTHDAY', $includes) ?>
+					<input type="hidden" name="HiddenSongC" id="HiddenSongC">
 					<input type="text" class="form-control auto-complete" id="SongC" name="SongC" value="<?php echo !empty($_SESSION['form']['SongC']) ? htmlentities($_SESSION['form']['SongC'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongD', 'OPTION_REVERENCE', $includes) ?>
+					<input type="hidden" name="HiddenSongD" id="HiddenSongD">
 					<input type="text" class="form-control auto-complete" id="SongD" name="SongD" value="<?php echo !empty($_SESSION['form']['SongD']) ? htmlentities($_SESSION['form']['SongD'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 					<?php echo optionSelect('SongE', 'OPTION_SHARING', $includes) ?>
+					<input type="hidden" name="HiddenSongE" id="HiddenSongE">
 					<input type="text" class="form-control auto-complete" id="SongE" name="SongE" value="<?php echo !empty($_SESSION['form']['SongE']) ? htmlentities($_SESSION['form']['SongE'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 					<div class="col-md-6">
 					<?php echo optionSelect('SongF', 'OPTION_WIGGLE', $includes) ?>
+					<input type="hidden" name="HiddenSongF" id="HiddenSongF">
 					<input type="text" class="form-control auto-complete" id="SongF" name="SongF" value="<?php echo !empty($_SESSION['form']['SongF']) ? htmlentities($_SESSION['form']['SongF'], ENT_QUOTES, 'utf-8') : ''; ?>">
 					</div>
 				</div>
