@@ -41,8 +41,9 @@ $(function () {
 
         if (matchPages || matchTitle) {
           var songLabel = song.title;
+		  var abbreviation = abbreviations[song.bookSlug];
           if (song.songNumber != "") {
-            songLabel = "[" + song.songNumber + "] " + songLabel;
+            songLabel = "[" + abbreviation + " " + song.songNumber + "] " + songLabel;
           }
 
           aSearch.push({
