@@ -61,7 +61,7 @@ function _getLanguagesFromHTTPHeader() {
 }
 
 function renderSong($input) {
-	list($pageNumberAndTitle, $slug) = explode("|", $input);
+	list($slug, $pageNumberAndTitle) = explode("|", $input);
 
 	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $pageNumberAndTitle, $matches);
 	$page = $matches[2];
