@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => 'Condividi questo piano',
 		'LABEL_BACK'                     => 'Torna indietro',
 	),
-	'collections' => array(
-		'default' => '',
-		'IB'      => '',
-		'Innos'  => '',
-	),
 	'options' => array(
 		'OPTION_PRELUDE' => 'Canzone di chiusura',
 		'OPTION_WELCOME' => 'Canzone di benvenuto',

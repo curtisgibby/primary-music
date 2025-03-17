@@ -60,25 +60,13 @@ function _getLanguagesFromHTTPHeader() {
 	return $languages;
 }
 
-function renderSong($input, $includes) {
-	$query = $title = $input;
-	$page = '';
+function renderSong($input) {
+	list($pageNumberAndTitle, $slug) = explode("|", $input);
 
-	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $input, $matches);
-
-	$collection = $includes['collections']['default'];
-	if(!empty($matches)) {
-		$query = $matches[2];
-		$page = $matches[0];
-		$title = str_replace($page, '', $title);
-		if (array_key_exists($matches[1], $includes['collections'])) {
-			$collection = $includes['collections'][$matches[1]];
-		}
-	}
-	if ($collection == 'childrens-songbook') {
-		$collection = '"Children\'s Songbook"';
-	}
-	$queryUrl = 'http://www.lds.org/music/library/search?lang=' . $includes['language_code'] . '&collection=' . $collection . '&query=' . $query;
+	preg_match('/^\[(\w+) ([0-9]+(–[0-9]+)?)\] /', $pageNumberAndTitle, $matches);
+	$page = $matches[2];
+	$title = str_replace($page, '', $pageNumberAndTitle);
+	$queryUrl = 'https://www.churchofjesuschrist.org/media/music/songs/' . $slug . '?lang=' . $includes['language_code'];
 	return '<tr>' .
 		'<td class="page"><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities(trim($page), ENT_QUOTES, 'utf-8') . '</a></td>' .
 		'<td><a href="' . htmlentities($queryUrl, ENT_QUOTES, 'utf-8') . '">' . htmlentities($title, ENT_QUOTES, 'utf-8') . '</a></td>'.

@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => 'Compartilhe este plano',
 		'LABEL_BACK'                     => 'Volte',
 	),
-	'collections' => array(
-		'default' => '',
-		'MC'      => '',
-		'Hinos'   => 'hinos',
-	),
 	'options' => array(
 		'OPTION_PRELUDE'   => 'Canção do prelúdio',
 		'OPTION_WELCOME'   => 'Canção de boas-vindas',

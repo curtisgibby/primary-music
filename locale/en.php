@@ -18,11 +18,6 @@ $includes = array(
 		'LABEL_SHARE'                    => 'Share this plan',
 		'LABEL_BACK'                     => 'Go Back',
 	),
-	'collections' => array(
-		'default' => 'music-for-children',
-		'CS'      => 'childrens-songbook',
-		'Hymns'   => 'hymnal',
-	),
 	'options' => array(
 		'OPTION_PRELUDE'   => 'Prelude Song',
 		'OPTION_WELCOME'   => 'Welcome Song',
@@ -36,26 +31,4 @@ $includes = array(
 		'OPTION_WIGGLE'    => 'Wiggle Song',
 		'OPTION_CLOSING'   => 'Closing Song',
 	)
-);
-
-$includes['options'] = array(
-	'OPTION_PRELUDE'   => 'Prelude Song',
-	'OPTION_WELCOME'   => 'Welcome Song',
-	'OPTION_OPENING'   => 'Opening Song',
-	'OPTION_BIRTHDAY'  => 'Birthday Song',
-	'OPTION_BAPTISM'   => 'Baptism Song',
-	'OPTION_ARTICLE'   => 'Article of Faith Song',
-	'OPTION_SCRIPTURE' => 'Scripture Song',
-	'OPTION_SHARING'   => 'Sharing Time Song',
-	'OPTION_REVERENCE' => 'Reverence Song',
-	'OPTION_WIGGLE'    => 'Wiggle Song',
-	'OPTION_CLOSING'   => 'Closing Song',
-);
-
-$includes['language_code'] = 'eng';
-
-$includes['collections'] = array(
-	'default' => 'music-for-children',
-	'CS'      => 'childrens-songbook',
-	'Hymns'   => 'hymnal',
 );
